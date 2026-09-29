@@ -1,0 +1,119 @@
+---
+type: calculator
+category: landscaping
+order: 1
+icon: gravel
+title: Gravel Calculator – Cubic Yards, Tons & Bags
+description: Find out how much gravel you need for a driveway, path or patio base in cubic yards, tons and bags. Choose crushed stone, pea gravel or river rock.
+h1: Gravel Calculator
+lead: Measure the area, choose the depth and the type of stone, and get the amount in cubic yards, tons and 0.5 cu ft bags — plus a cost estimate if you add a price.
+card_title: Gravel Calculator
+card_desc: Driveways, paths and bases — cubic yards, tons and bags.
+crumb: Gravel Calculator
+updated: 2026-09-29
+script: bulk
+related: sand-calculator, concrete-calculator, mulch-calculator
+---
+<script type="application/json" id="bulk-config">{
+ "title": "Gravel", "noun": "gravel",
+ "defaults": {"L": 20, "W": 10, "depth": 3, "extra": 10},
+ "depthHint": "2–3 in for paths, 4 in+ for driveways",
+ "extraHint": "Covers compaction and waste",
+ "materials": [
+  {"name": "Crushed stone (#57, #411, etc.)", "density": 1.4},
+  {"name": "Pea gravel", "density": 1.4},
+  {"name": "River rock", "density": 1.35},
+  {"name": "Crusher run / road base", "density": 1.5},
+  {"name": "Decomposed granite", "density": 1.4}
+ ],
+ "bags": [{"label": "0.5 cu ft", "ft3": 0.5}],
+ "price": ["ton", "yd"],
+ "bulkAbove": 0.75,
+ "tips": [
+  {"max": 1.99, "warn": true, "text": "Under 2 inches, gravel tends to scatter and weeds push through. Most paths and beds need at least 2 inches."},
+  {"min": 2, "max": 3.99, "text": "2–3 inches is the usual depth for walkways, garden paths and decorative areas."},
+  {"min": 4, "max": 8, "text": "4 inches or more suits driveways and parking areas — build it in compacted layers over a firm base."},
+  {"min": 8.01, "text": "For deep fills, spread and compact the stone in 3–4 inch lifts so it doesn't settle later."}
+ ]
+}</script>
+[[bulk_form]]
+<!-- content -->
+<h2>How to use the gravel calculator</h2>
+<ol>
+  <li><strong>Choose the shape</strong> of the area. Split odd shapes into rectangles, circles and triangles, work each one out, then add the results — or type the total area if you already know it.</li>
+  <li><strong>Enter the depth</strong> of the finished layer. Use the depth after compaction; the extra percentage takes care of the settling.</li>
+  <li><strong>Pick the stone.</strong> The density fills in automatically so the calculator can convert cubic yards to tons. Quarries sell by the ton, landscape yards often by the yard, so it helps to have both.</li>
+  <li><strong>Add a price</strong> per ton or per yard to see the material cost before delivery.</li>
+</ol>
+
+<h2>The gravel formula</h2>
+<div class="formula">Volume (ft³) = area (ft²) × depth (ft)
+Cubic yards  = cubic feet ÷ 27
+Tons         = cubic yards × density (tons per cubic yard)
+Bags         = cubic feet ÷ bag size (0.5 ft³), rounded up</div>
+<p>Depth is usually measured in inches, so divide it by 12 before multiplying: 3 inches is 0.25 ft, 4 inches is 0.333 ft.</p>
+
+<div class="example">
+  <p>Worked example: a garden path 3 ft wide and 40 ft long, 3 inches deep</p>
+  <ol>
+    <li>Area: 3 × 40 = 120 sq ft</li>
+    <li>Volume: 120 × 0.25 = 30 ft³ = 1.11 yd³</li>
+    <li>Plus 10% for compaction: 1.22 yd³</li>
+    <li>In tons (crushed stone at 1.4 t/yd³): about <strong>1.7 tons</strong> — or 66 bags of 0.5 cu ft, which is why bulk delivery wins at this size.</li>
+  </ol>
+</div>
+<div class="example">
+  <p>Worked example: a 12 × 50 ft driveway top-up, 4 inches deep</p>
+  <ol>
+    <li>Area: 600 sq ft; volume: 600 × 0.333 = 200 ft³ = 7.4 yd³</li>
+    <li>Plus 10%: 8.1 yd³, or about <strong>11.4 tons</strong> of crushed stone. Ask the supplier how much their truck carries — a load this size may need one large truck or two smaller ones.</li>
+  </ol>
+</div>
+
+<h2>How much does a yard of gravel weigh?</h2>
+<p>Stone varies with the rock type, the size and shape of the pieces, and how wet it is, so treat these as planning figures and use your supplier's number when you order. Angular crushed stone locks together and packs more rock into a yard than smooth, rounded pea gravel or river rock.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Material</th><th>Typical weight per cubic yard</th><th>Common uses</th></tr></thead>
+  <tbody>
+    <tr><td>Crushed stone (#57, #411)</td><td>1.4–1.7 tons (2,800–3,400 lb)</td><td>Driveway surface, drainage, base under patios</td></tr>
+    <tr><td>Crusher run / road base</td><td>1.4–1.6 tons loose, more once compacted</td><td>Driveway and paver base that packs hard</td></tr>
+    <tr><td>Pea gravel</td><td>about 1.4 tons</td><td>Paths, play areas, dog runs, between stepping stones</td></tr>
+    <tr><td>River rock</td><td>1.2–1.6 tons</td><td>Decorative beds, dry creek beds</td></tr>
+    <tr><td>Decomposed granite</td><td>about 1.4 tons</td><td>Firm, natural-looking paths and patios</td></tr>
+  </tbody>
+</table></div>
+
+<h2>How much area does gravel cover?</h2>
+<p>A cubic yard is 324 square feet one inch deep, so divide 324 by your depth in inches to see how far a yard goes. For a ton, assume about 0.7 cubic yards of crushed stone.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Depth</th><th>1 cubic yard covers</th><th>1 ton covers (≈1.4 t/yd³)</th></tr></thead>
+  <tbody>
+    <tr><td>2 in</td><td>162 sq ft</td><td>116 sq ft</td></tr>
+    <tr><td>3 in</td><td>108 sq ft</td><td>77 sq ft</td></tr>
+    <tr><td>4 in</td><td>81 sq ft</td><td>58 sq ft</td></tr>
+    <tr><td>6 in</td><td>54 sq ft</td><td>39 sq ft</td></tr>
+  </tbody>
+</table></div>
+
+<h2>How deep should gravel be?</h2>
+<ul>
+  <li><strong>Garden paths and decorative areas:</strong> 2 to 3 inches. Thinner layers get kicked around and let weeds through; deeper layers of rounded stone feel loose underfoot.</li>
+  <li><strong>Base under pavers or a shed:</strong> commonly 4 to 6 inches of compacted crushed stone or road base, deeper on clay or poorly drained soil.</li>
+  <li><strong>Driveways:</strong> build in layers — a compacted base of larger crushed stone or road base, then 2 to 3 inches of surface stone. Soft ground and heavy vehicles call for a thicker base.</li>
+  <li><strong>Drainage trenches:</strong> fill to the depth of the trench with clean, washed stone (no fines) so water can move through it.</li>
+</ul>
+<div class="callout"><p><strong>Tip:</strong> a landscape fabric under paths and decorative gravel keeps the stone from mixing into the soil. Skip it under driveway base layers that need to compact against the subgrade unless your supplier recommends a stabilization fabric.</p></div>
+
+<h2>Bulk vs. bagged gravel</h2>
+<p>Bagged gravel usually comes in 0.5 cubic foot bags, so a single cubic yard takes 54 bags. Bags are handy for small beds and repairs. Beyond about three quarters of a yard, bulk delivery from a quarry or landscape supplier is almost always cheaper and saves a lot of lifting — just check the minimum order and delivery fee, and make sure the truck can reach where you want it dumped.</p>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many tons of gravel do I need for a driveway?</summary><p>Multiply the length by the width to get square feet, multiply by the depth in feet, divide by 27 and then multiply by about 1.4. A 12 × 50 ft driveway 4 inches deep needs roughly 10 to 11.5 tons depending on how much you allow for compaction.</p></details>
+  <details><summary>How many bags of gravel are in a yard?</summary><p>54 bags of 0.5 cubic feet, because a cubic yard is 27 cubic feet.</p></details>
+  <details><summary>Is a ton of gravel the same as a yard?</summary><p>No. A ton is a weight and a yard is a volume. A cubic yard of crushed stone weighs about 1.4 tons, so one ton is roughly 0.7 cubic yards.</p></details>
+  <details><summary>Why add extra for compaction?</summary><p>Loose stone settles when it's compacted and driven on. Adding around 10% means the finished layer ends up at the depth you planned rather than an inch short.</p></details>
+</div>
+
+<h2>Sources</h2>
+<p class="sources">Densities are typical values for planning; they vary by quarry, stone size and moisture. Always confirm the conversion with the supplier you buy from. <a href="@methodology">How we calculate</a>.</p>

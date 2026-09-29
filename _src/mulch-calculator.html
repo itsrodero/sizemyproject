@@ -1,0 +1,104 @@
+---
+type: calculator
+category: landscaping
+order: 2
+icon: leaf
+title: Mulch Calculator – How Many Bags or Yards Do I Need?
+description: Calculate how much mulch you need for beds and tree rings in cubic yards and 2 or 3 cu ft bags, with the depth university extension services recommend.
+h1: Mulch Calculator
+lead: Enter the size of your beds and how deep you want the mulch, and see how many cubic yards or bags to buy — with a check against the recommended 2 to 4 inches.
+card_title: Mulch Calculator
+card_desc: Beds and tree rings — cubic yards and 2 or 3 cu ft bags.
+crumb: Mulch Calculator
+updated: 2026-09-29
+script: bulk
+related: topsoil-calculator, gravel-calculator, sand-calculator
+---
+<script type="application/json" id="bulk-config">{
+ "title": "Mulch", "noun": "mulch",
+ "defaults": {"L": 25, "W": 4, "D": 6, "depth": 3, "extra": 5},
+ "depthHint": "2–4 in is recommended",
+ "extraHint": "For settling and uneven beds",
+ "bags": [{"label": "2 cu ft", "ft3": 2}, {"label": "3 cu ft", "ft3": 3}],
+ "price": ["yd"],
+ "bulkAbove": 2,
+ "tips": [
+  {"max": 1.99, "warn": true, "text": "A layer thinner than 2 inches does little to hold moisture or smother weeds. Most beds need 2 to 4 inches."},
+  {"min": 2, "max": 4, "text": "2 to 4 inches is the range extension services recommend: 2–3 in for fine or composted mulch, 3–4 in for coarse wood chips and bark."},
+  {"min": 4.01, "warn": true, "text": "More than 4 inches can mat down, keep water and air from the roots and encourage rot. Keep mulch at least 4 inches away from trunks and stems."}
+ ]
+}</script>
+[[bulk_form]]
+<!-- content -->
+<h2>How to use the mulch calculator</h2>
+<ol>
+  <li><strong>Measure each bed.</strong> Use <em>Rectangle</em> for straight beds and borders, <em>Circle</em> for rings around trees, and split curved beds into simple shapes you can add up.</li>
+  <li><strong>Choose the depth.</strong> For a new bed, use 3 inches. If there's still mulch from last year, measure what's left and only add the difference.</li>
+  <li><strong>Read the result</strong> in cubic yards (how bulk mulch is sold) and in 2 and 3 cubic foot bags (how garden centers sell it).</li>
+</ol>
+
+<h2>How to calculate mulch</h2>
+<div class="formula">Volume (ft³) = area (ft²) × depth (in) ÷ 12
+Cubic yards  = cubic feet ÷ 27
+2 cu ft bags = cubic feet ÷ 2  (round up)
+3 cu ft bags = cubic feet ÷ 3  (round up)</div>
+
+<div class="example">
+  <p>Worked example: a 4 × 25 ft border, 3 inches deep</p>
+  <ol>
+    <li>Area: 4 × 25 = 100 sq ft</li>
+    <li>Volume: 100 × 3 ÷ 12 = 25 ft³ = 0.93 yd³</li>
+    <li>Bags: 25 ÷ 2 = 12.5, so <strong>13 bags of 2 cu ft</strong> (14 with 5% extra), or 9 bags of 3 cu ft.</li>
+  </ol>
+</div>
+<div class="example">
+  <p>Worked example: a ring 6 ft across around a young tree, 3 inches deep</p>
+  <ol>
+    <li>Area: π × 3² = 28.3 sq ft</li>
+    <li>Volume: 28.3 × 3 ÷ 12 = 7.1 ft³, so <strong>4 bags of 2 cu ft</strong>. Leave a mulch-free gap of at least 4 inches around the trunk.</li>
+  </ol>
+</div>
+
+<h2>How much area does mulch cover?</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Depth</th><th>1 cubic yard</th><th>One 2 cu ft bag</th><th>One 3 cu ft bag</th></tr></thead>
+  <tbody>
+    <tr><td>2 in</td><td>162 sq ft</td><td>12 sq ft</td><td>18 sq ft</td></tr>
+    <tr><td>3 in</td><td>108 sq ft</td><td>8 sq ft</td><td>12 sq ft</td></tr>
+    <tr><td>4 in</td><td>81 sq ft</td><td>6 sq ft</td><td>9 sq ft</td></tr>
+  </tbody>
+</table></div>
+<p>One cubic yard equals 13.5 bags of 2 cu ft or 9 bags of 3 cu ft. Bulk mulch is normally sold by the yard, so compare the delivered price of bulk with the bag price once you pass a couple of yards.</p>
+
+<h2>How deep should mulch be?</h2>
+<p>University of Illinois Extension recommends a layer of <strong>2 to 4 inches</strong> — 2 to 3 inches of composted or fine mulch, and 3 to 4 inches of coarse mulches such as wood chips and bark. More isn't better: thick layers can mat down, reduce the water and oxygen that reach the roots, and cause decay.</p>
+<ul>
+  <li><strong>Keep it off trunks and stems.</strong> Pull mulch at least 4 inches away from the trunk. "Volcano" mulching piled against the bark is one of the most common causes of tree decline.</li>
+  <li><strong>Top up, don't pile on.</strong> Check the depth before adding more. If there's still 2 inches, rake it to refresh the look and add only an inch.</li>
+  <li><strong>Go wide around trees.</strong> Spread mulch out toward the drip line rather than deep against the trunk.</li>
+</ul>
+
+<h2>Choosing a mulch</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Type</th><th>Good for</th><th>Keep in mind</th></tr></thead>
+  <tbody>
+    <tr><td>Shredded hardwood</td><td>Beds and borders; knits together and stays on slopes</td><td>Breaks down in a year or two, feeding the soil</td></tr>
+    <tr><td>Pine bark nuggets</td><td>Decorative beds, acid-loving shrubs</td><td>Light pieces can float away in heavy rain</td></tr>
+    <tr><td>Wood chips</td><td>Around trees and on paths</td><td>Coarse, so use the 3–4 in end of the range</td></tr>
+    <tr><td>Pine needles</td><td>Slopes and acid-loving plants</td><td>Very light; sold by the bale rather than by volume</td></tr>
+    <tr><td>Compost</td><td>Vegetable and flower beds</td><td>Fine texture: 2–3 in is enough</td></tr>
+  </tbody>
+</table></div>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many bags of mulch are in a yard?</summary><p>13.5 bags of 2 cubic feet, or 9 bags of 3 cubic feet. A cubic yard is 27 cubic feet.</p></details>
+  <details><summary>How much mulch do I need for 100 square feet?</summary><p>At 3 inches deep, 100 sq ft needs 25 cubic feet — about 0.93 cubic yards or 13 bags of 2 cu ft.</p></details>
+  <details><summary>Should I remove old mulch before adding new?</summary><p>Not usually. Measure the depth first: if the old layer is still 2 inches or more, just loosen it and add a thin top dressing. Remove it if it's matted, moldy or piled against trunks.</p></details>
+  <details><summary>Does mulch settle?</summary><p>Yes — fresh, fluffy mulch settles after the first rains, and organic mulch slowly breaks down. That's why the calculator adds a little extra by default.</p></details>
+</div>
+
+<h2>Sources</h2>
+<ul class="sources">
+  <li>University of Illinois Extension, <em>Proper mulching techniques</em> — recommended depths and keeping mulch away from trunks.</li>
+</ul>

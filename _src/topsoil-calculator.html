@@ -1,0 +1,102 @@
+---
+type: calculator
+category: landscaping
+order: 3
+icon: shovel
+title: Topsoil Calculator – Cubic Yards, Tons & Bags
+description: Calculate how much topsoil, fill dirt or compost you need for a new lawn, garden or leveling job, in cubic yards, tons and bags.
+h1: Topsoil Calculator
+lead: Enter the area and depth to find how many cubic yards of topsoil, fill dirt or compost to order — or how many bags to pick up.
+card_title: Topsoil Calculator
+card_desc: New lawns, gardens and leveling — yards, tons and bags.
+crumb: Topsoil Calculator
+updated: 2026-09-29
+script: bulk
+related: mulch-calculator, sand-calculator, gravel-calculator
+---
+<script type="application/json" id="bulk-config">{
+ "title": "Topsoil", "noun": "topsoil",
+ "defaults": {"L": 30, "W": 20, "depth": 4, "extra": 10},
+ "depthHint": "4–6 in for a new lawn",
+ "extraHint": "Loose soil settles",
+ "materials": [
+  {"name": "Screened topsoil (dry)", "density": 1.0},
+  {"name": "Topsoil (moist)", "density": 1.3},
+  {"name": "Fill dirt", "density": 1.2},
+  {"name": "Compost", "density": 0.5}
+ ],
+ "bags": [{"label": "0.75 cu ft", "ft3": 0.75}, {"label": "1 cu ft", "ft3": 1}, {"label": "1.5 cu ft", "ft3": 1.5}],
+ "price": ["yd", "ton"],
+ "bulkAbove": 1,
+ "tips": [
+  {"max": 0.99, "text": "Top-dressing a lawn? Spread no more than about ½ inch at a time so the grass can grow through it."},
+  {"min": 1, "max": 3.99, "text": "For filling low spots, add soil in layers of an inch or two, water it in and let it settle before adding more."},
+  {"min": 4, "max": 6, "text": "4 to 6 inches of good topsoil gives new grass seed or sod room to root."},
+  {"min": 6.01, "text": "For deep fills, save money with fill dirt for the lower layers and put quality topsoil only in the top few inches."}
+ ]
+}</script>
+[[bulk_form]]
+<!-- content -->
+<h2>How to use the topsoil calculator</h2>
+<ol>
+  <li><strong>Measure the area</strong> you're covering. For an irregular yard, break it into rectangles and triangles, or measure the square footage from a site plan.</li>
+  <li><strong>Enter the depth</strong> you want to add. It's the finished depth after the soil settles; the extra percentage covers the difference.</li>
+  <li><strong>Choose the material.</strong> The density converts yards to tons, since some suppliers sell soil by weight. Moist soil is noticeably heavier than dry soil, so ask your supplier for their figure.</li>
+</ol>
+
+<h2>How to calculate topsoil</h2>
+<div class="formula">Volume (ft³) = area (ft²) × depth (in) ÷ 12
+Cubic yards  = cubic feet ÷ 27
+Tons         = cubic yards × density
+Bags         = cubic feet ÷ bag size (round up)</div>
+
+<div class="example">
+  <p>Worked example: topsoil for a new 30 × 40 ft lawn, 4 inches deep</p>
+  <ol>
+    <li>Area: 30 × 40 = 1,200 sq ft</li>
+    <li>Volume: 1,200 × 4 ÷ 12 = 400 ft³ = 14.8 yd³</li>
+    <li>Plus 10% for settling: <strong>16.3 cubic yards</strong> — around 16 to 21 tons depending on how moist the soil is.</li>
+  </ol>
+</div>
+<div class="example">
+  <p>Worked example: top-dressing 1,000 sq ft of lawn ¼ inch deep</p>
+  <ol>
+    <li>Volume: 1,000 × 0.25 ÷ 12 = 20.8 ft³ = 0.77 yd³</li>
+    <li>That's <strong>28 bags of 0.75 cu ft</strong> or less than a cubic yard in bulk.</li>
+  </ol>
+</div>
+
+<h2>How much does a yard of topsoil weigh?</h2>
+<p>Soil weight depends mostly on water content, and also on how much sand, clay and organic matter it contains. As a rough guide, a cubic yard of dry screened topsoil weighs about a ton and moist topsoil 1.3 tons or more. Compost is much lighter — roughly half a ton per yard. That's why a volume (cubic yards) is the safest way to order, and weight is best used to check your truck or trailer's payload.</p>
+
+<h2>How much area does a yard of topsoil cover?</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Depth</th><th>1 cubic yard covers</th><th>One 0.75 cu ft bag covers</th><th>One 1 cu ft bag covers</th></tr></thead>
+  <tbody>
+    <tr><td>½ in</td><td>648 sq ft</td><td>18 sq ft</td><td>24 sq ft</td></tr>
+    <tr><td>1 in</td><td>324 sq ft</td><td>9 sq ft</td><td>12 sq ft</td></tr>
+    <tr><td>2 in</td><td>162 sq ft</td><td>4.5 sq ft</td><td>6 sq ft</td></tr>
+    <tr><td>4 in</td><td>81 sq ft</td><td>2.25 sq ft</td><td>3 sq ft</td></tr>
+    <tr><td>6 in</td><td>54 sq ft</td><td>1.5 sq ft</td><td>2 sq ft</td></tr>
+  </tbody>
+</table></div>
+
+<h2>How deep should topsoil be?</h2>
+<ul>
+  <li><strong>New lawns from seed or sod:</strong> 4 to 6 inches of good topsoil over loosened subsoil gives roots room to establish.</li>
+  <li><strong>Leveling low spots:</strong> fill in thin layers of an inch or two, water to settle, and repeat. Filling a deep dip in one go leaves a soft spot that sinks later.</li>
+  <li><strong>Top-dressing an existing lawn:</strong> spread a thin layer — about ¼ to ½ inch — and rake it in so the grass isn't smothered.</li>
+  <li><strong>Garden beds:</strong> 6 to 12 inches of loose, fertile soil for most vegetables and flowers. Mix compost into the top layer rather than using pure compost.</li>
+</ul>
+<div class="callout"><p><strong>Topsoil, fill dirt or garden soil?</strong> Fill dirt is subsoil with little organic matter — cheap and good for raising grade under a lawn or patio. Topsoil is the fertile top layer, screened to remove rocks and roots. Garden soil or "planting mix" is topsoil blended with compost for beds.</p></div>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many bags of topsoil are in a yard?</summary><p>36 bags of 0.75 cubic feet, 27 bags of 1 cubic foot, or 18 bags of 1.5 cubic feet.</p></details>
+  <details><summary>How much topsoil do I need for 1,000 square feet?</summary><p>At 4 inches deep, about 12.3 cubic yards before any allowance for settling. At 1 inch deep, about 3.1 cubic yards.</p></details>
+  <details><summary>Should I order extra topsoil?</summary><p>Yes, around 10%. Delivered soil is loose and settles once it's raked, rolled and watered, so the layer ends up thinner than it looked on delivery day.</p></details>
+  <details><summary>Can I put new topsoil directly on top of grass?</summary><p>A thin top-dressing, yes. For more than about an inch, remove or kill the existing turf first, loosen the ground underneath, and then spread the new soil.</p></details>
+</div>
+
+<h2>Sources</h2>
+<p class="sources">Soil weights are typical planning values and change with moisture and composition — confirm with your supplier. <a href="@methodology">How we calculate</a>.</p>

@@ -1,0 +1,189 @@
+---
+type: calculator
+category: concrete
+order: 1
+icon: slab
+title: Concrete Calculator – Cubic Yards, Bags & Ready-Mix
+description: Work out how much concrete you need for a slab, footing, post hole, round pad or steps — in cubic yards, 40–80 lb bags and ready-mix, with the math shown.
+h1: Concrete Calculator
+lead: Enter your dimensions to get the volume in cubic yards, how many 40, 50, 60 or 80 lb bags to buy, and whether ready-mix makes more sense.
+card_title: Concrete Calculator
+card_desc: Slabs, footings, post holes, round pads and steps — yards, bags and ready-mix.
+crumb: Concrete Calculator
+updated: 2026-09-29
+script: concrete
+related: gravel-calculator, sand-calculator, topsoil-calculator
+---
+<div class="calc">
+  <form class="panel" id="concrete-form" novalidate>
+    <h2>What are you pouring?</h2>
+    <div class="seg" role="group" aria-label="Shape">
+      <button type="button" data-shape="slab" aria-pressed="true">Slab / footing / wall</button>
+      <button type="button" data-shape="column" aria-pressed="false">Post hole / column</button>
+      <button type="button" data-shape="round" aria-pressed="false">Round slab</button>
+      <button type="button" data-shape="steps" aria-pressed="false">Steps</button>
+    </div>
+
+    <div class="diagram" data-diagram="slab"><svg viewBox="0 0 320 150" role="img" aria-label="Rectangular slab with length, width and thickness">
+      <path d="M40 95 L170 125 L290 80 L160 55 Z" fill="#fed7aa" stroke="#9a3412" stroke-width="2"/>
+      <path d="M40 95 L40 110 L170 140 L170 125 Z" fill="#fdba74" stroke="#9a3412" stroke-width="2"/>
+      <path d="M170 125 L170 140 L290 95 L290 80 Z" fill="#fb923c" stroke="#9a3412" stroke-width="2"/>
+      <text x="82" y="136">Length</text><text x="236" y="128">Width</text><text x="4" y="112">Thick.</text>
+    </svg></div>
+    <div class="diagram" data-diagram="column" hidden><svg viewBox="0 0 320 150" role="img" aria-label="Round column with diameter and height">
+      <ellipse cx="160" cy="28" rx="44" ry="12" fill="#fed7aa" stroke="#9a3412" stroke-width="2"/>
+      <path d="M116 28 V122 A44 12 0 0 0 204 122 V28" fill="#fdba74" stroke="#9a3412" stroke-width="2"/>
+      <path d="M116 28 H204" stroke="#9a3412" stroke-dasharray="4 4"/><text x="132" y="20">Diameter</text>
+      <path d="M222 28 V122" stroke="#44403c" stroke-width="1.5"/><text x="230" y="80">Height / depth</text>
+    </svg></div>
+    <div class="diagram" data-diagram="round" hidden><svg viewBox="0 0 320 150" role="img" aria-label="Round slab with diameter and thickness">
+      <ellipse cx="160" cy="70" rx="120" ry="38" fill="#fed7aa" stroke="#9a3412" stroke-width="2"/>
+      <path d="M40 70 V88 A120 38 0 0 0 280 88 V70" fill="#fdba74" stroke="#9a3412" stroke-width="2"/>
+      <path d="M40 70 H280" stroke="#9a3412" stroke-dasharray="4 4"/><text x="134" y="64">Diameter</text><text x="286" y="84">Thick.</text>
+    </svg></div>
+    <div class="diagram" data-diagram="steps" hidden><svg viewBox="0 0 320 150" role="img" aria-label="Steps with rise, run and width">
+      <path d="M40 130 H280 V40 H220 V70 H160 V100 H100 V130 Z" fill="#fed7aa" stroke="#9a3412" stroke-width="2"/>
+      <path d="M100 100 V130" stroke="#9a3412" stroke-dasharray="3 3"/><path d="M160 70 V130" stroke="#9a3412" stroke-dasharray="3 3"/><path d="M220 40 V130" stroke="#9a3412" stroke-dasharray="3 3"/>
+      <text x="106" y="94">Run</text><text x="62" y="120">Rise</text><text x="236" y="30">Top step</text>
+    </svg></div>
+
+    <div class="fields" data-for="slab">
+      <div class="field"><label for="c-L">Length</label><div class="inp"><input id="c-L" data-k="L" type="text" inputmode="decimal" value="10"><select data-u="L" aria-label="Length unit"><option>ft</option><option>in</option><option>yd</option><option>m</option><option>cm</option></select></div></div>
+      <div class="field"><label for="c-W">Width</label><div class="inp"><input id="c-W" data-k="W" type="text" inputmode="decimal" value="10"><select data-u="W" aria-label="Width unit"><option>ft</option><option>in</option><option>yd</option><option>m</option><option>cm</option></select></div></div>
+      <div class="field"><label for="c-T">Thickness / depth</label><div class="inp"><input id="c-T" data-k="T" type="text" inputmode="decimal" value="4"><select data-u="T" aria-label="Thickness unit"><option>in</option><option>ft</option><option>cm</option><option>m</option></select></div><small>4 in is typical for patios and walkways</small></div>
+    </div>
+    <div class="fields" data-for="column" hidden>
+      <div class="field"><label for="c-cd">Diameter</label><div class="inp"><input id="c-cd" data-k="cd" type="text" inputmode="decimal" value="12"><select data-u="cd" aria-label="Diameter unit"><option>in</option><option>ft</option><option>cm</option><option>m</option></select></div></div>
+      <div class="field"><label for="c-ch">Height or hole depth</label><div class="inp"><input id="c-ch" data-k="ch" type="text" inputmode="decimal" value="4"><select data-u="ch" aria-label="Height unit"><option>ft</option><option>in</option><option>m</option><option>cm</option></select></div></div>
+    </div>
+    <div class="fields" data-for="round" hidden>
+      <div class="field"><label for="c-rd">Diameter</label><div class="inp"><input id="c-rd" data-k="rd" type="text" inputmode="decimal" value="8"><select data-u="rd" aria-label="Diameter unit"><option>ft</option><option>in</option><option>m</option><option>cm</option></select></div></div>
+      <div class="field"><label for="c-rt">Thickness</label><div class="inp"><input id="c-rt" data-k="rt" type="text" inputmode="decimal" value="4"><select data-u="rt" aria-label="Thickness unit"><option>in</option><option>ft</option><option>cm</option><option>m</option></select></div></div>
+    </div>
+    <div class="fields" data-for="steps" hidden>
+      <div class="field"><label for="c-sw">Step width</label><div class="inp"><input id="c-sw" data-k="sw" type="text" inputmode="decimal" value="4"><select data-u="sw" aria-label="Width unit"><option>ft</option><option>in</option><option>m</option><option>cm</option></select></div></div>
+      <div class="field"><label for="c-sn">Number of steps</label><div class="inp"><input id="c-sn" data-k="sn" type="text" inputmode="numeric" value="3"></div></div>
+      <div class="field"><label for="c-sr">Rise (height of each step)</label><div class="inp"><input id="c-sr" data-k="sr" type="text" inputmode="decimal" value="7"><select data-u="sr" aria-label="Rise unit"><option>in</option><option>cm</option></select></div></div>
+      <div class="field"><label for="c-sd">Run (depth of each tread)</label><div class="inp"><input id="c-sd" data-k="sd" type="text" inputmode="decimal" value="11"><select data-u="sd" aria-label="Run unit"><option>in</option><option>cm</option></select></div></div>
+    </div>
+
+    <div class="fields" style="margin-top:14px">
+      <div class="field"><label for="c-qty">How many?</label><div class="inp"><input id="c-qty" data-k="qty" type="text" inputmode="numeric" value="1"></div><small>e.g. number of post holes</small></div>
+      <div class="field"><label for="c-waste">Extra for waste</label><div class="inp"><input id="c-waste" data-k="waste" type="text" inputmode="decimal" value="10"><span class="affix">%</span></div><small>5–10% is typical</small></div>
+    </div>
+
+    <details class="cost-box">
+      <summary>Add prices (optional)</summary>
+      <div class="fields">
+        <div class="field"><label for="c-bp">Price per bag</label><div class="inp"><span class="affix pre">$</span><input id="c-bp" data-k="bagprice" type="text" inputmode="decimal" placeholder="0.00"><select data-u="bagprice" aria-label="Bag size"><option value="80">80 lb</option><option value="60">60 lb</option><option value="50">50 lb</option><option value="40">40 lb</option></select></div></div>
+        <div class="field"><label for="c-rm">Ready-mix per cubic yard</label><div class="inp"><span class="affix pre">$</span><input id="c-rm" data-k="rmprice" type="text" inputmode="decimal" placeholder="0.00"></div></div>
+        <div class="field full"><label for="c-fee">Delivery or short-load fees</label><div class="inp"><span class="affix pre">$</span><input id="c-fee" data-k="rmfee" type="text" inputmode="decimal" placeholder="0.00"></div><small>Ask your local plant — small orders usually carry a fee</small></div>
+      </div>
+    </details>
+
+    <div class="calc-actions">
+      <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
+      <button type="button" class="btn btn-ghost btn-sm js-share">Copy link</button>
+      <button type="button" class="btn btn-ghost btn-sm js-list">Copy shopping list</button>
+      <button type="button" class="btn btn-ghost btn-sm js-print">Print</button>
+    </div>
+  </form>
+  <section class="panel results" aria-live="polite" aria-label="Results">
+    <div id="concrete-results"><p class="results-empty">Enter your dimensions to see how much concrete you need.</p></div>
+  </section>
+</div>
+<!-- content -->
+<h2>How to use the concrete calculator</h2>
+<ol>
+  <li><strong>Pick the shape.</strong> Use <em>Slab / footing / wall</em> for anything rectangular — patios, sidewalks, shed pads, footings and walls are all length × width × thickness. Use <em>Post hole</em> for fence posts, deck piers and sonotube forms.</li>
+  <li><strong>Enter the dimensions</strong> in whatever units you measured. Each box has its own unit, so you can mix feet and inches.</li>
+  <li><strong>Set the number of pieces</strong> if you're pouring several identical ones, such as 12 post holes.</li>
+  <li><strong>Keep some extra.</strong> The calculator adds 10% by default for spillage, an uneven base and forms that bow slightly.</li>
+  <li><strong>Read the result:</strong> cubic yards (how ready-mix is sold), cubic feet, and the number of bags for each common bag size.</li>
+</ol>
+
+<h2>How to calculate concrete by hand</h2>
+<p>Concrete is ordered by volume. Work out the volume in cubic feet, then divide by 27 to get cubic yards, because one cubic yard is 3 ft × 3 ft × 3 ft = 27 cubic feet. The only trap is units: convert everything to feet first, so a 4-inch slab is 4 ÷ 12 = 0.333 ft thick.</p>
+<div class="formula">Slab or footing:  volume (ft³) = length (ft) × width (ft) × thickness (ft)
+Round column:     volume (ft³) = π × (diameter ÷ 2)² × height
+Steps to grade:   volume (ft³) = width × rise × run × n × (n + 1) ÷ 2
+Cubic yards    =  cubic feet ÷ 27
+Bags           =  cubic feet ÷ yield per bag (round up)</div>
+
+<div class="example">
+  <p>Worked example: a 10 × 10 ft patio, 4 inches thick</p>
+  <ol>
+    <li>Volume: 10 × 10 × 0.333 = 33.3 ft³</li>
+    <li>In cubic yards: 33.3 ÷ 27 = 1.23 yd³</li>
+    <li>Add 10% extra: 33.3 × 1.10 = 36.7 ft³ (1.36 yd³)</li>
+    <li>80 lb bags: 36.7 ÷ 0.60 = 61.1, so buy <strong>62 bags</strong> — or 56 bags with no allowance at all.</li>
+  </ol>
+</div>
+<div class="example">
+  <p>Worked example: fence posts in 12-inch holes, 4 ft deep</p>
+  <ol>
+    <li>Radius 0.5 ft: π × 0.5² × 4 = 3.14 ft³ per hole</li>
+    <li>80 lb bags per hole: 3.14 ÷ 0.60 = 5.2, so about <strong>6 bags per hole</strong>. Subtract a little for the post itself if you want to be exact: a 4×4 post (3.5 in square) takes up about 0.34 ft³ over 4 ft.</li>
+  </ol>
+</div>
+
+<h2>How many bags of concrete are in a yard?</h2>
+<p>Bag yields below come from the QUIKRETE Concrete Mix data sheet. Other brands of standard concrete mix are very close, but check the yield printed on your bag.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Bag size</th><th>Yield per bag</th><th>Bags per cubic yard</th><th>Bags for a 10 × 10 ft × 4 in slab*</th></tr></thead>
+  <tbody>
+    <tr><td>40 lb</td><td>0.30 ft³</td><td>90</td><td>123</td></tr>
+    <tr><td>50 lb</td><td>0.375 ft³</td><td>72</td><td>98</td></tr>
+    <tr><td>60 lb</td><td>0.45 ft³</td><td>60</td><td>82</td></tr>
+    <tr><td>80 lb</td><td>0.60 ft³</td><td>45</td><td>62</td></tr>
+  </tbody>
+</table></div>
+<p class="table-note">*Including 10% extra.</p>
+
+<h3>How far does one bag or one yard go?</h3>
+<div class="table-wrap"><table>
+  <thead><tr><th>Slab thickness</th><th>One 80 lb bag covers</th><th>One cubic yard covers</th></tr></thead>
+  <tbody>
+    <tr><td>2 in</td><td>3.6 sq ft</td><td>162 sq ft</td></tr>
+    <tr><td>3 in</td><td>2.4 sq ft</td><td>108 sq ft</td></tr>
+    <tr><td>4 in</td><td>1.8 sq ft</td><td>81 sq ft</td></tr>
+    <tr><td>5 in</td><td>1.44 sq ft</td><td>65 sq ft</td></tr>
+    <tr><td>6 in</td><td>1.2 sq ft</td><td>54 sq ft</td></tr>
+  </tbody>
+</table></div>
+
+<h2>How thick should the concrete be?</h2>
+<p>Thickness drives the quantity more than anything else — going from 4 to 5 inches adds 25% more concrete. As a starting point:</p>
+<ul>
+  <li><strong>Walkways, patios and shed floors:</strong> 4 inches is the common standard.</li>
+  <li><strong>Driveways:</strong> at least 4 inches for passenger cars. Going to 5 inches uses 25% more concrete — the Tennessee Concrete Association puts the extra cost at about 20% — but raises load capacity by nearly half, which is worth it for trucks, RVs or soft soil.</li>
+  <li><strong>Thin toppings:</strong> standard concrete mix is designed for pours of 2 inches or more. For thinner layers, use a topping or resurfacing product instead.</li>
+  <li><strong>Footings and structural work:</strong> follow your plans and local building code — frost depth sets how deep footings go, and it varies a lot across the country.</li>
+</ul>
+
+<h2>Bags or ready-mix?</h2>
+<p>A cubic yard of concrete takes 45 bags of 80 lb mix — 3,600 lb that you lift, haul, mix and place, ideally in one continuous pour so you don't get cold joints between batches. That's why most people switch to ready-mix somewhere around 1 to 2 cubic yards.</p>
+<ul>
+  <li><strong>Bags make sense</strong> for post holes, footings for a small deck, steps, repairs and pads up to roughly a cubic yard, especially if the site is hard to reach with a truck.</li>
+  <li><strong>Ready-mix makes sense</strong> for driveways, large patios and anything over a couple of yards. Plants usually sell in quarter- or half-yard steps and many charge a short-load fee for small orders, so ask for the total delivered price before you decide.</li>
+  <li><strong>In between,</strong> some suppliers rent tow-behind mixer trailers loaded with a yard or less — a good middle ground for 1 to 2 yard jobs.</li>
+</ul>
+
+<h2>How much extra should you order?</h2>
+<p>Running short halfway through a pour is far worse than having a few bags left over. Plan on 5–10% extra: subgrades are never perfectly flat, forms bulge a little under the weight, and some concrete stays in the mixer and wheelbarrow. Measure the depth at several points after you prepare the base — if some spots are an inch deeper, your volume can jump by 25%.</p>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many bags of concrete do I need for a 10 × 10 slab?</summary><p>At 4 inches thick, a 10 × 10 ft slab is 1.23 cubic yards. That's 56 bags of 80 lb mix with no allowance, or about 62 bags with 10% extra. With 60 lb bags you'd need about 82.</p></details>
+  <details><summary>How many 80 lb bags make a yard of concrete?</summary><p>45. Each 80 lb bag yields about 0.60 cubic feet, and a cubic yard is 27 cubic feet.</p></details>
+  <details><summary>How much does a cubic yard of concrete weigh?</summary><p>Roughly 3,800 to 4,000 lb — close to two tons. It's why a full yard of bagged mix is a serious workload for a small crew.</p></details>
+  <details><summary>Should I subtract the post from the hole volume?</summary><p>For wooden 4×4 posts the post takes up only about 10% of a 12-inch hole, so most people don't bother — it becomes part of your safety margin. For large holes and thin posts the difference is negligible.</p></details>
+  <details><summary>Does rebar or wire mesh change how much concrete I need?</summary><p>Not in any meaningful way. Steel reinforcement takes up well under 1% of a typical slab's volume.</p></details>
+  <details><summary>Can I use this for metric measurements?</summary><p>Yes. Choose m or cm next to each measurement and read the result in cubic meters as well as cubic yards.</p></details>
+</div>
+
+<h2>Sources</h2>
+<ul class="sources">
+  <li>QUIKRETE, <em>Concrete Mix (No. 1101) product data sheet</em> — bag yields and density.</li>
+  <li>Concrete Network, <em>How thick should a concrete driveway be?</em> — driveway thickness guidance, citing the Tennessee Concrete Association.</li>
+</ul>

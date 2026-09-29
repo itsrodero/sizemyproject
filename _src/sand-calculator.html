@@ -1,0 +1,102 @@
+---
+type: calculator
+category: landscaping
+order: 4
+icon: sand
+title: Sand Calculator – Cubic Yards, Tons & 50 lb Bags
+description: Work out how much sand you need for paver bedding, a sandbox or a pool base, in cubic yards, tons and 50 lb bags — with typical depths for each job.
+h1: Sand Calculator
+lead: Enter the area and depth to see how much sand to buy for pavers, a sandbox, leveling or a pool base — in cubic yards, tons or 50 lb bags.
+card_title: Sand Calculator
+card_desc: Paver bedding, sandboxes and pool bases — yards, tons and bags.
+crumb: Sand Calculator
+updated: 2026-09-29
+script: bulk
+related: gravel-calculator, concrete-calculator, topsoil-calculator
+---
+<script type="application/json" id="bulk-config">{
+ "title": "Sand", "noun": "sand",
+ "defaults": {"L": 12, "W": 12, "D": 15, "depth": 1, "extra": 10},
+ "depthHint": "1 in for paver bedding",
+ "extraHint": "For screeding and waste",
+ "materials": [
+  {"name": "Dry sand", "density": 1.35},
+  {"name": "Damp or wet sand", "density": 1.6}
+ ],
+ "bags": [{"label": "50 lb (≈0.5 cu ft)", "ft3": 0.5}],
+ "price": ["ton", "yd"],
+ "bulkAbove": 0.75,
+ "tips": [
+  {"max": 1.5, "text": "About 1 inch is the usual bedding layer under pavers. Level the gravel base instead of making up for dips with extra sand."},
+  {"min": 1.51, "max": 4, "text": "A couple of inches of sand is common under above-ground pools and for leveling. Tamp and water it so it firms up."},
+  {"min": 4.01, "text": "Deep fills like sandboxes: use washed play sand and leave a few inches of freeboard below the rim."}
+ ]
+}</script>
+[[bulk_form]]
+<!-- content -->
+<h2>How to use the sand calculator</h2>
+<ol>
+  <li><strong>Measure the area</strong> and pick the matching shape — a circle for a round pool base, a rectangle for a patio or sandbox.</li>
+  <li><strong>Enter the depth</strong> of sand you need. Under pavers that's the bedding layer only, not the gravel base below it.</li>
+  <li><strong>Choose dry or damp sand.</strong> Damp sand weighs noticeably more, which matters if you're ordering by the ton or hauling it yourself.</li>
+</ol>
+
+<h2>How to calculate sand</h2>
+<div class="formula">Volume (ft³) = area (ft²) × depth (in) ÷ 12
+Cubic yards  = cubic feet ÷ 27
+Tons         = cubic yards × density (≈1.35 dry, ≈1.6 damp)
+50 lb bags   = cubic feet ÷ 0.5 (round up)</div>
+
+<div class="example">
+  <p>Worked example: bedding sand for a 12 × 12 ft paver patio</p>
+  <ol>
+    <li>Area: 144 sq ft; depth 1 inch</li>
+    <li>Volume: 144 × 1 ÷ 12 = 12 ft³ = 0.44 yd³</li>
+    <li>Plus 10%: 0.49 yd³ — about <strong>0.66 tons, or 27 bags of 50 lb</strong>.</li>
+  </ol>
+</div>
+<div class="example">
+  <p>Worked example: a 5 × 5 ft sandbox filled 8 inches deep</p>
+  <ol>
+    <li>Volume: 25 × 8 ÷ 12 = 16.7 ft³ = 0.62 yd³</li>
+    <li>That's <strong>34 bags of 50 lb</strong> of play sand, or about 0.8 tons in bulk.</li>
+  </ol>
+</div>
+
+<h2>How much does a yard of sand weigh?</h2>
+<p>A cubic yard of dry sand weighs roughly 2,600 to 2,800 lb (about 1.3 to 1.4 tons). Wet sand holds water between the grains and can weigh 3,000 lb or more. If you're hauling sand in a pickup, check its payload: a half-ton truck may only carry about half a yard safely.</p>
+
+<h2>Which sand for which job?</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Job</th><th>Sand to use</th><th>Typical depth</th></tr></thead>
+  <tbody>
+    <tr><td>Paver and flagstone bedding</td><td>Coarse concrete sand (washed)</td><td>About 1 in over a compacted gravel base</td></tr>
+    <tr><td>Paver joints</td><td>Polymeric or fine joint sand</td><td>Swept into joints — buy by the bag</td></tr>
+    <tr><td>Above-ground pool base</td><td>Mason or concrete sand</td><td>About 2 in, tamped and leveled</td></tr>
+    <tr><td>Sandbox</td><td>Washed play sand</td><td>6–12 in</td></tr>
+    <tr><td>Lawn leveling</td><td>Sand or a sand-soil mix</td><td>¼–½ in per application</td></tr>
+  </tbody>
+</table></div>
+<div class="callout"><p><strong>Don't use sand to fix a bad base.</strong> Under pavers, sand is a thin, even bedding layer. Deep sand shifts and ruts; level the compacted gravel base first and keep the sand close to an inch.</p></div>
+
+<h2>How much area does sand cover?</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Depth</th><th>1 cubic yard covers</th><th>One 50 lb bag covers</th></tr></thead>
+  <tbody>
+    <tr><td>½ in</td><td>648 sq ft</td><td>12 sq ft</td></tr>
+    <tr><td>1 in</td><td>324 sq ft</td><td>6 sq ft</td></tr>
+    <tr><td>2 in</td><td>162 sq ft</td><td>3 sq ft</td></tr>
+    <tr><td>6 in</td><td>54 sq ft</td><td>1 sq ft</td></tr>
+  </tbody>
+</table></div>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many 50 lb bags of sand are in a yard?</summary><p>About 54, since a 50 lb bag holds roughly half a cubic foot and a yard is 27 cubic feet. Check the bag: some list a slightly different volume.</p></details>
+  <details><summary>How much sand do I need under pavers?</summary><p>About 1 inch over the gravel base. For 100 square feet, that's roughly 8.3 cubic feet — 0.31 cubic yards or 17 bags of 50 lb.</p></details>
+  <details><summary>Is a ton of sand the same as a yard?</summary><p>No. A yard of dry sand weighs about 1.35 tons, so one ton is roughly 0.75 cubic yards.</p></details>
+  <details><summary>How much sand for an above-ground pool?</summary><p>For a 24 ft round pool with a 2-inch base, the area is about 452 sq ft, so you need roughly 75 cubic feet — close to 2.8 cubic yards.</p></details>
+</div>
+
+<h2>Sources</h2>
+<p class="sources">Sand weights are typical values and vary with grain size and moisture — confirm with your supplier. <a href="@methodology">How we calculate</a>.</p>
