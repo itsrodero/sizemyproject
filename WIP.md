@@ -14,17 +14,20 @@ for home & yard projects, English only, US audience. Working name/domain: sizemy
 - Shared helpers (units, URL state, copy/print) live in `assets/js/site.js` as `window.SMP`.
 - Local preview: `python -m http.server 8766` from the repo root.
 
-## Done (v0.1, 2026-09-29)
-- Build system, design, header/footer, home, all-calculators hub, guides hub, about, methodology,
-  contact, privacy (no cookies yet), terms, sitemap page, 404.
-- Calculators: concrete (slab/footing, post hole, round slab, steps; bags 40–80 lb, ready-mix,
-  cost), gravel, mulch, topsoil, sand. All tested (formulas checked against worked examples).
+## Done
+- v0.1 (2026-09-29): build system, design, site pages (home, hubs, about, methodology, contact,
+  privacy — no cookies yet —, terms, sitemap, 404) and 5 calculators: concrete, gravel, mulch, topsoil, sand.
+- v0.2 (2026-09-30): 11 more calculators — paver, retaining wall, asphalt, sod, fence, deck,
+  square footage, paint, drywall, flooring, tile (16 total, 6 categories) — and 4 guides
+  (measuring irregular areas, bags vs ready-mix, gravel driveway, cubic yards to tons).
+  Every calculator tested in the browser against the worked examples on its page.
+- Private GitHub repo: github.com/itsrodero/sizemyproject (branch main).
 
 ## Next
-1. More calculators (priority by demand): paver, retaining wall block, fence, deck boards,
-   square footage, sod, asphalt, rebar, concrete block, stair stringer, roof pitch; then interior
-   (paint, drywall, flooring, tile, grout, insulation, wallpaper, siding, shingles); then HVAC (BTU).
-2. Guides (project how-tos linked to calculators): measuring irregular areas, bags vs ready-mix,
-   gravel driveway layers, mulching mistakes, paver patio base.
-3. OG image, logo PNG, Search Console + Analytics after the domain is live.
+1. More calculators: concrete block, rebar, stair stringer, roof pitch/shingles, siding, insulation,
+   wallpaper, BTU/AC size (HVAC), mortar/thinset, board foot.
+2. More guides (target ~20 before AdSense): paver patio base, mulching mistakes, how thick a concrete
+   slab should be, how to build a retaining wall, deck board spacing, how to measure a room for flooring…
+3. OG image + logo PNG; when the domain is bought: set SITE_URL/SITE_NAME/CONTACT_EMAIL, CNAME,
+   make the repo public (or another host), GitHub Pages, Search Console, Analytics.
 4. AdSense only after TubeTools is approved and this site has ~20 guides + calculators.

@@ -1,0 +1,100 @@
+---
+type: calculator
+category: interior
+order: 2
+icon: sheet
+title: Drywall Calculator – Sheets, Screws, Tape & Mud
+description: Calculate how many sheets of drywall you need for a room's walls and ceiling, plus screws, joint tape and joint compound, for 4×8, 4×10 or 4×12 sheets.
+h1: Drywall Calculator
+lead: Enter the room size and choose a sheet size to see how many drywall sheets to buy, with screws, joint tape and joint compound for finishing.
+card_title: Drywall Calculator
+card_desc: Sheets, screws, tape and joint compound for walls and ceilings.
+crumb: Drywall Calculator
+updated: 2026-09-30
+script: drywall
+related: paint-calculator, flooring-calculator, square-footage-calculator
+---
+<div class="calc">
+  <form class="panel" id="drywall-form" novalidate>
+    <h2>Room size</h2>
+    <div class="fields">
+      <div class="field"><label for="dw-rl">Room length</label><div class="inp"><input id="dw-rl" data-k="rl" type="text" inputmode="decimal" value="12"><select data-u="rl" aria-label="Length unit"><option>ft</option><option>in</option><option>m</option></select></div></div>
+      <div class="field"><label for="dw-rw">Room width</label><div class="inp"><input id="dw-rw" data-k="rw" type="text" inputmode="decimal" value="12"><select data-u="rw" aria-label="Width unit"><option>ft</option><option>in</option><option>m</option></select></div></div>
+      <div class="field"><label for="dw-rh">Wall height</label><div class="inp"><input id="dw-rh" data-k="rh" type="text" inputmode="decimal" value="8"><select data-u="rh" aria-label="Height unit"><option>ft</option><option>in</option><option>m</option></select></div></div>
+      <div class="field"><label for="dw-ceil">Include the ceiling?</label><select id="dw-ceil" class="select" data-k="ceil"><option value="yes">Yes</option><option value="no">No</option></select></div>
+      <div class="field"><label for="dw-open">Large openings to subtract</label><div class="inp"><input id="dw-open" data-k="openings" type="text" inputmode="decimal" value="0"><span class="affix">sq ft</span></div><small>Skip doors and windows</small></div>
+    </div>
+    <h2 style="margin-top:20px">Sheets</h2>
+    <div class="fields">
+      <div class="field"><label for="dw-sheet">Sheet size</label><select id="dw-sheet" class="select" data-k="sheet"><option value="32" selected>4 × 8 ft (32 sq ft)</option><option value="40">4 × 10 ft (40 sq ft)</option><option value="48">4 × 12 ft (48 sq ft)</option><option value="54">4.5 × 12 ft (54 sq ft)</option></select></div>
+      <div class="field"><label for="dw-waste">Extra</label><div class="inp"><input id="dw-waste" data-k="waste" type="text" inputmode="decimal" value="10"><span class="affix">%</span></div><small>For cuts and breakage</small></div>
+      <div class="field full"><label for="dw-price">Price per sheet</label><div class="inp"><span class="affix pre">$</span><input id="dw-price" data-k="price" type="text" inputmode="decimal" placeholder="optional"></div></div>
+    </div>
+    <div class="calc-actions">
+      <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
+      <button type="button" class="btn btn-ghost btn-sm js-share">Copy link</button>
+      <button type="button" class="btn btn-ghost btn-sm js-list">Copy shopping list</button>
+      <button type="button" class="btn btn-ghost btn-sm js-print">Print</button>
+    </div>
+  </form>
+  <section class="panel results" aria-live="polite" aria-label="Results">
+    <div id="drywall-results"><p class="results-empty">Enter the room length, width and wall height.</p></div>
+  </section>
+</div>
+<!-- content -->
+<h2>How to use the drywall calculator</h2>
+<ol>
+  <li><strong>Measure the room</strong> at floor level and the wall height. For several rooms, run the calculator once per room.</li>
+  <li><strong>Decide about openings.</strong> Pros usually don't subtract doors and windows — the offcuts rarely fit elsewhere, so the "missing" area becomes your waste allowance. Subtract only big openings such as a garage door or a wide archway.</li>
+  <li><strong>Choose the sheet size.</strong> Longer sheets mean fewer joints to tape but are heavier and harder to carry through a house.</li>
+</ol>
+
+<h2>How to calculate drywall</h2>
+<div class="formula">Wall area   = 2 × (length + width) × height − large openings
+Board area  = wall area + ceiling area (length × width)
+Sheets      = board area × (1 + extra %) ÷ sheet area       (round up)
+Screws      ≈ 1 per sq ft of board  (about 32 per 4 × 8 sheet)
+Joint tape  ≈ 370 ft per 1,000 sq ft of board</div>
+<div class="example">
+  <p>Worked example: a 12 × 12 ft room with 8 ft walls, walls and ceiling</p>
+  <ol>
+    <li>Walls: 2 × 24 × 8 = 384 sq ft; ceiling: 144 sq ft; total 528 sq ft</li>
+    <li>With 10% extra: 580.8 sq ft ÷ 32 = 18.2 → <strong>19 sheets of 4 × 8</strong></li>
+    <li>Screws: about 600; joint tape: about 200 ft</li>
+  </ol>
+</div>
+
+<h2>Sheets per room</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Room (8 ft walls)</th><th>Walls only (4×8 sheets)</th><th>Walls + ceiling (4×8 sheets)</th></tr></thead>
+  <tbody>
+    <tr><td>10 × 10 ft</td><td>11</td><td>15</td></tr>
+    <tr><td>12 × 12 ft</td><td>14</td><td>19</td></tr>
+    <tr><td>12 × 16 ft</td><td>16</td><td>22</td></tr>
+    <tr><td>15 × 20 ft</td><td>20</td><td>30</td></tr>
+  </tbody>
+</table></div>
+<p class="table-note">Including 10% extra, no openings subtracted.</p>
+
+<h2>Choosing sheets and thickness</h2>
+<ul>
+  <li><strong>½ in</strong> is the standard for interior walls; lightweight ½ in panels are easier to handle.</li>
+  <li><strong>⅝ in Type X</strong> is fire-rated and is often required on garage walls and ceilings shared with living space — check your local code.</li>
+  <li><strong>Moisture-resistant panels</strong> suit bathrooms and laundry rooms, but use cement board or a waterproof membrane behind tile in showers.</li>
+  <li><strong>Ceilings:</strong> use panels rated for ceilings (often ½ in sag-resistant) and closer screw spacing.</li>
+</ul>
+
+<h2>Finishing materials</h2>
+<p>USG estimates roughly 370 feet of joint tape per 1,000 square feet of board. Joint compound use varies with the product and the level of finish; as a guide, USG notes that about two 4.5-gallon pails of its UltraLightweight ready-mixed compound finish 1,000 square feet. Buy a little more than you think — running out between coats is frustrating — and check the coverage on the product you choose.</p>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many sheets of drywall for a 12 × 12 room?</summary><p>With 8 ft walls: 14 sheets of 4 × 8 for the walls alone, or 19 including the ceiling, with 10% extra.</p></details>
+  <details><summary>How many screws per sheet of drywall?</summary><p>About 32 for a 4 × 8 sheet on walls with studs 16 inches apart; ceilings need closer spacing and more screws.</p></details>
+  <details><summary>Should I use 4×8 or 4×12 sheets?</summary><p>4×12 sheets cover a typical wall with fewer butt joints, which saves taping time. 4×8 sheets are easier to carry and handle alone.</p></details>
+</div>
+
+<h2>Sources</h2>
+<ul class="sources">
+  <li>USG — estimating figures for joint tape and ready-mixed joint compound.</li>
+</ul>

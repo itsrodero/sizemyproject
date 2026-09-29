@@ -1,0 +1,109 @@
+---
+type: calculator
+category: interior
+order: 4
+icon: tile
+title: Tile Calculator – How Many Tiles & Boxes Do I Need?
+description: Calculate how many floor or wall tiles you need for any tile size, including grout joints and extra for cuts, and how many boxes to buy.
+h1: Tile Calculator
+lead: Enter the area and tile size to see how many tiles and boxes to buy for a floor, backsplash or shower wall — with grout joints and cuts accounted for.
+card_title: Tile Calculator
+card_desc: Floor and wall tile — tiles and boxes for any tile size.
+crumb: Tile Calculator
+updated: 2026-09-30
+script: tile
+related: flooring-calculator, square-footage-calculator, paint-calculator
+---
+<div class="calc">
+  <form class="panel" id="tile-form" novalidate>
+    [[area_block {"L": 10, "W": 8, "D": 8, "A": 80, "heading": "Area to tile"}]]
+    <h2 style="margin-top:20px">Tile</h2>
+    <div class="fields">
+      <div class="field full"><label for="t-size">Tile size</label>
+        <select id="t-size" class="select" data-k="size">
+          <option value="3x6">3 × 6 in (subway)</option>
+          <option value="4x4">4 × 4 in</option>
+          <option value="6x24">6 × 24 in (wood-look plank)</option>
+          <option value="12x12" selected>12 × 12 in</option>
+          <option value="12x24">12 × 24 in</option>
+          <option value="18x18">18 × 18 in</option>
+          <option value="24x24">24 × 24 in</option>
+          <option value="custom">Custom size…</option>
+        </select></div>
+    </div>
+    <div class="fields js-custom-tile" hidden style="margin-top:14px">
+      <div class="field"><label for="t-tl">Tile length</label><div class="inp"><input id="t-tl" data-k="tl" type="text" inputmode="decimal" value="12"><span class="affix">in</span></div></div>
+      <div class="field"><label for="t-tw">Tile width</label><div class="inp"><input id="t-tw" data-k="tw" type="text" inputmode="decimal" value="12"><span class="affix">in</span></div></div>
+    </div>
+    <div class="fields" style="margin-top:14px">
+      <div class="field"><label for="t-joint">Grout joint</label><select id="t-joint" class="select" data-k="joint"><option value="0.0625">1/16 in</option><option value="0.125" selected>1/8 in</option><option value="0.1875">3/16 in</option><option value="0.25">1/4 in</option><option value="0.375">3/8 in</option></select></div>
+      <div class="field"><label for="t-waste">Extra for cuts</label><div class="inp"><input id="t-waste" data-k="waste" type="text" inputmode="decimal" value="10"><span class="affix">%</span></div><small>10%; 15% diagonal / large tile</small></div>
+      <div class="field"><label for="t-box">Box covers</label><div class="inp"><input id="t-box" data-k="box" type="text" inputmode="decimal" placeholder="e.g. 13.5"><span class="affix">sq ft</span></div><small>Optional, from the box</small></div>
+      <div class="field"><label for="t-price">Price per sq ft</label><div class="inp"><span class="affix pre">$</span><input id="t-price" data-k="price" type="text" inputmode="decimal" placeholder="optional"></div></div>
+    </div>
+    <div class="calc-actions">
+      <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
+      <button type="button" class="btn btn-ghost btn-sm js-share">Copy link</button>
+      <button type="button" class="btn btn-ghost btn-sm js-list">Copy shopping list</button>
+      <button type="button" class="btn btn-ghost btn-sm js-print">Print</button>
+    </div>
+  </form>
+  <section class="panel results" aria-live="polite" aria-label="Results">
+    <div id="tile-results"><p class="results-empty">Enter the area and the tile size.</p></div>
+  </section>
+</div>
+<!-- content -->
+<h2>How to use the tile calculator</h2>
+<ol>
+  <li><strong>Measure the area to tile.</strong> For a floor, measure wall to wall. For a wall or backsplash, measure the tiled height and width and subtract windows or cabinets.</li>
+  <li><strong>Choose the tile size and grout joint.</strong> Joints slightly reduce the number of tiles, which matters most for small tiles.</li>
+  <li><strong>Add extra for cuts:</strong> 10% for straight layouts, 15% for diagonal layouts, large-format tile or rooms with many corners.</li>
+  <li><strong>Enter the coverage per box</strong> to get the number of boxes.</li>
+</ol>
+
+<h2>How to calculate tile</h2>
+<div class="formula">One tile covers (sq ft) = (tile length + joint) × (tile width + joint) ÷ 144
+Tiles                   = area ÷ one tile's coverage × (1 + extra %)
+Boxes                   = area × (1 + extra %) ÷ coverage per box</div>
+<div class="example">
+  <p>Worked example: a 10 × 8 ft bathroom floor in 12 × 12 in tile, ⅛ in joints</p>
+  <ol>
+    <li>Area: 80 sq ft</li>
+    <li>One tile with joint: 12.125 × 12.125 ÷ 144 = 1.021 sq ft</li>
+    <li>Tiles: 80 ÷ 1.021 = 78.4, plus 10% → <strong>87 tiles</strong></li>
+  </ol>
+</div>
+
+<h2>Tiles per square foot</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Tile size</th><th>Tiles per sq ft (⅛ in joint)</th><th>For 100 sq ft + 10%</th></tr></thead>
+  <tbody>
+    <tr><td>3 × 6 in</td><td>7.52</td><td>828</td></tr>
+    <tr><td>4 × 4 in</td><td>8.46</td><td>931</td></tr>
+    <tr><td>6 × 24 in</td><td>0.97</td><td>108</td></tr>
+    <tr><td>12 × 12 in</td><td>0.98</td><td>108</td></tr>
+    <tr><td>12 × 24 in</td><td>0.49</td><td>55</td></tr>
+    <tr><td>24 × 24 in</td><td>0.25</td><td>28</td></tr>
+  </tbody>
+</table></div>
+
+<h2>Choosing a grout joint</h2>
+<ul>
+  <li><strong>Rectified tiles</strong> (precisely cut edges) allow narrow joints, often 1/16 to 1/8 in.</li>
+  <li><strong>Pressed or handmade tiles</strong> vary in size and need wider joints, often 3/16 in or more.</li>
+  <li><strong>Large-format tile</strong> needs a joint wide enough to absorb small size differences; follow the manufacturer's recommendation.</li>
+</ul>
+
+<h2>Other materials to plan for</h2>
+<ul>
+  <li><strong>Thinset mortar:</strong> coverage per bag depends on the trowel notch, which depends on tile size — larger tiles need a bigger notch and more mortar. Use the coverage chart on the bag.</li>
+  <li><strong>Grout:</strong> depends on tile size, thickness and joint width; small tiles with wide joints use far more. Grout manufacturers publish calculators for their products.</li>
+  <li><strong>Backer board or membrane</strong> for wet areas, and edge trim where tile meets other flooring or ends on a wall.</li>
+</ul>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many 12 × 12 tiles do I need for 100 square feet?</summary><p>About 98 with ⅛ in joints, or 108 with 10% extra for cuts.</p></details>
+  <details><summary>How much extra tile should I buy?</summary><p>10% for straight layouts; 15% for diagonal patterns, herringbone, large-format tile or small rooms with many cuts. Keep spares from the same lot for repairs.</p></details>
+  <details><summary>Should I subtract the area under the vanity or tub?</summary><p>Yes for a fixed tub or built-in cabinet. For a freestanding vanity or tub, tile underneath so it can be moved or replaced.</p></details>
+</div>

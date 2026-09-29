@@ -1,0 +1,100 @@
+---
+type: calculator
+category: interior
+order: 1
+icon: roller
+title: Paint Calculator – How Many Gallons Do I Need?
+description: Work out how many gallons of paint and primer you need for a room's walls and ceiling, minus doors and windows, for any number of coats.
+h1: Paint Calculator
+lead: Enter your room size, doors, windows and number of coats to see how many gallons of paint to buy — and whether a quart or a 5-gallon bucket makes more sense.
+card_title: Paint Calculator
+card_desc: Gallons of paint and primer for walls and ceilings.
+crumb: Paint Calculator
+updated: 2026-09-30
+script: paint
+related: drywall-calculator, flooring-calculator, square-footage-calculator
+---
+<div class="calc">
+  <form class="panel" id="paint-form" novalidate>
+    <h2>Room size</h2>
+    <div class="fields">
+      <div class="field"><label for="pa-rl">Room length</label><div class="inp"><input id="pa-rl" data-k="rl" type="text" inputmode="decimal" value="12"><select data-u="rl" aria-label="Length unit"><option>ft</option><option>in</option><option>m</option></select></div></div>
+      <div class="field"><label for="pa-rw">Room width</label><div class="inp"><input id="pa-rw" data-k="rw" type="text" inputmode="decimal" value="10"><select data-u="rw" aria-label="Width unit"><option>ft</option><option>in</option><option>m</option></select></div></div>
+      <div class="field"><label for="pa-rh">Wall height</label><div class="inp"><input id="pa-rh" data-k="rh" type="text" inputmode="decimal" value="8"><select data-u="rh" aria-label="Height unit"><option>ft</option><option>in</option><option>m</option></select></div></div>
+      <div class="field"><label for="pa-ceil">Paint the ceiling?</label><select id="pa-ceil" class="select" data-k="ceil"><option value="no">No</option><option value="yes">Yes</option></select></div>
+      <div class="field"><label for="pa-doors">Doors</label><div class="inp"><input id="pa-doors" data-k="doors" type="text" inputmode="numeric" value="1"></div><small>Each about 3 × 7 ft</small></div>
+      <div class="field"><label for="pa-win">Windows</label><div class="inp"><input id="pa-win" data-k="windows" type="text" inputmode="numeric" value="2"></div><small>Each about 3 × 5 ft</small></div>
+    </div>
+    <h2 style="margin-top:20px">Paint</h2>
+    <div class="fields">
+      <div class="field"><label for="pa-coats">Coats</label><div class="inp"><input id="pa-coats" data-k="coats" type="text" inputmode="numeric" value="2"></div><small>2 is standard</small></div>
+      <div class="field"><label for="pa-cov">Coverage</label><div class="inp"><input id="pa-cov" data-k="cov" type="text" inputmode="decimal" value="350"><span class="affix">sq ft/gal</span></div><small>See the can: often 250–400</small></div>
+      <div class="field"><label for="pa-primer">Primer coat?</label><select id="pa-primer" class="select" data-k="primer"><option value="no">No</option><option value="yes">Yes</option></select><small>New drywall, big color changes</small></div>
+      <div class="field"><label for="pa-price">Price per gallon</label><div class="inp"><span class="affix pre">$</span><input id="pa-price" data-k="price" type="text" inputmode="decimal" placeholder="optional"></div></div>
+    </div>
+    <div class="calc-actions">
+      <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
+      <button type="button" class="btn btn-ghost btn-sm js-share">Copy link</button>
+      <button type="button" class="btn btn-ghost btn-sm js-list">Copy shopping list</button>
+      <button type="button" class="btn btn-ghost btn-sm js-print">Print</button>
+    </div>
+  </form>
+  <section class="panel results" aria-live="polite" aria-label="Results">
+    <div id="paint-results"><p class="results-empty">Enter the room length, width and wall height.</p></div>
+  </section>
+</div>
+<!-- content -->
+<h2>How to use the paint calculator</h2>
+<ol>
+  <li><strong>Measure the room</strong> at floor level and the height of the walls from floor to ceiling.</li>
+  <li><strong>Count doors and windows.</strong> The calculator subtracts about 21 sq ft per door and 15 sq ft per window. Skip them for very small openings — the extra paint helps with touch-ups.</li>
+  <li><strong>Set coats and coverage.</strong> Two coats is standard. The coverage is printed on the can; 350 sq ft per gallon is a common middle value.</li>
+  <li><strong>Read the result</strong> in gallons and as a practical shopping list of 5-gallon buckets, gallons and quarts.</li>
+</ol>
+
+<h2>How to calculate paint</h2>
+<div class="formula">Wall area   = 2 × (length + width) × height − doors × 21 − windows × 15
+Gallons     = area × coats ÷ coverage per gallon
+Ceiling     = length × width (separate paint, usually flat white)</div>
+<div class="example">
+  <p>Worked example: a 12 × 10 ft bedroom with 8 ft walls</p>
+  <ol>
+    <li>Walls: 2 × (12 + 10) × 8 = 352 sq ft; minus 1 door and 2 windows (21 + 30) = <strong>301 sq ft</strong></li>
+    <li>Two coats at 350 sq ft/gal: 301 × 2 ÷ 350 = 1.72 gallons</li>
+    <li>Buy <strong>2 gallons</strong> (1 gallon + 3 quarts costs more than 2 gallons in most stores)</li>
+  </ol>
+</div>
+
+<h2>How much paint for common rooms?</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Room (8 ft walls)</th><th>Wall area*</th><th>Gallons, 2 coats (350 sq ft/gal)</th></tr></thead>
+  <tbody>
+    <tr><td>10 × 10 ft</td><td>269 sq ft</td><td>1.5 → buy 2</td></tr>
+    <tr><td>12 × 12 ft</td><td>333 sq ft</td><td>1.9 → buy 2</td></tr>
+    <tr><td>12 × 16 ft</td><td>397 sq ft</td><td>2.3 → buy 2 gal + 2 qt</td></tr>
+    <tr><td>15 × 20 ft</td><td>509 sq ft</td><td>2.9 → buy 3</td></tr>
+  </tbody>
+</table></div>
+<p class="table-note">*Less one door and two windows.</p>
+
+<h2>What changes how much paint you need</h2>
+<ul>
+  <li><strong>Surface:</strong> new drywall, bare wood and masonry soak up paint. Prime first — primer is cheaper and seals the surface so the top coat covers as rated.</li>
+  <li><strong>Color change:</strong> going from dark to light (or to a deep, saturated color) often needs a tinted primer or a third coat.</li>
+  <li><strong>Texture:</strong> knockdown, popcorn and rough plaster increase the real surface area; reduce the coverage figure by 10–20%.</li>
+  <li><strong>Application:</strong> rollers with thicker naps and sprayers use more paint than the label assumes.</li>
+</ul>
+<div class="callout"><p><strong>Keep a little extra.</strong> A leftover quart from the same batch is the easiest way to touch up scuffs later without a visible patch.</p></div>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many square feet does a gallon of paint cover?</summary><p>Manufacturers typically quote about 250 to 400 square feet per gallon per coat, depending on the product and surface. Use the figure on your can.</p></details>
+  <details><summary>How much paint for a 12 × 12 room?</summary><p>With 8 ft walls, one door and two windows, about 333 sq ft of wall — roughly 1.9 gallons for two coats. Buy 2 gallons; add about 0.8 gallons if you also paint the ceiling with two coats.</p></details>
+  <details><summary>Do I need two coats?</summary><p>Usually. Even "one-coat" paints often need a second coat for an even finish, especially over patches, fresh drywall or a color change.</p></details>
+  <details><summary>Should I subtract doors and windows?</summary><p>For accuracy, yes — each door is around 20 sq ft. For small rooms you can skip it and treat the difference as your extra for touch-ups.</p></details>
+</div>
+
+<h2>Sources</h2>
+<ul class="sources">
+  <li>Behr, <em>How much paint do I need?</em> — coverage of about 250–400 sq ft per gallon per coat.</li>
+</ul>

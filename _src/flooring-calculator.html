@@ -1,0 +1,87 @@
+---
+type: calculator
+category: interior
+order: 3
+icon: floor
+title: Flooring Calculator – Square Feet & Boxes to Buy
+description: Calculate how much laminate, vinyl plank, hardwood or engineered flooring you need in square feet and boxes, plus underlayment and baseboard trim.
+h1: Flooring Calculator
+lead: Enter the room size and the coverage per box to see how many boxes of flooring to buy, plus underlayment and baseboard or quarter round for the edges.
+card_title: Flooring Calculator
+card_desc: Laminate, vinyl plank and hardwood — square feet and boxes.
+crumb: Flooring Calculator
+updated: 2026-09-30
+script: flooring
+related: tile-calculator, square-footage-calculator, paint-calculator
+---
+<div class="calc">
+  <form class="panel" id="floor-form" novalidate>
+    [[area_block {"L": 14, "W": 12, "D": 12, "A": 168, "heading": "Room size"}]]
+    <h2 style="margin-top:20px">Flooring</h2>
+    <div class="fields">
+      <div class="field"><label for="fl-box">Coverage per box</label><div class="inp"><input id="fl-box" data-k="box" type="text" inputmode="decimal" value="20"><span class="affix">sq ft</span></div><small>Printed on the box</small></div>
+      <div class="field"><label for="fl-waste">Extra</label><div class="inp"><input id="fl-waste" data-k="waste" type="text" inputmode="decimal" value="10"><span class="affix">%</span></div><small>10%; 15% diagonal or herringbone</small></div>
+      <div class="field"><label for="fl-roll">Underlayment roll covers</label><div class="inp"><input id="fl-roll" data-k="roll" type="text" inputmode="decimal" value="100"><span class="affix">sq ft</span></div><small>0 if built in</small></div>
+      <div class="field"><label for="fl-doors">Doorways</label><div class="inp"><input id="fl-doors" data-k="doors" type="text" inputmode="numeric" value="1"></div><small>No trim across doorways</small></div>
+      <div class="field full"><label for="fl-price">Price per sq ft</label><div class="inp"><span class="affix pre">$</span><input id="fl-price" data-k="price" type="text" inputmode="decimal" placeholder="optional"></div></div>
+    </div>
+    <div class="calc-actions">
+      <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
+      <button type="button" class="btn btn-ghost btn-sm js-share">Copy link</button>
+      <button type="button" class="btn btn-ghost btn-sm js-list">Copy shopping list</button>
+      <button type="button" class="btn btn-ghost btn-sm js-print">Print</button>
+    </div>
+  </form>
+  <section class="panel results" aria-live="polite" aria-label="Results">
+    <div id="floor-results"><p class="results-empty">Enter the size of the room.</p></div>
+  </section>
+</div>
+<!-- content -->
+<h2>How to use the flooring calculator</h2>
+<ol>
+  <li><strong>Measure the room wall to wall</strong> at floor level. Include closets you'll floor, and measure L-shaped rooms as separate rectangles (or add them with the <a href="@square-footage-calculator">square footage calculator</a> and use <em>I know the area</em>).</li>
+  <li><strong>Enter the coverage per box</strong> from the product label — it varies widely between products.</li>
+  <li><strong>Set the extra.</strong> 10% covers cuts and the offcuts at row ends in a straight layout. Diagonal and herringbone layouts need 15% or more.</li>
+  <li><strong>Read the boxes to buy</strong> and the underlayment and trim for the edges.</li>
+</ol>
+
+<h2>How to calculate flooring</h2>
+<div class="formula">Flooring (sq ft) = room area × (1 + extra %)
+Boxes            = flooring ÷ coverage per box        (round up)
+Baseboard (ft)   = room perimeter − 3 ft per doorway</div>
+<div class="example">
+  <p>Worked example: a 14 × 12 ft living room with laminate at 20 sq ft per box</p>
+  <ol>
+    <li>Area: 168 sq ft; plus 10% = 184.8 sq ft</li>
+    <li>Boxes: 184.8 ÷ 20 = 9.24 → <strong>10 boxes</strong> (200 sq ft)</li>
+    <li>Quarter round: perimeter 52 ft − 3 ft for one doorway = 49 ft → 7 pieces of 8 ft with 10% extra</li>
+  </ol>
+</div>
+
+<h2>How much extra flooring should you buy?</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Layout</th><th>Typical extra</th></tr></thead>
+  <tbody>
+    <tr><td>Straight lay, simple rectangular room</td><td>5–10%</td></tr>
+    <tr><td>Many corners, closets or small rooms</td><td>10–15%</td></tr>
+    <tr><td>Diagonal layout</td><td>15%</td></tr>
+    <tr><td>Herringbone or chevron</td><td>15–20%</td></tr>
+  </tbody>
+</table></div>
+<p>Keep at least one unopened box after the job. Discontinued colors and different production lots make exact matches hard to find years later.</p>
+
+<h2>Before you install</h2>
+<ul>
+  <li><strong>Acclimate the flooring</strong> in the room for as long as the manufacturer specifies — especially solid and engineered wood.</li>
+  <li><strong>Check the subfloor</strong> is flat, clean and dry. Most floating floors have a flatness tolerance in the installation guide.</li>
+  <li><strong>Underlayment:</strong> some vinyl planks and laminates have a pad attached; adding another layer can void the warranty. Set the underlayment field to 0 in that case.</li>
+  <li><strong>Expansion gap:</strong> floating floors need a gap at the walls, hidden by baseboard or quarter round.</li>
+</ul>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many boxes of flooring for 500 square feet?</summary><p>With 10% extra you need 550 sq ft: 28 boxes at 20 sq ft per box, or 23 boxes at 24 sq ft per box.</p></details>
+  <details><summary>Do I include closets and the area under appliances?</summary><p>Include closets. Under fixed cabinets and islands, no. Under a fridge or range, most people run the floor underneath so the appliance can be moved out.</p></details>
+  <details><summary>How do I measure a room with a bay window or angled wall?</summary><p>Split it into a rectangle plus a trapezoid or triangle and add them up with the square footage calculator.</p></details>
+  <details><summary>Is flooring sold by the square foot or by the box?</summary><p>Priced by the square foot but sold in whole boxes, so the cost is based on the boxes you actually buy.</p></details>
+</div>

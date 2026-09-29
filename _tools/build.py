@@ -38,6 +38,7 @@ CATEGORIES = {
     'hardscape': ('Patios, walls & paving', 'Pavers, retaining walls and asphalt for patios, paths and driveways.'),
     'landscaping': ('Landscaping & yard', 'Gravel, mulch, topsoil, sand and sod for beds, lawns and paths.'),
     'structures': ('Decks & fences', 'Deck boards, joists, posts, rails, pickets and fasteners.'),
+    'interior': ('Interior & walls', 'Paint, drywall, flooring and tile for rooms and floors.'),
     'measure': ('Measuring', 'Square footage and area for rooms, lots and any project.'),
 }
 
@@ -59,6 +60,10 @@ ICONS = {
     'grass': '<path d="M3 20h18"/><path d="M6 20c0-4 1-7 3-9M11 20c0-5 0-9 1-12M16 20c0-4-1-7-3-9M19 20c0-3 0-5-1-7"/>',
     'fence': '<path d="M5 21V6l2-3 2 3v15M15 21V6l2-3 2 3v15"/><path d="M3 10h18M3 16h18"/>',
     'deck': '<path d="M3 8h18M3 12h18M3 16h18"/><path d="M5 16v5M19 16v5"/>',
+    'roller': '<rect x="3" y="3" width="15" height="6" rx="1.5"/><path d="M18 6h3v5h-9v3"/><rect x="10" y="14" width="4" height="7" rx="1"/>',
+    'sheet': '<rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h.01M15 7h.01M9 12h.01M15 12h.01M9 17h.01M15 17h.01"/>',
+    'floor': '<path d="M3 21h18M3 16h18M3 11h18"/><path d="M8 21v-5M15 16v-5M10 11V6h8v5"/>',
+    'tile': '<rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/>',
     'ruler': '<path d="M3 17 17 3l4 4L7 21z"/><path d="M7 13l2 2M10 10l2 2M13 7l2 2"/>',
 }
 
@@ -336,7 +341,8 @@ def expand_placeholders(body, page, pages):
         body = body.replace('[[bulk_form]]', bulk_form(json.loads(m.group(1))))
     m = re.search(r'\[\[area_block (\{.*?\})\]\]', body)
     if m:
-        body = body.replace(m.group(0), area_block(json.loads(m.group(1))))
+        cfg = json.loads(m.group(1))
+        body = body.replace(m.group(0), area_block(cfg, cfg.get('heading', 'Size of the area')))
     body = body.replace('[[calcs_by_category]]', calcs_by_category(pages))
     body = body.replace('[[calc_grid]]', calc_grid(pages))
     body = re.sub(r'\[\[calc_grid:(\w+)\]\]', lambda m: calc_grid(pages, m.group(1), exclude=page['key']), body)
