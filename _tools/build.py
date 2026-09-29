@@ -390,6 +390,7 @@ def head_html(page, title_full, canonical):
         f'<meta name="description" content="{esc(m["description"])}">',
         '<meta name="robots" content="noindex, follow">' if noindex else f'<link rel="canonical" href="{canonical}">',
         '<link rel="icon" href="/favicon.svg" type="image/svg+xml">',
+        '<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">',
         '<meta name="theme-color" content="#ffffff">',
         f'<meta property="og:site_name" content="{SITE_NAME}">',
         '<meta property="og:locale" content="en_US">',
@@ -398,6 +399,8 @@ def head_html(page, title_full, canonical):
         f'<meta property="og:description" content="{esc(m["description"])}">',
         f'<meta property="og:url" content="{canonical}">',
         f'<meta property="og:image" content="{SITE_URL}/assets/img/og.png">',
+        '<meta property="og:image:width" content="1200">',
+        '<meta property="og:image:height" content="630">',
         '<meta name="twitter:card" content="summary_large_image">',
     ]
     if GA_ID:
@@ -431,7 +434,8 @@ def breadcrumbs_html(page, pages):
 def structured_data(page, pages, canonical, words):
     m = page['meta']
     blocks = []
-    publisher = {'@type': 'Organization', 'name': SITE_NAME, 'url': SITE_URL + '/'}
+    publisher = {'@type': 'Organization', 'name': SITE_NAME, 'url': SITE_URL + '/',
+                 'logo': {'@type': 'ImageObject', 'url': f'{SITE_URL}/assets/img/logo-512.png'}}
     if m['type'] == 'home':
         blocks.append({'@context': 'https://schema.org', '@type': 'WebSite', 'name': SITE_NAME, 'url': SITE_URL + '/',
                        'inLanguage': 'en-US', 'publisher': publisher})

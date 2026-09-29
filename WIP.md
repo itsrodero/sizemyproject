@@ -16,18 +16,18 @@ for home & yard projects, English only, US audience. Working name/domain: sizemy
 
 ## Done
 - v0.1 (2026-09-29): build system, design, site pages (home, hubs, about, methodology, contact,
-  privacy — no cookies yet —, terms, sitemap, 404) and 5 calculators: concrete, gravel, mulch, topsoil, sand.
-- v0.2 (2026-09-30): 11 more calculators — paver, retaining wall, asphalt, sod, fence, deck,
-  square footage, paint, drywall, flooring, tile (16 total, 6 categories) — and 4 guides
-  (measuring irregular areas, bags vs ready-mix, gravel driveway, cubic yards to tons).
-  Every calculator tested in the browser against the worked examples on its page.
+  privacy — no cookies yet —, terms, sitemap, 404) and 5 calculators.
+- v0.2 (2026-09-30): 22 calculators in 7 categories, 20 guides grouped by category,
+  OG image, logo, touch icon, Organization logo in structured data.
+- Quality: every calculator tested in the browser against its worked examples; tables recomputed;
+  Lighthouse 100/100/100/100 on sampled pages; all fields labelled; no horizontal overflow at 375 px
+  on any page; 0 broken internal links.
 - Private GitHub repo: github.com/itsrodero/sizemyproject (branch main).
+- Launch steps: see LAUNCH.md.
 
-## Next
-1. More calculators: concrete block, rebar, stair stringer, roof pitch/shingles, siding, insulation,
-   wallpaper, BTU/AC size (HVAC), mortar/thinset, board foot.
-2. More guides (target ~20 before AdSense): paver patio base, mulching mistakes, how thick a concrete
-   slab should be, how to build a retaining wall, deck board spacing, how to measure a room for flooring…
-3. OG image + logo PNG; when the domain is bought: set SITE_URL/SITE_NAME/CONTACT_EMAIL, CNAME,
-   make the repo public (or another host), GitHub Pages, Search Console, Analytics.
-4. AdSense only after TubeTools is approved and this site has ~20 guides + calculators.
+## Next (after launch)
+1. More calculators: rebar, board foot/lumber, siding, epoxy, pool volume/chlorine, garden soil for raised beds,
+   carpet, grout, mortar for pavers, electrical wire size (careful: safety).
+2. More guides: concrete curing, choosing pavers, retaining wall blocks, how to insulate an attic,
+   paint sheen guide, how to install vinyl plank, etc.
+3. After ~1–2 months indexed and TubeTools approved: AdSense (see LAUNCH.md §6).

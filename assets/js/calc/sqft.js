@@ -20,10 +20,10 @@
       return '<div class="field"><label>' + label + '</label><div class="inp"><input type="text" inputmode="decimal" data-d="' + j + '" value="' + S.esc(r.d[j] || '') + '" aria-label="' + label + ' of area ' + (i + 1) + '"></div></div>';
     }).join('');
     return '<fieldset class="area-row" data-i="' + i + '"><legend>Area ' + (i + 1) + '</legend><div class="fields">' +
-      '<div class="field"><label>Shape</label><select class="select" data-role="shape">' + Object.keys(SHAPES).map(function (k) {
+      '<div class="field"><label>Shape</label><select class="select" data-role="shape" aria-label="Shape of area ' + (i + 1) + '">' + Object.keys(SHAPES).map(function (k) {
         return '<option value="' + k + '"' + (k === r.shape ? ' selected' : '') + '>' + SHAPES[k].name + '</option>';
       }).join('') + '</select></div>' +
-      '<div class="field"><label>Units</label><select class="select" data-role="unit">' + UNITS.map(function (u) {
+      '<div class="field"><label>Units</label><select class="select" data-role="unit" aria-label="Units for area ' + (i + 1) + '">' + UNITS.map(function (u) {
         return '<option' + (u === r.unit ? ' selected' : '') + '>' + u + '</option>';
       }).join('') + '</select></div>' + dims + '</div>' +
       '<div class="row-foot"><label class="check"><input type="checkbox" data-role="sub"' + (r.sub ? ' checked' : '') + '> Subtract this area (a cut-out)</label>' +
