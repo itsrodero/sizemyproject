@@ -21,20 +21,8 @@
     if (densInp) densInp.defaultValue = densInp.value = cfg.materials[0].density;
   }
 
-  function areaFt2() {
-    var shape = form.dataset.shape;
-    if (shape === 'rect') return S.len(form, 'L') * S.len(form, 'W');
-    if (shape === 'circle') { var r = S.len(form, 'D') / 2; return Math.PI * r * r; }
-    if (shape === 'tri') return S.len(form, 'B') * S.len(form, 'H') / 2;
-    if (shape === 'area') {
-      var a = S.val(form, 'A');
-      return S.unit(form, 'A') === 'm2' ? a * 10.7639104 : a;
-    }
-    return NaN;
-  }
-
   function compute() {
-    var area = areaFt2();
+    var area = S.area(form);
     var depth = S.len(form, 'depth');
     var ft3base = area * depth;
     if (!isFinite(ft3base) || ft3base <= 0) {
@@ -80,9 +68,12 @@
     var bulkNote = yd3 >= (cfg.bulkAbove || 1) && bagRows.length
       ? '<p class="note">At ' + S.fmt(yd3, 1) + ' cubic yards, buying in bulk from a landscape supplier is usually much cheaper than ' + S.fmt(bagRows[0].n, 0) + ' bags.</p>' : '';
 
+    // Materials sold by weight (asphalt) lead with tons; everything else with cubic yards.
+    var byWeight = cfg.primary === 'tons' && isFinite(tons);
     out.innerHTML =
-      '<div class="result-main"><div class="k">' + S.esc(cfg.title) + ' needed</div><div class="v">' + S.fmt(yd3, 2) + '<small>cu yd</small></div>' +
-      '<div class="sub">' + S.fmt(ft3, 1) + ' cu ft · ' + S.fmt(m3, 2) + ' m³' + (isFinite(tons) ? ' · ≈ ' + S.fmt(tons, 2) + ' tons' : '') + ' · includes ' + S.fmt(extra, 0) + '% extra</div></div>' +
+      '<div class="result-main"><div class="k">' + S.esc(cfg.title) + ' needed</div><div class="v">' +
+      (byWeight ? S.fmt(tons, 2) + '<small>tons</small>' : S.fmt(yd3, 2) + '<small>cu yd</small>') + '</div>' +
+      '<div class="sub">' + (byWeight ? S.fmt(yd3, 2) + ' cu yd · ' : '') + S.fmt(ft3, 1) + ' cu ft · ' + S.fmt(m3, 2) + ' m³' + (isFinite(tons) && !byWeight ? ' · ≈ ' + S.fmt(tons, 2) + ' tons' : '') + ' · includes ' + S.fmt(extra, 0) + '% extra</div></div>' +
       '<ul class="result-rows">' + rows + '</ul>' + table + tip + bulkNote;
 
     return cfg.title + ': ' + S.fmt(yd3, 2) + ' cu yd (' + S.fmt(ft3, 1) + ' cu ft' + (isFinite(tons) ? ', ~' + S.fmt(tons, 2) + ' tons' : '') + ') incl. ' + S.fmt(extra, 0) + '% extra\n' +

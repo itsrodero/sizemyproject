@@ -231,3 +231,9 @@ code { font-family: var(--mono); font-size: .9em; background: var(--soft); paddi
   .panel { box-shadow: none; }
 }
 .h-sm { font-size: .95rem; margin: 18px 0 4px; }
+.area-row { border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 12px 14px 10px; margin: 0 0 12px; min-width: 0; }
+.area-row legend { font-size: .82rem; font-weight: 700; color: var(--muted); padding: 0 6px; text-transform: uppercase; letter-spacing: .05em; }
+.row-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 10px; font-size: .9rem; }
+.row-foot .row-area { margin-left: auto; font-weight: 700; font-variant-numeric: tabular-nums; }
+.check { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+.check input { width: 18px; height: 18px; accent-color: var(--brand); }

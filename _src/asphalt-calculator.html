@@ -1,0 +1,85 @@
+---
+type: calculator
+category: hardscape
+order: 3
+icon: road
+title: Asphalt Calculator – Tons of Hot Mix for a Driveway
+description: Estimate how many tons of hot-mix asphalt you need for a driveway, path or parking pad from its size and compacted thickness, plus the gravel base.
+h1: Asphalt Calculator
+lead: Enter the area and compacted thickness to estimate the tons of hot-mix asphalt to order — the way paving companies and plants price it.
+card_title: Asphalt Calculator
+card_desc: Driveways and parking pads — tons of hot-mix asphalt.
+crumb: Asphalt Calculator
+updated: 2026-09-30
+script: bulk
+related: gravel-calculator, concrete-calculator, paver-calculator
+---
+<script type="application/json" id="bulk-config">{
+ "title": "Asphalt", "noun": "asphalt", "primary": "tons",
+ "defaults": {"L": 40, "W": 12, "depth": 2, "extra": 5},
+ "depthHint": "Compacted: 2 in for cars, 3 in for heavy use",
+ "extraHint": "For edges and uneven base",
+ "materials": [
+  {"name": "Hot-mix asphalt, compacted (145 lb/ft³)", "density": 1.96}
+ ],
+ "bags": [],
+ "price": ["ton"],
+ "tips": [
+  {"max": 1.99, "warn": true, "text": "Less than 2 inches of compacted asphalt is too thin for a driveway; it cracks and breaks up at the edges."},
+  {"min": 2, "max": 3, "text": "2 inches of compacted asphalt suits passenger cars; go to 3 inches for trucks, RVs or boats. Both need a solid, compacted gravel base underneath."},
+  {"min": 3.01, "text": "Thicker pavements are laid and compacted in more than one lift. Ask your paving contractor how they'll split the layers."}
+ ]
+}</script>
+[[bulk_form]]
+<!-- content -->
+<h2>How to use the asphalt calculator</h2>
+<ol>
+  <li><strong>Measure the area</strong> to be paved. For a driveway with a turnaround, calculate the rectangle and the turnaround separately and add them up.</li>
+  <li><strong>Enter the compacted thickness</strong> — the finished depth after rolling, which is how thickness is specified.</li>
+  <li><strong>Read the tonnage.</strong> Asphalt plants sell hot mix by the ton, so tons are the number to compare quotes with.</li>
+</ol>
+
+<h2>How to calculate asphalt tonnage</h2>
+<div class="formula">Volume (ft³) = area (sq ft) × compacted thickness (in) ÷ 12
+Tons         = volume × 145 lb/ft³ ÷ 2,000
+             = cubic yards × 1.96</div>
+<p>Compacted hot-mix asphalt weighs about 145 pounds per cubic foot — close to 1.96 tons per cubic yard — which is the figure most estimators use. The exact density depends on the mix, so a paving company may use a slightly different number.</p>
+<div class="example">
+  <p>Worked example: a 12 × 40 ft driveway, 2 inches compacted</p>
+  <ol>
+    <li>Area: 480 sq ft</li>
+    <li>Volume: 480 × 2 ÷ 12 = 80 ft³ (2.96 yd³)</li>
+    <li>Tons: 80 × 145 ÷ 2,000 = 5.8 tons; plus 5% ≈ <strong>6.1 tons</strong></li>
+  </ol>
+</div>
+
+<h2>How far does a ton of asphalt go?</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Compacted thickness</th><th>1 ton covers</th><th>Tons per 100 sq ft</th></tr></thead>
+  <tbody>
+    <tr><td>1.5 in</td><td>110 sq ft</td><td>0.91</td></tr>
+    <tr><td>2 in</td><td>83 sq ft</td><td>1.21</td></tr>
+    <tr><td>3 in</td><td>55 sq ft</td><td>1.81</td></tr>
+    <tr><td>4 in</td><td>41 sq ft</td><td>2.42</td></tr>
+  </tbody>
+</table></div>
+
+<h2>How thick should an asphalt driveway be?</h2>
+<ul>
+  <li><strong>Passenger cars:</strong> about 2 inches of compacted asphalt over a compacted gravel base.</li>
+  <li><strong>Trucks, RVs, boats and trailers:</strong> about 3 inches of asphalt, and a thicker base.</li>
+  <li><strong>Base:</strong> the gravel base carries the load; asphalt is the wearing surface. A 4 to 8 inch compacted aggregate base is common for driveways, more on soft or clay soils. Size it with the <a href="@gravel-calculator">gravel calculator</a>.</li>
+  <li><strong>Overlays:</strong> resurfacing an existing driveway usually adds 1.5 to 2 inches over a sound, cleaned and tack-coated surface.</li>
+</ul>
+<div class="callout"><p><strong>Hot mix is a contractor job.</strong> It has to be placed and rolled while hot, with a paver and roller. For small repairs and potholes, bagged cold-patch asphalt is the DIY option — check the coverage printed on the bag.</p></div>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many tons of asphalt do I need for a 2-car driveway?</summary><p>A typical 20 × 24 ft two-car pad (480 sq ft) at 2 inches compacted needs about 5.8 tons; at 3 inches, about 8.7 tons.</p></details>
+  <details><summary>How much does a cubic yard of asphalt weigh?</summary><p>About 3,900 lb, or 1.96 tons, when compacted at 145 lb/ft³.</p></details>
+  <details><summary>Why do paving quotes use tons?</summary><p>Asphalt plants sell hot mix by weight, and crews track how many tons they lay. Comparing tonnage between quotes shows whether contractors are pricing the same thickness.</p></details>
+  <details><summary>Should I add extra?</summary><p>A few percent covers edges and an uneven base. Large variations in base level change the tonnage much more, so grade the base carefully first.</p></details>
+</div>
+
+<h2>Sources</h2>
+<p class="sources">145 lb/ft³ is the density commonly used for compacted hot-mix asphalt estimates; the exact value depends on the mix. <a href="@methodology">How we calculate</a>.</p>

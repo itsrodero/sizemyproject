@@ -1,0 +1,126 @@
+---
+type: calculator
+category: hardscape
+order: 2
+icon: wall
+title: Retaining Wall Calculator – Blocks, Caps & Gravel
+description: Work out how many retaining wall blocks and caps you need, how many courses to bury, and how much base gravel and drainage stone to order.
+h1: Retaining Wall Calculator
+lead: Enter the wall's length and exposed height and choose a block size. You'll get blocks, caps, buried courses, base gravel, drainage stone and drain pipe.
+card_title: Retaining Wall Calculator
+card_desc: Blocks, caps, base gravel and drainage stone for block walls.
+crumb: Retaining Wall Calculator
+updated: 2026-09-30
+script: wall
+related: paver-calculator, gravel-calculator, topsoil-calculator
+---
+<div class="calc">
+  <form class="panel" id="wall-form" novalidate>
+    <h2>Wall size</h2>
+    <div class="diagram"><svg viewBox="0 0 320 150" role="img" aria-label="Retaining wall section with buried course, base gravel and drainage stone">
+      <rect x="40" y="120" width="120" height="16" fill="#d6d3d1" stroke="#57534e"/>
+      <rect x="70" y="100" width="44" height="20" fill="#fdba74" stroke="#9a3412"/><rect x="70" y="80" width="44" height="20" fill="#fdba74" stroke="#9a3412"/>
+      <rect x="70" y="60" width="44" height="20" fill="#fdba74" stroke="#9a3412"/><rect x="70" y="40" width="44" height="20" fill="#fdba74" stroke="#9a3412"/>
+      <rect x="66" y="32" width="50" height="8" fill="#fb923c" stroke="#9a3412"/>
+      <rect x="114" y="40" width="30" height="80" fill="#e7e5e4" stroke="#57534e" stroke-dasharray="3 3"/>
+      <path d="M20 100 H70" stroke="#57534e" stroke-width="2"/><path d="M144 40 H300" stroke="#57534e" stroke-width="2"/>
+      <text x="4" y="94">Grade</text><text x="150" y="80">Drainage stone</text><text x="166" y="133">Base gravel</text><text x="124" y="28">Cap</text><text x="4" y="116">Buried</text>
+    </svg></div>
+    <div class="fields">
+      <div class="field"><label for="w-wl">Wall length</label><div class="inp"><input id="w-wl" data-k="wl" type="text" inputmode="decimal" value="20"><select data-u="wl" aria-label="Length unit"><option>ft</option><option>yd</option><option>m</option></select></div></div>
+      <div class="field"><label for="w-wh">Exposed height</label><div class="inp"><input id="w-wh" data-k="wh" type="text" inputmode="decimal" value="24"><select data-u="wh" aria-label="Height unit"><option>in</option><option>ft</option><option>cm</option></select></div><small>Above finished grade</small></div>
+      <div class="field full"><label for="w-block">Block size (face length × height × depth)</label>
+        <select id="w-block" class="select" data-k="block">
+          <option value="12x4x7">Small garden block — about 12 × 4 × 7 in</option>
+          <option value="16x6x10" selected>Medium block — about 16 × 6 × 10 in</option>
+          <option value="18x8x12">Large block — about 18 × 8 × 12 in</option>
+          <option value="custom">Custom size…</option>
+        </select></div>
+    </div>
+    <div class="fields js-custom-block" hidden style="margin-top:14px">
+      <div class="field"><label for="w-bl">Block face length</label><div class="inp"><input id="w-bl" data-k="bl" type="text" inputmode="decimal" value="16"><span class="affix">in</span></div></div>
+      <div class="field"><label for="w-bh">Block height</label><div class="inp"><input id="w-bh" data-k="bh" type="text" inputmode="decimal" value="6"><span class="affix">in</span></div></div>
+      <div class="field"><label for="w-bd">Block depth</label><div class="inp"><input id="w-bd" data-k="bd" type="text" inputmode="decimal" value="10"><span class="affix">in</span></div></div>
+    </div>
+    <div class="fields" style="margin-top:14px">
+      <div class="field"><label for="w-cap">Cap length</label><div class="inp"><input id="w-cap" data-k="cap" type="text" inputmode="decimal" value="16"><span class="affix">in</span></div><small>0 if you don't use caps</small></div>
+      <div class="field"><label for="w-waste">Extra</label><div class="inp"><input id="w-waste" data-k="waste" type="text" inputmode="decimal" value="5"><span class="affix">%</span></div><small>For cuts, corners and breakage</small></div>
+    </div>
+    <details class="cost-box">
+      <summary>Add a price (optional)</summary>
+      <div class="fields"><div class="field full"><label for="w-price">Price per block</label><div class="inp"><span class="affix pre">$</span><input id="w-price" data-k="price" type="text" inputmode="decimal" placeholder="0.00"></div></div></div>
+    </details>
+    <div class="calc-actions">
+      <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
+      <button type="button" class="btn btn-ghost btn-sm js-share">Copy link</button>
+      <button type="button" class="btn btn-ghost btn-sm js-list">Copy shopping list</button>
+      <button type="button" class="btn btn-ghost btn-sm js-print">Print</button>
+    </div>
+  </form>
+  <section class="panel results" aria-live="polite" aria-label="Results">
+    <div id="wall-results"><p class="results-empty">Enter the wall length, height and block size.</p></div>
+  </section>
+</div>
+<!-- content -->
+<h2>How to use the retaining wall calculator</h2>
+<ol>
+  <li><strong>Measure the wall length</strong> along its face. For a curved wall, measure along the curve with a garden hose or tape.</li>
+  <li><strong>Enter the exposed height</strong> — the part above finished grade on the low side. The calculator adds the buried course for you.</li>
+  <li><strong>Pick the closest block size</strong> or enter the exact face length, height and depth from the product label.</li>
+  <li><strong>Read the shopping list:</strong> blocks, caps, base gravel for the trench, drainage stone for behind the wall and drain pipe.</li>
+</ol>
+
+<h2>How the calculation works</h2>
+<div class="formula">Buried depth    = the larger of 6 in or 1 in per foot of wall height
+Courses         = ceil(exposed height ÷ block height) + ceil(buried depth ÷ block height)
+Blocks          = ceil(wall length ÷ block length) × courses × (1 + extra %)
+Caps            = wall length ÷ cap length
+Base gravel     = length × trench width (1.5 × block depth, min 12 in) × 6 in
+Drainage stone  = length × 12 in × full wall height</div>
+<div class="example">
+  <p>Worked example: a wall 20 ft long and 24 in high with 16 × 6 × 10 in blocks</p>
+  <ol>
+    <li>Buried depth: 6 in (a 2 ft wall needs the 6-inch minimum) → 1 buried course</li>
+    <li>Exposed courses: 24 ÷ 6 = 4, so 5 courses in total</li>
+    <li>Blocks per course: 240 in ÷ 16 in = 15 → 75 blocks, plus 5% = <strong>79 blocks</strong></li>
+    <li>Caps: 240 ÷ 16 = 15, plus 5% = <strong>16 caps</strong></li>
+    <li>Base gravel: 20 × 1.25 ft × 0.5 ft = 12.5 ft³ ≈ 0.46 yd³; drainage stone: 20 × 1 × 2.5 ft = 50 ft³ ≈ 1.85 yd³</li>
+  </ol>
+</div>
+
+<h2>How deep to bury the first course</h2>
+<p>Segmental block manufacturers generally call for the first course to be buried at least 6 inches, or 1 inch for every foot of wall height, whichever is greater. The buried course keeps the base of the wall from kicking out and gives it a stable start below any surface erosion. The calculator applies the same rule and rounds up to whole courses.</p>
+
+<h2>Base and drainage</h2>
+<ul>
+  <li><strong>Base trench:</strong> typically about one and a half to two times the block depth wide, with at least 6 inches of compacted crushed stone. Level the first course carefully — every error is multiplied up the wall.</li>
+  <li><strong>Drainage stone:</strong> fill at least 12 inches behind the blocks with clean crushed stone (no fines) so water can drain instead of building pressure against the wall.</li>
+  <li><strong>Drain pipe:</strong> a perforated pipe at the base of the drainage stone, vented to daylight, is required by manufacturers for taller walls and poorly drained sites — and cheap insurance for any wall.</li>
+  <li><strong>Filter fabric</strong> between the drainage stone and the soil behind keeps fines from clogging the stone.</li>
+</ul>
+<div class="callout"><p><strong>Know the limits.</strong> Walls taller than about 4 feet, walls holding back a slope, a driveway or a building, and terraced walls close together usually need an engineered design with geogrid reinforcement — and often a permit. Check your local building department before you start.</p></div>
+
+<h2>Common block sizes</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Type</th><th>Typical face (L × H)</th><th>Blocks per sq ft of face</th><th>Typical use</th></tr></thead>
+  <tbody>
+    <tr><td>Small garden wall block</td><td>12 × 4 in</td><td>3.0</td><td>Flower bed borders and low walls up to about 2 ft</td></tr>
+    <tr><td>Medium retaining block</td><td>16 × 6 in</td><td>1.5</td><td>Garden and landscape walls</td></tr>
+    <tr><td>Large retaining block</td><td>18 × 8 in</td><td>1.0</td><td>Taller landscape walls, reinforced walls</td></tr>
+  </tbody>
+</table></div>
+<p class="table-note">Sizes vary by brand; use the exact dimensions from the product for a precise count.</p>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many blocks do I need for a 3 ft tall, 30 ft long wall?</summary><p>With 16 × 6 in blocks: 6 exposed courses plus 1 buried course is 7 courses; 30 ft needs 23 blocks per course (22.5 rounded up) — 161 blocks, or 170 with 5% extra.</p></details>
+  <details><summary>Do I need caps?</summary><p>Caps aren't structural, but they finish the wall, protect the top course and give you a place to sit. Glue them down with a concrete landscape adhesive.</p></details>
+  <details><summary>Can I build a retaining wall without gravel?</summary><p>Not one that lasts. The compacted gravel base keeps the wall level as the ground moves, and the drainage stone behind it relieves water pressure — the main reason small walls lean and fail.</p></details>
+  <details><summary>Does a curved wall need more blocks?</summary><p>Measure along the face of the curve and the count stays about the same. Tight curves may need a few blocks trimmed, so keep the extra at 5–10%.</p></details>
+</div>
+
+<h2>Sources</h2>
+<ul class="sources">
+  <li>Segmental retaining wall manufacturers' installation guides (for example Allan Block) — buried course, base and drainage recommendations.</li>
+  <li>Your local building code sets the height at which walls need permits or engineering.</li>
+</ul>

@@ -1,0 +1,125 @@
+---
+type: calculator
+category: structures
+order: 1
+icon: deck
+title: Deck Calculator – Boards, Joists & Screws
+description: Work out how many deck boards, joists and screws or hidden clips you need for a deck, for wood or composite decking in any board length.
+h1: Deck Calculator
+lead: Enter the size of your deck and the boards you plan to use to see how many boards to buy, how many joists fit underneath and how many fasteners you need.
+card_title: Deck Calculator
+card_desc: Decking boards, joists and screws for wood or composite decks.
+crumb: Deck Calculator
+updated: 2026-09-30
+script: deck
+related: fence-calculator, concrete-calculator, square-footage-calculator
+---
+<div class="calc">
+  <form class="panel" id="deck-form" novalidate>
+    <h2>Deck size</h2>
+    <div class="diagram"><svg viewBox="0 0 320 150" role="img" aria-label="Deck seen from above with boards running along the length and joists underneath">
+      <g stroke="#a8a29e" stroke-dasharray="4 4"><path d="M70 20V130M110 20V130M150 20V130M190 20V130M230 20V130M270 20V130"/></g>
+      <g fill="#fed7aa" stroke="#9a3412"><rect x="50" y="22" width="230" height="12"/><rect x="50" y="36" width="230" height="12"/><rect x="50" y="50" width="230" height="12"/><rect x="50" y="64" width="230" height="12"/><rect x="50" y="78" width="230" height="12"/><rect x="50" y="92" width="230" height="12"/><rect x="50" y="106" width="230" height="12"/></g>
+      <text x="120" y="146">Length (along boards)</text><text x="4" y="74">Width</text><text x="232" y="14">Joists</text>
+    </svg></div>
+    <div class="fields">
+      <div class="field"><label for="d-dl">Length along the boards</label><div class="inp"><input id="d-dl" data-k="dl" type="text" inputmode="decimal" value="16"><select data-u="dl" aria-label="Length unit"><option>ft</option><option>in</option><option>m</option></select></div></div>
+      <div class="field"><label for="d-dw">Width across the boards</label><div class="inp"><input id="d-dw" data-k="dw" type="text" inputmode="decimal" value="12"><select data-u="dw" aria-label="Width unit"><option>ft</option><option>in</option><option>m</option></select></div></div>
+    </div>
+    <h2 style="margin-top:20px">Boards and framing</h2>
+    <div class="fields">
+      <div class="field full"><label for="d-type">Decking</label>
+        <select id="d-type" class="select" data-k="type">
+          <option value="wood54">5/4×6 wood decking (5.5 in wide)</option>
+          <option value="wood26">2×6 wood (5.5 in wide)</option>
+          <option value="wood24">2×4 wood (3.5 in wide)</option>
+          <option value="composite">Composite or PVC (5.5 in wide)</option>
+          <option value="custom">Other width…</option>
+        </select></div>
+      <div class="field js-custom-board" hidden><label for="d-bw">Board width</label><div class="inp"><input id="d-bw" data-k="bw" type="text" inputmode="decimal" value="5.5"><span class="affix">in</span></div></div>
+      <div class="field"><label for="d-gap">Gap between boards</label><div class="inp"><input id="d-gap" data-k="gap" type="text" inputmode="decimal" value="0.1875"><span class="affix">in</span></div><small>3/16 in is common</small></div>
+      <div class="field"><label for="d-blen">Board length</label><select id="d-blen" class="select" data-k="blen"><option>8</option><option>10</option><option>12</option><option selected>16</option><option>20</option></select><small>feet</small></div>
+      <div class="field"><label for="d-js">Joist spacing</label><select id="d-js" class="select" data-k="js"><option value="12">12 in on center</option><option value="16" selected>16 in on center</option><option value="24">24 in on center</option></select></div>
+      <div class="field"><label for="d-waste">Extra</label><div class="inp"><input id="d-waste" data-k="waste" type="text" inputmode="decimal" value="10"><span class="affix">%</span></div><small>For cuts and defects</small></div>
+    </div>
+    <details class="cost-box">
+      <summary>Add a price (optional)</summary>
+      <div class="fields"><div class="field full"><label for="d-price">Price per board</label><div class="inp"><span class="affix pre">$</span><input id="d-price" data-k="price" type="text" inputmode="decimal" placeholder="0.00"></div></div></div>
+    </details>
+    <div class="calc-actions">
+      <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
+      <button type="button" class="btn btn-ghost btn-sm js-share">Copy link</button>
+      <button type="button" class="btn btn-ghost btn-sm js-list">Copy shopping list</button>
+      <button type="button" class="btn btn-ghost btn-sm js-print">Print</button>
+    </div>
+  </form>
+  <section class="panel results" aria-live="polite" aria-label="Results">
+    <div id="deck-results"><p class="results-empty">Enter the deck size and board details.</p></div>
+  </section>
+</div>
+<!-- content -->
+<h2>How to use the deck calculator</h2>
+<ol>
+  <li><strong>Enter the length along the boards</strong> — the direction the decking runs — and the width across them. Boards run perpendicular to the joists.</li>
+  <li><strong>Choose the decking and board length.</strong> Buying boards as long as the deck (or exactly half of it) avoids waste and messy joints.</li>
+  <li><strong>Set the joist spacing</strong> your decking allows, and read the number of joists and fasteners.</li>
+</ol>
+
+<h2>How to calculate deck boards</h2>
+<div class="formula">Rows of boards  = deck width (in) ÷ (board width + gap)     (round up)
+Boards per row  = deck length ÷ board length               (round up)
+Boards          = rows × boards per row × (1 + extra %)
+Joists          = deck length (in) ÷ joist spacing + 1      (round up)
+Face screws     = rows × joists × 2</div>
+<div class="example">
+  <p>Worked example: a 16 × 12 ft deck in 5/4×6 decking, 16 ft boards</p>
+  <ol>
+    <li>Rows: 144 in ÷ (5.5 + 0.1875) = 25.3 → 26 rows</li>
+    <li>Boards: 26 rows × 1 board per row = 26, plus 10% = <strong>29 boards</strong> (416 linear feet)</li>
+    <li>Joists at 16 in: 192 ÷ 16 + 1 = <strong>13 joists</strong></li>
+    <li>Screws: 26 × 13 × 2 = <strong>676 screws</strong>. Buy by count rather than by weight — the box lists how many screws it holds.</li>
+  </ol>
+</div>
+
+<h2>Maximum joist spacing by decking</h2>
+<p>The decking, not the joists, often sets the spacing. The International Residential Code (Table R507.7) limits joist spacing for wood decking laid square to the joists; diagonal layouts need closer spacing. Composite and PVC decking follow the manufacturer's rating.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Decking</th><th>Boards square to joists</th><th>Boards diagonal</th></tr></thead>
+  <tbody>
+    <tr><td>5/4 (1¼ in) wood</td><td>16 in</td><td>12 in</td></tr>
+    <tr><td>2 in (nominal) wood</td><td>24 in</td><td>16 in</td></tr>
+    <tr><td>Composite / PVC</td><td colspan="2">Per manufacturer — most are rated for 16 in square, 12 in diagonal</td></tr>
+  </tbody>
+</table></div>
+
+<h2>Boards and fasteners per 100 square feet</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Decking</th><th>Linear feet per 100 sq ft</th><th>Face screws per 100 sq ft (16 in o.c.)</th></tr></thead>
+  <tbody>
+    <tr><td>5.5 in boards, 3/16 in gap</td><td>about 211 ft</td><td>about 320–350</td></tr>
+    <tr><td>3.5 in boards, 3/16 in gap</td><td>about 325 ft</td><td>about 490–530</td></tr>
+  </tbody>
+</table></div>
+<p class="table-note">Before adding extra for cuts. Screw counts rise at 12 in joist spacing.</p>
+
+<h2>Tips for fewer joints and less waste</h2>
+<ul>
+  <li><strong>Match board length to the deck.</strong> A 16 ft deck is perfect for 16 ft boards; a 14 ft deck wastes 2 ft per row from 16 ft boards but may still beat joints.</li>
+  <li><strong>Land every butt joint on a joist</strong> — ideally a doubled joist or blocking — and stagger joints from row to row.</li>
+  <li><strong>Check the gap on the label.</strong> Wet pressure-treated boards are often laid tight because they shrink; composites need specific gaps for expansion.</li>
+  <li><strong>Picture-frame borders</strong> and diagonal patterns look great but add 5–10% more waste and need blocking.</li>
+</ul>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many deck boards do I need for a 12 × 12 deck?</summary><p>With 5.5 in boards and a 3/16 in gap: 26 rows. With 12 ft boards that's 26 boards, or 29 with 10% extra.</p></details>
+  <details><summary>How many screws per deck board?</summary><p>Two per joist crossing. A 16 ft board over joists 16 inches apart crosses 13 joists, so it takes 26 screws.</p></details>
+  <details><summary>Does this calculate joist and beam sizes?</summary><p>No. Joist, beam and post sizes depend on span, wood species, grade and load. Use the American Wood Council's DCA 6 prescriptive deck guide or your local code, and get a permit where required.</p></details>
+  <details><summary>How much extra decking should I buy?</summary><p>About 10% for straight layouts; 15% or more for diagonal decking, picture frames or lots of cut-outs around posts and stairs.</p></details>
+</div>
+
+<h2>Sources</h2>
+<ul class="sources">
+  <li>International Residential Code, Table R507.7 — maximum joist spacing for decking.</li>
+  <li>American Wood Council, <em>DCA 6: Prescriptive Residential Wood Deck Construction Guide</em> — framing design.</li>
+</ul>

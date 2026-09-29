@@ -1,0 +1,105 @@
+---
+type: calculator
+category: landscaping
+order: 5
+icon: grass
+title: Sod Calculator – Square Feet, Pieces & Pallets
+description: Find out how much sod you need for a new lawn in square feet, pieces and pallets, with an allowance for cuts along beds, curves and edges.
+h1: Sod Calculator
+lead: Measure your lawn area to see how many square feet, pieces and pallets of sod to order — and how much extra to allow for trimming.
+card_title: Sod Calculator
+card_desc: New lawns — square feet, pieces and pallets of sod.
+crumb: Sod Calculator
+updated: 2026-09-30
+script: sod
+related: topsoil-calculator, mulch-calculator, square-footage-calculator
+---
+<div class="calc">
+  <form class="panel" id="sod-form" novalidate>
+    [[area_block {"L": 30, "W": 20, "D": 20, "A": 600}]]
+    <h2 style="margin-top:20px">Sod details</h2>
+    <div class="fields">
+      <div class="field"><label for="s-piece">Piece size</label>
+        <select id="s-piece" class="select" data-k="piece">
+          <option value="2.6667" selected>16 × 24 in slab (2.67 sq ft)</option>
+          <option value="3">18 × 24 in slab (3 sq ft)</option>
+          <option value="10">2 × 5 ft roll (10 sq ft)</option>
+          <option value="custom">Other…</option>
+        </select></div>
+      <div class="field"><label for="s-pallet">Pallet size</label>
+        <select id="s-pallet" class="select" data-k="pallet">
+          <option value="450" selected>450 sq ft</option>
+          <option value="500">500 sq ft</option>
+          <option value="custom">Other…</option>
+        </select></div>
+      <div class="field js-custom-piece" hidden><label for="s-pc">Piece covers</label><div class="inp"><input id="s-pc" data-k="pc" type="text" inputmode="decimal" value="2.67"><span class="affix">sq ft</span></div></div>
+      <div class="field js-custom-pallet" hidden><label for="s-pal">Pallet covers</label><div class="inp"><input id="s-pal" data-k="pal" type="text" inputmode="decimal" value="450"><span class="affix">sq ft</span></div></div>
+      <div class="field"><label for="s-waste">Extra for trimming</label><div class="inp"><input id="s-waste" data-k="waste" type="text" inputmode="decimal" value="5"><span class="affix">%</span></div><small>5% simple, 10% with curves and beds</small></div>
+    </div>
+    <details class="cost-box">
+      <summary>Add a price (optional)</summary>
+      <div class="fields"><div class="field full"><label for="s-price">Price</label><div class="inp"><span class="affix pre">$</span>
+        <input id="s-price" data-k="price" type="text" inputmode="decimal" placeholder="0.00">
+        <select data-u="price" aria-label="Price unit"><option value="pallet">per pallet</option><option value="sqft">per sq ft</option><option value="piece">per piece</option></select></div></div></div>
+    </details>
+    <div class="calc-actions">
+      <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
+      <button type="button" class="btn btn-ghost btn-sm js-share">Copy link</button>
+      <button type="button" class="btn btn-ghost btn-sm js-list">Copy shopping list</button>
+      <button type="button" class="btn btn-ghost btn-sm js-print">Print</button>
+    </div>
+  </form>
+  <section class="panel results" aria-live="polite" aria-label="Results">
+    <div id="sod-results"><p class="results-empty">Enter the size of the lawn area.</p></div>
+  </section>
+</div>
+<!-- content -->
+<h2>How to use the sod calculator</h2>
+<ol>
+  <li><strong>Measure the lawn area</strong> — just the part you're sodding, not beds or paths. Break odd shapes into rectangles, circles and triangles and add them up, or use our <a href="@square-footage-calculator">square footage calculator</a>.</li>
+  <li><strong>Choose the piece and pallet size</strong> your supplier sells. They vary by region and grass type, so check the listing.</li>
+  <li><strong>Add extra for trimming:</strong> 5% for simple rectangles, 10% if the lawn has curves, beds and trees to cut around.</li>
+</ol>
+
+<h2>How to calculate sod</h2>
+<div class="formula">Sod (sq ft) = lawn area × (1 + extra %)
+Pieces      = sod ÷ area of one piece   (round up)
+Pallets     = sod ÷ area of one pallet</div>
+<div class="example">
+  <p>Worked example: a 30 × 20 ft back yard</p>
+  <ol>
+    <li>Area: 600 sq ft; plus 5% = 630 sq ft</li>
+    <li>16 × 24 in slabs (2.67 sq ft each): 630 ÷ 2.67 = <strong>237 slabs</strong></li>
+    <li>Pallets of 450 sq ft: 630 ÷ 450 = 1.4 — order 2 pallets, or 1 pallet plus about 68 extra slabs if the farm sells single pieces.</li>
+  </ol>
+</div>
+
+<h2>How much sod is on a pallet?</h2>
+<p>There's no single standard. Most pallets cover between 400 and 500 square feet; 450 sq ft is common for warm-season grasses such as Bermuda, St. Augustine and Zoysia, while many northern farms sell cool-season sod in 500 sq ft pallets. Pieces come as small slabs (often 16 × 24 in) or rolls (often 2 × 5 ft).</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Piece</th><th>Covers</th><th>Pieces per 450 sq ft</th><th>Pieces per 500 sq ft</th></tr></thead>
+  <tbody>
+    <tr><td>16 × 24 in slab</td><td>2.67 sq ft</td><td>169</td><td>188</td></tr>
+    <tr><td>18 × 24 in slab</td><td>3 sq ft</td><td>150</td><td>167</td></tr>
+    <tr><td>2 × 5 ft roll</td><td>10 sq ft</td><td>45</td><td>50</td></tr>
+  </tbody>
+</table></div>
+
+<h2>Prepare the ground first</h2>
+<p>Sod roots best into loose, fertile soil. Remove the old turf and weeds, loosen the top few inches, and bring in topsoil where the ground is poor or uneven — 4 to 6 inches under a new lawn is common. Grade the soil so water drains away from the house and so the finished sod sits flush with paths and edges. Use our <a href="@topsoil-calculator">topsoil calculator</a> to size that delivery.</p>
+<ul>
+  <li><strong>Order sod for the day you'll lay it.</strong> Rolled sod heats up and deteriorates on the pallet, especially in warm weather.</li>
+  <li><strong>Stagger the joints</strong> like brickwork and butt pieces tightly without stretching them.</li>
+  <li><strong>Water deeply</strong> right after laying, then keep it moist until the roots knit into the soil.</li>
+</ul>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many pallets of sod do I need for 1,000 square feet?</summary><p>With 5% extra you need 1,050 sq ft: about 2.3 pallets of 450 sq ft or 2.1 pallets of 500 sq ft. Most people order the whole pallets and a few extra pieces, or round up to 3.</p></details>
+  <details><summary>How much does a pallet of sod weigh?</summary><p>Often 2,000 to 3,000 lb or more depending on grass type, soil and moisture — too heavy for most pickup trucks. Plan on delivery.</p></details>
+  <details><summary>How much extra sod should I order?</summary><p>5% for simple shapes, 10% for curves, beds, trees and lots of edges. Leftover pieces are handy for patching.</p></details>
+  <details><summary>Is sod sold by the square foot or square yard?</summary><p>Usually by the square foot, piece or pallet in the US. One square yard equals 9 square feet.</p></details>
+</div>
+
+<h2>Sources</h2>
+<p class="sources">Piece and pallet sizes vary by sod farm and grass type — always check your supplier's listing. <a href="@methodology">How we calculate</a>.</p>

@@ -35,7 +35,10 @@ GA_ID = None
 
 CATEGORIES = {
     'concrete': ('Concrete & masonry', 'Slabs, footings, posts and steps: volume, bags and ready-mix.'),
-    'landscaping': ('Landscaping & yard', 'Gravel, mulch, topsoil and sand for beds, paths and driveways.'),
+    'hardscape': ('Patios, walls & paving', 'Pavers, retaining walls and asphalt for patios, paths and driveways.'),
+    'landscaping': ('Landscaping & yard', 'Gravel, mulch, topsoil, sand and sod for beds, lawns and paths.'),
+    'structures': ('Decks & fences', 'Deck boards, joists, posts, rails, pickets and fasteners.'),
+    'measure': ('Measuring', 'Square footage and area for rooms, lots and any project.'),
 }
 
 ICONS = {
@@ -50,6 +53,13 @@ ICONS = {
     'chevron': '<path d="m6 9 6 6 6-6"/>',
     'menu': '<path d="M4 6h16M4 12h16M4 18h16"/>',
     'check': '<path d="M20 6 9 17l-5-5"/>',
+    'paver': '<rect x="3" y="4" width="8" height="7" rx="1"/><rect x="13" y="4" width="8" height="7" rx="1"/><rect x="3" y="13" width="18" height="7" rx="1"/>',
+    'wall': '<path d="M3 20h18M3 15h18M3 10h18"/><path d="M8 20v-5M16 20v-5M12 15v-5M6 10V6h12v4"/>',
+    'road': '<path d="M8 3 4 21M16 3l4 18"/><path d="M12 5v2M12 11v2M12 17v2"/>',
+    'grass': '<path d="M3 20h18"/><path d="M6 20c0-4 1-7 3-9M11 20c0-5 0-9 1-12M16 20c0-4-1-7-3-9M19 20c0-3 0-5-1-7"/>',
+    'fence': '<path d="M5 21V6l2-3 2 3v15M15 21V6l2-3 2 3v15"/><path d="M3 10h18M3 16h18"/>',
+    'deck': '<path d="M3 8h18M3 12h18M3 16h18"/><path d="M5 16v5M19 16v5"/>',
+    'ruler': '<path d="M3 17 17 3l4 4L7 21z"/><path d="M7 13l2 2M10 10l2 2M13 7l2 2"/>',
 }
 
 
@@ -262,12 +272,25 @@ BULK_DIAGRAMS = {
 }
 
 
-def bulk_form(cfg):
-    d = cfg['defaults']
+def area_block(d, heading='Size of the area'):
+    """Shape switcher + fields that SMP.area() reads (rectangle, circle, triangle or a known area)."""
     seg = ''.join(f'<button type="button" data-shape="{s}" aria-pressed="{"true" if i == 0 else "false"}">{n}</button>'
                   for i, (s, n) in enumerate([('rect', 'Rectangle'), ('circle', 'Circle'), ('tri', 'Triangle'), ('area', 'I know the area')]))
     diagrams = ''.join(f'<div class="diagram" data-diagram="{s}"{" hidden" if s != "rect" else ""}><svg viewBox="0 0 320 150" role="img" '
                        f'aria-label="{s} area seen from above">{svg}</svg></div>' for s, svg in BULK_DIAGRAMS.items())
+    return f'''<h2>{heading}</h2>
+    <div class="seg" role="group" aria-label="Shape of the area">{seg}</div>
+    {diagrams}
+    <div class="fields" data-for="rect">{len_field('L', 'Length', d['L'])}{len_field('W', 'Width', d['W'])}</div>
+    <div class="fields" data-for="circle" hidden>{len_field('D', 'Diameter', d.get('D', 10))}</div>
+    <div class="fields" data-for="tri" hidden>{len_field('B', 'Base', d.get('B', 10))}{len_field('H', 'Height', d.get('H', 10))}</div>
+    <div class="fields" data-for="area" hidden><div class="field"><label for="b-A">Area</label><div class="inp">
+      <input id="b-A" data-k="A" type="text" inputmode="decimal" value="{d.get('A', 100)}">
+      <select data-u="A" aria-label="Area unit"><option value="ft2">sq ft</option><option value="m2">m²</option></select></div></div></div>'''
+
+
+def bulk_form(cfg):
+    d = cfg['defaults']
     material = ''
     if cfg.get('materials'):
         material = ('<div class="field"><label for="b-mat">Material</label><select id="b-mat" class="select" data-k="mat"></select></div>'
@@ -280,15 +303,7 @@ def bulk_form(cfg):
         price_opts.append(f'<option value="bag{i}">per {esc(b["label"])} bag</option>')
     return f'''<div class="calc">
   <form class="panel" id="bulk-form" novalidate>
-    <h2>Size of the area</h2>
-    <div class="seg" role="group" aria-label="Shape of the area">{seg}</div>
-    {diagrams}
-    <div class="fields" data-for="rect">{len_field('L', 'Length', d['L'])}{len_field('W', 'Width', d['W'])}</div>
-    <div class="fields" data-for="circle" hidden>{len_field('D', 'Diameter', d.get('D', 10))}</div>
-    <div class="fields" data-for="tri" hidden>{len_field('B', 'Base', d.get('B', 10))}{len_field('H', 'Height', d.get('H', 10))}</div>
-    <div class="fields" data-for="area" hidden><div class="field"><label for="b-A">Area</label><div class="inp">
-      <input id="b-A" data-k="A" type="text" inputmode="decimal" value="{d.get('A', 100)}">
-      <select data-u="A" aria-label="Area unit"><option value="ft2">sq ft</option><option value="m2">m²</option></select></div></div></div>
+    {area_block(d)}
     <div class="fields" style="margin-top:14px">
       {len_field('depth', 'Depth', d['depth'], DEPTH_UNITS, 'in', esc(cfg.get('depthHint', '')))}
       <div class="field"><label for="b-extra">Extra</label><div class="inp"><input id="b-extra" data-k="extra" type="text" inputmode="decimal" value="{d['extra']}"><span class="affix">%</span></div><small>{esc(cfg.get('extraHint', 'For settling and waste'))}</small></div>
@@ -319,6 +334,9 @@ def expand_placeholders(body, page, pages):
         if not m:
             sys.exit(f'{page["key"]}: [[bulk_form]] needs a bulk-config script')
         body = body.replace('[[bulk_form]]', bulk_form(json.loads(m.group(1))))
+    m = re.search(r'\[\[area_block (\{.*?\})\]\]', body)
+    if m:
+        body = body.replace(m.group(0), area_block(json.loads(m.group(1))))
     body = body.replace('[[calcs_by_category]]', calcs_by_category(pages))
     body = body.replace('[[calc_grid]]', calc_grid(pages))
     body = re.sub(r'\[\[calc_grid:(\w+)\]\]', lambda m: calc_grid(pages, m.group(1), exclude=page['key']), body)

@@ -1,0 +1,89 @@
+---
+type: calculator
+category: measure
+order: 1
+icon: ruler
+title: Square Footage Calculator – Rooms, Lots & Odd Shapes
+description: Square footage for rooms, floors, yards and lots. Combine rectangles, circles, triangles and trapezoids, subtract cut-outs, convert to sq yd, m² and acres.
+h1: Square Footage Calculator
+lead: Add up the area of any space — even L-shaped rooms and irregular yards — by combining simple shapes. Results in square feet, square yards, square meters and acres.
+card_title: Square Footage Calculator
+card_desc: Add up rooms, yards and odd shapes — sq ft, sq yd, m² and acres.
+crumb: Square Footage Calculator
+updated: 2026-09-30
+script: sqft
+related: paver-calculator, sod-calculator, concrete-calculator
+---
+<div class="calc">
+  <form class="panel" id="sqft-form" novalidate>
+    <h2>Areas</h2>
+    <div id="sqft-rows"></div>
+    <button type="button" class="btn btn-ghost btn-sm" id="sqft-add">+ Add another area</button>
+    <details class="cost-box">
+      <summary>Add a price (optional)</summary>
+      <div class="fields"><div class="field full"><label for="q-price">Price</label><div class="inp"><span class="affix pre">$</span>
+        <input id="q-price" data-k="price" type="text" inputmode="decimal" placeholder="0.00">
+        <select data-u="price" aria-label="Price unit"><option value="sqft">per sq ft</option><option value="sqyd">per sq yd</option></select></div></div></div>
+    </details>
+    <div class="calc-actions">
+      <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
+      <button type="button" class="btn btn-ghost btn-sm js-share">Copy link</button>
+      <button type="button" class="btn btn-ghost btn-sm js-list">Copy result</button>
+      <button type="button" class="btn btn-ghost btn-sm js-print">Print</button>
+    </div>
+  </form>
+  <section class="panel results" aria-live="polite" aria-label="Results">
+    <div id="sqft-results"><p class="results-empty">Enter the dimensions of at least one area.</p></div>
+  </section>
+</div>
+<!-- content -->
+<h2>How to use the square footage calculator</h2>
+<ol>
+  <li><strong>Break the space into simple shapes.</strong> An L-shaped room is two rectangles; a bay window is a trapezoid; a round patio is a circle.</li>
+  <li><strong>Add one area per shape</strong> and enter its dimensions. Each area can use its own units.</li>
+  <li><strong>Subtract cut-outs</strong> such as a kitchen island, a fireplace hearth or a flower bed inside a lawn by ticking <em>Subtract this area</em>.</li>
+  <li><strong>Read the total</strong> in square feet, square yards, square meters and acres, and add a price per square foot or yard to estimate cost.</li>
+</ol>
+
+<h2>Area formulas</h2>
+<div class="formula">Rectangle:  length × width
+Circle:     π × (diameter ÷ 2)²     ≈ 0.7854 × diameter²
+Triangle:   base × height ÷ 2
+Trapezoid:  (side a + side b) ÷ 2 × height</div>
+<p>Measure in feet and inches? Convert the inches to a decimal first — 10 ft 6 in is 10.5 ft — or choose inches as the unit and enter 126.</p>
+<div class="example">
+  <p>Worked example: an L-shaped living room</p>
+  <ol>
+    <li>Split it into a 14 × 12 ft rectangle (168 sq ft) and an 8 × 6 ft rectangle (48 sq ft)</li>
+    <li>Subtract a 3 × 5 ft hearth (15 sq ft)</li>
+    <li>Total: 168 + 48 − 15 = <strong>201 sq ft</strong>, or 22.3 sq yd</li>
+  </ol>
+</div>
+
+<h2>Unit conversions</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>From</th><th>To</th><th>Multiply by</th></tr></thead>
+  <tbody>
+    <tr><td>Square feet</td><td>Square yards</td><td>÷ 9</td></tr>
+    <tr><td>Square feet</td><td>Square meters</td><td>× 0.0929</td></tr>
+    <tr><td>Square meters</td><td>Square feet</td><td>× 10.764</td></tr>
+    <tr><td>Square feet</td><td>Acres</td><td>÷ 43,560</td></tr>
+    <tr><td>Square inches</td><td>Square feet</td><td>÷ 144</td></tr>
+  </tbody>
+</table></div>
+
+<h2>Measuring tips</h2>
+<ul>
+  <li><strong>Measure wall to wall at floor level</strong> for flooring, and add closets separately. For carpet and vinyl sold on rolls, also note the direction the material will run.</li>
+  <li><strong>For yards and lots,</strong> a long tape or a measuring wheel is faster than a tape measure; online maps with a measuring tool are handy for a first estimate.</li>
+  <li><strong>Irregular curves</strong> can be approximated with a few trapezoids: measure widths at regular intervals along the length and average them.</li>
+  <li><strong>Add waste after measuring,</strong> not by rounding every dimension up — the material calculators on this site do it for you.</li>
+</ul>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How do I calculate square footage of a room?</summary><p>Multiply the length by the width in feet. A 12 × 15 ft room is 180 sq ft. For odd shapes, split the room into rectangles and add them up.</p></details>
+  <details><summary>How many square feet are in an acre?</summary><p>43,560 square feet. A square acre is about 208.7 feet on each side.</p></details>
+  <details><summary>How many square feet in a square yard?</summary><p>9 — a square yard is 3 ft × 3 ft.</p></details>
+  <details><summary>Does square footage include walls?</summary><p>For flooring and lawns you measure the surface you're covering. Real estate listings follow different rules (and usually measure exterior dimensions), so their numbers aren't directly comparable.</p></details>
+</div>

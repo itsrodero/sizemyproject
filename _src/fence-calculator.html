@@ -1,0 +1,120 @@
+---
+type: calculator
+category: structures
+order: 2
+icon: fence
+title: Fence Calculator – Posts, Rails, Pickets & Concrete
+description: Plan a wood fence: how many posts, rails and pickets to buy, what length posts you need, and how many bags of concrete to set them.
+h1: Fence Calculator
+lead: Enter the length and height of your fence, the post spacing and any gates to get posts, rails, pickets, fasteners and the concrete for every post hole.
+card_title: Fence Calculator
+card_desc: Wood fences — posts, rails, pickets and concrete for the holes.
+crumb: Fence Calculator
+updated: 2026-09-30
+script: fence
+related: concrete-calculator, deck-calculator, square-footage-calculator
+---
+<div class="calc">
+  <form class="panel" id="fence-form" novalidate>
+    <h2>Fence layout</h2>
+    <div class="diagram"><svg viewBox="0 0 320 150" role="img" aria-label="Fence section with posts, rails and pickets">
+      <rect x="30" y="20" width="12" height="112" fill="#a8a29e" stroke="#44403c"/><rect x="154" y="20" width="12" height="112" fill="#a8a29e" stroke="#44403c"/><rect x="278" y="20" width="12" height="112" fill="#a8a29e" stroke="#44403c"/>
+      <rect x="42" y="40" width="112" height="6" fill="#d6d3d1" stroke="#57534e"/><rect x="42" y="72" width="112" height="6" fill="#d6d3d1" stroke="#57534e"/><rect x="42" y="104" width="112" height="6" fill="#d6d3d1" stroke="#57534e"/>
+      <g fill="#fed7aa" stroke="#9a3412"><rect x="166" y="26" width="13" height="96"/><rect x="180" y="26" width="13" height="96"/><rect x="194" y="26" width="13" height="96"/><rect x="208" y="26" width="13" height="96"/><rect x="222" y="26" width="13" height="96"/><rect x="236" y="26" width="13" height="96"/><rect x="250" y="26" width="13" height="96"/><rect x="264" y="26" width="13" height="96"/></g>
+      <path d="M20 132 H300" stroke="#57534e" stroke-width="2"/><path d="M42 142 H154" stroke="#44403c"/><text x="66" y="150">Post spacing</text><text x="60" y="36">Rails</text><text x="200" y="18">Pickets</text>
+    </svg></div>
+    <div class="fields">
+      <div class="field"><label for="f-fl">Total fence length</label><div class="inp"><input id="f-fl" data-k="fl" type="text" inputmode="decimal" value="100"><select data-u="fl" aria-label="Length unit"><option>ft</option><option>yd</option><option>m</option></select></div></div>
+      <div class="field"><label for="f-fh">Fence height</label><div class="inp"><input id="f-fh" data-k="fh" type="text" inputmode="decimal" value="6"><select data-u="fh" aria-label="Height unit"><option>ft</option><option>in</option><option>m</option></select></div></div>
+      <div class="field"><label for="f-sp">Post spacing</label><div class="inp"><input id="f-sp" data-k="sp" type="text" inputmode="decimal" value="8"><select data-u="sp" aria-label="Spacing unit"><option>ft</option><option>in</option><option>m</option></select></div><small>6–8 ft on center</small></div>
+      <div class="field"><label for="f-rails">Rails per section</label><select id="f-rails" class="select" data-k="rails"><option value="auto">Auto (by height)</option><option>2</option><option>3</option><option>4</option></select></div>
+      <div class="field"><label for="f-gates">Gates</label><div class="inp"><input id="f-gates" data-k="gates" type="text" inputmode="numeric" value="1"></div></div>
+      <div class="field"><label for="f-gw">Gate width</label><div class="inp"><input id="f-gw" data-k="gw" type="text" inputmode="decimal" value="4"><select data-u="gw" aria-label="Gate width unit"><option>ft</option><option>in</option><option>m</option></select></div></div>
+      <div class="field"><label for="f-corners">Corners</label><div class="inp"><input id="f-corners" data-k="corners" type="text" inputmode="numeric" value="0"></div><small>Each adds a post</small></div>
+      <div class="field"><label for="f-waste">Extra pickets</label><div class="inp"><input id="f-waste" data-k="waste" type="text" inputmode="decimal" value="5"><span class="affix">%</span></div></div>
+    </div>
+    <h2 style="margin-top:20px">Pickets and posts</h2>
+    <div class="fields">
+      <div class="field"><label for="f-pw">Picket width</label><div class="inp"><input id="f-pw" data-k="pw" type="text" inputmode="decimal" value="5.5"><span class="affix">in</span></div><small>A 1×6 picket is 5.5 in wide</small></div>
+      <div class="field"><label for="f-gap">Gap between pickets</label><div class="inp"><input id="f-gap" data-k="gap" type="text" inputmode="decimal" value="0"><span class="affix">in</span></div><small>0 for a privacy fence</small></div>
+      <div class="field"><label for="f-ps">Post size</label><select id="f-ps" class="select" data-k="ps"><option value="3.5">4×4 (3.5 in)</option><option value="5.5">6×6 (5.5 in)</option></select></div>
+      <div class="field"><label for="f-hd">Hole diameter</label><div class="inp"><input id="f-hd" data-k="hd" type="text" inputmode="decimal" value="10"><select data-u="hd" aria-label="Hole diameter unit"><option>in</option><option>cm</option></select></div><small>About 3× the post width</small></div>
+      <div class="field"><label for="f-hdep">Hole depth</label><div class="inp"><input id="f-hdep" data-k="hdep" type="text" inputmode="decimal" value="24"><select data-u="hdep" aria-label="Hole depth unit"><option>in</option><option>ft</option><option>cm</option></select></div><small>≥ ⅓ of fence height, below frost line</small></div>
+    </div>
+    <div class="calc-actions">
+      <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
+      <button type="button" class="btn btn-ghost btn-sm js-share">Copy link</button>
+      <button type="button" class="btn btn-ghost btn-sm js-list">Copy shopping list</button>
+      <button type="button" class="btn btn-ghost btn-sm js-print">Print</button>
+    </div>
+  </form>
+  <section class="panel results" aria-live="polite" aria-label="Results">
+    <div id="fence-results"><p class="results-empty">Enter the fence length, height and post spacing.</p></div>
+  </section>
+</div>
+<!-- content -->
+<h2>How to use the fence calculator</h2>
+<ol>
+  <li><strong>Measure the total run</strong> of the fence along the property line or layout string, including the gate openings.</li>
+  <li><strong>Set the height, post spacing and number of gates.</strong> Each gate opening and each corner adds a post.</li>
+  <li><strong>Enter the picket width and gap.</strong> A privacy fence has no gap; a classic picket fence might use a 2½ to 3 inch gap.</li>
+  <li><strong>Set the post holes</strong> to match your post size, fence height and frost depth, and read how much concrete to buy.</li>
+</ol>
+
+<h2>How to calculate fence materials</h2>
+<div class="formula">Sections  = (fence length − gate widths) ÷ post spacing   (round up)
+Posts     = sections + 1 + gates + corners
+Rails     = sections × rails per section
+Pickets   = fence length (in) ÷ (picket width + gap) × (1 + extra %)
+Concrete  = posts × [π × (hole diameter ÷ 2)² × depth − post width² × depth]</div>
+<div class="example">
+  <p>Worked example: 100 ft of 6 ft privacy fence with one 4 ft gate</p>
+  <ol>
+    <li>Sections: (100 − 4) ÷ 8 = 12 → posts: 12 + 1 + 1 = <strong>14 posts</strong> (8 ft long for 2 ft holes)</li>
+    <li>Rails: 12 sections × 3 = <strong>36 rails</strong> of 8 ft</li>
+    <li>Pickets: 1,200 in ÷ 5.5 in = 219, plus 5% = <strong>230 pickets</strong></li>
+    <li>Concrete: a 10 in hole 24 in deep with a 4×4 post holds 0.92 ft³ → 14 holes need 12.9 ft³, or <strong>22 bags of 80 lb</strong> (about 1.5 per hole).</li>
+  </ol>
+</div>
+
+<h2>Post spacing, depth and hole size</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Fence height</th><th>Typical post length</th><th>Hole depth (min.)</th><th>Rails per section</th></tr></thead>
+  <tbody>
+    <tr><td>4 ft</td><td>6 ft (4×4)</td><td>2 ft</td><td>2</td></tr>
+    <tr><td>5 ft</td><td>8 ft (4×4)</td><td>2–3 ft</td><td>2–3</td></tr>
+    <tr><td>6 ft</td><td>8–9 ft (4×4)</td><td>2–3 ft</td><td>3</td></tr>
+    <tr><td>8 ft</td><td>10–12 ft (4×4 or 6×6)</td><td>3–4 ft</td><td>3–4</td></tr>
+  </tbody>
+</table></div>
+<ul>
+  <li><strong>Depth:</strong> a common rule is to bury the post at least one third as deep as the fence is tall — about 2 feet for a 6 ft fence on 8 ft posts — and to go below the frost line in cold climates, which can mean 3 to 4 feet. Your local building department can tell you the frost depth.</li>
+  <li><strong>Diameter:</strong> about three times the post width: 10 to 12 inches for a 4×4, 16 to 18 inches for a 6×6.</li>
+  <li><strong>Spacing:</strong> 8 feet on center is standard because rails come in 8 ft lengths; windy sites and tall fences benefit from 6 feet.</li>
+  <li><strong>Drainage:</strong> put a few inches of gravel in the bottom of each hole and slope the concrete away from the post at the top so water sheds.</li>
+</ul>
+
+<h2>Picket counts for common fences</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Style</th><th>Picket</th><th>Gap</th><th>Pickets per 8 ft section</th></tr></thead>
+  <tbody>
+    <tr><td>Privacy (side by side)</td><td>1×6 (5.5 in)</td><td>0</td><td>18</td></tr>
+    <tr><td>Privacy (1×4)</td><td>1×4 (3.5 in)</td><td>0</td><td>28</td></tr>
+    <tr><td>Picket fence</td><td>1×4 (3.5 in)</td><td>2.5 in</td><td>16</td></tr>
+    <tr><td>Shadowbox (both sides)</td><td>1×6 (5.5 in)</td><td>about 3.5 in each side</td><td>about 22 in total</td></tr>
+  </tbody>
+</table></div>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many bags of concrete per fence post?</summary><p>For a 4×4 post in a 10-inch hole 2 feet deep, about 1.5 bags of 80 lb concrete (or 2.5 bags of 50 lb). A 12-inch hole of the same depth takes about 2.3 bags of 80 lb.</p></details>
+  <details><summary>How many posts do I need for 100 feet of fence?</summary><p>At 8 ft spacing with no gates, 14 posts: 100 ÷ 8 = 12.5, rounded up to 13 sections, plus one post to close the last section. Each gate or corner adds one more.</p></details>
+  <details><summary>Should fence posts be set in concrete or gravel?</summary><p>Both work. Concrete is the most common choice for wood privacy fences; compacted gravel drains better and makes posts easier to replace. Either way, keep the bottom of the post on a gravel bed so it isn't sitting in water.</p></details>
+  <details><summary>Do I need a permit for a fence?</summary><p>Many towns require one, especially for fences over 6 ft or in front yards, and HOAs often have their own rules. Check before you buy materials — and call 811 to have utility lines marked before digging.</p></details>
+</div>
+
+<h2>Sources</h2>
+<ul class="sources">
+  <li>Concrete volume per hole uses the QUIKRETE Concrete Mix yields (0.375 ft³ per 50 lb bag, 0.60 ft³ per 80 lb bag).</li>
+  <li>Post depth and hole size follow common rules of thumb; your local frost depth and building code take priority. <a href="@methodology">How we calculate</a>.</li>
+</ul>

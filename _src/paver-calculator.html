@@ -1,0 +1,131 @@
+---
+type: calculator
+category: hardscape
+order: 1
+icon: paver
+title: Paver Calculator – Pavers, Base Gravel & Sand
+description: Calculate how many pavers you need for a patio or walkway, plus the gravel base, bedding sand and edge restraint — for any paver size.
+h1: Paver Calculator
+lead: Enter the size of your patio or path and the paver size to get the number of pavers, how much base gravel and bedding sand to order, and how much edging to buy.
+card_title: Paver Calculator
+card_desc: Patios and walkways — pavers, base gravel, sand and edging.
+crumb: Paver Calculator
+updated: 2026-09-30
+script: paver
+related: retaining-wall-calculator, gravel-calculator, sand-calculator
+---
+<div class="calc">
+  <form class="panel" id="paver-form" novalidate>
+    [[area_block {"L": 12, "W": 12, "D": 12, "A": 144}]]
+    <h2 style="margin-top:20px">Pavers and base</h2>
+    <div class="fields">
+      <div class="field full"><label for="p-size">Paver size (length × width)</label>
+        <select id="p-size" class="select" data-k="size">
+          <option value="4x8">4 × 8 in (brick / Holland stone)</option>
+          <option value="6x6">6 × 6 in</option>
+          <option value="6x9" selected>6 × 9 in</option>
+          <option value="12x12">12 × 12 in</option>
+          <option value="16x16">16 × 16 in</option>
+          <option value="24x24">24 × 24 in</option>
+          <option value="custom">Custom size…</option>
+        </select></div>
+    </div>
+    <div class="fields js-custom-size" hidden style="margin-top:14px">
+      <div class="field"><label for="p-pl">Paver length</label><div class="inp"><input id="p-pl" data-k="pl" type="text" inputmode="decimal" value="8"><span class="affix">in</span></div></div>
+      <div class="field"><label for="p-pw">Paver width</label><div class="inp"><input id="p-pw" data-k="pw" type="text" inputmode="decimal" value="4"><span class="affix">in</span></div></div>
+    </div>
+    <div class="fields" style="margin-top:14px">
+      <div class="field"><label for="p-joint">Joint width</label><div class="inp"><input id="p-joint" data-k="joint" type="text" inputmode="decimal" value="0"><span class="affix">in</span></div><small>Leave 0 if the pavers have spacer nubs</small></div>
+      <div class="field"><label for="p-waste">Extra for cuts</label><div class="inp"><input id="p-waste" data-k="waste" type="text" inputmode="decimal" value="10"><span class="affix">%</span></div><small>10%; 15% for herringbone or curves</small></div>
+      <div class="field"><label for="p-base">Gravel base depth</label><div class="inp"><input id="p-base" data-k="base" type="text" inputmode="decimal" value="4"><select data-u="base" aria-label="Base depth unit"><option>in</option><option>cm</option></select></div><small>4–6 in for patios</small></div>
+      <div class="field"><label for="p-sand">Bedding sand depth</label><div class="inp"><input id="p-sand" data-k="sand" type="text" inputmode="decimal" value="1"><select data-u="sand" aria-label="Sand depth unit"><option>in</option><option>cm</option></select></div><small>About 1 in</small></div>
+    </div>
+    <details class="cost-box">
+      <summary>Add a price (optional)</summary>
+      <div class="fields"><div class="field full"><label for="p-price">Paver price</label><div class="inp"><span class="affix pre">$</span>
+        <input id="p-price" data-k="price" type="text" inputmode="decimal" placeholder="0.00">
+        <select data-u="price" aria-label="Price unit"><option value="each">per paver</option><option value="sqft">per sq ft</option></select></div></div></div>
+    </details>
+    <div class="calc-actions">
+      <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
+      <button type="button" class="btn btn-ghost btn-sm js-share">Copy link</button>
+      <button type="button" class="btn btn-ghost btn-sm js-list">Copy shopping list</button>
+      <button type="button" class="btn btn-ghost btn-sm js-print">Print</button>
+    </div>
+  </form>
+  <section class="panel results" aria-live="polite" aria-label="Results">
+    <div id="paver-results"><p class="results-empty">Enter the size of the area and the paver size.</p></div>
+  </section>
+</div>
+<!-- content -->
+<h2>How to use the paver calculator</h2>
+<ol>
+  <li><strong>Measure the finished paved area.</strong> Split L-shapes into rectangles and run the calculator for each part, or type the total square footage.</li>
+  <li><strong>Choose the paver size</strong> printed on the product. Most concrete pavers are sold by nominal size; if yours list exact dimensions, pick <em>Custom size</em>.</li>
+  <li><strong>Set the extra for cuts.</strong> 10% covers edge cuts on a simple layout. Herringbone patterns, curves and lots of corners waste more — use 15%.</li>
+  <li><strong>Check the base depths</strong> and read how much gravel, sand and edging to order along with the pavers.</li>
+</ol>
+
+<h2>How to calculate pavers</h2>
+<div class="formula">Pavers per sq ft = 144 ÷ ((paver length + joint) × (paver width + joint))   [inches]
+Pavers          = area (sq ft) × pavers per sq ft × (1 + extra %)
+Base (yd³)      = area × base depth (ft) × 1.10 ÷ 27
+Sand (yd³)      = area × sand depth (ft) × 1.10 ÷ 27</div>
+<div class="example">
+  <p>Worked example: a 12 × 12 ft patio with 6 × 9 in pavers</p>
+  <ol>
+    <li>Area: 144 sq ft. Pavers per sq ft: 144 ÷ (6 × 9) = 2.67</li>
+    <li>Pavers: 144 × 2.67 = 384, plus 10% = <strong>423 pavers</strong></li>
+    <li>Base, 4 in: 144 × 0.333 × 1.10 ÷ 27 = 1.96 yd³ — about 2.9 tons of road base</li>
+    <li>Sand, 1 in: 144 × 0.083 × 1.10 = 13.2 ft³ — 0.49 yd³ or 27 bags of 50 lb</li>
+  </ol>
+</div>
+
+<h2>How many pavers per square foot?</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Paver size</th><th>Per sq ft (no joint)</th><th>Per sq ft (⅛ in joints)</th><th>For 100 sq ft + 10%</th></tr></thead>
+  <tbody>
+    <tr><td>4 × 8 in</td><td>4.50</td><td>4.30</td><td>495</td></tr>
+    <tr><td>6 × 6 in</td><td>4.00</td><td>3.84</td><td>440</td></tr>
+    <tr><td>6 × 9 in</td><td>2.67</td><td>2.58</td><td>294</td></tr>
+    <tr><td>12 × 12 in</td><td>1.00</td><td>0.96</td><td>110</td></tr>
+    <tr><td>16 × 16 in</td><td>0.56</td><td>0.55</td><td>62</td></tr>
+    <tr><td>24 × 24 in</td><td>0.25</td><td>0.25</td><td>28</td></tr>
+  </tbody>
+</table></div>
+<p class="table-note">Last column uses the no-joint figure, rounded up.</p>
+
+<h2>What goes under pavers</h2>
+<p>A paver patio is only as good as what's underneath it. The Interlocking Concrete Pavement Institute's guidance for a typical installation is a compacted aggregate base with a thin, even layer of bedding sand on top:</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Layer</th><th>Patios and walkways</th><th>Driveways</th></tr></thead>
+  <tbody>
+    <tr><td>Compacted gravel base (crushed stone or road base)</td><td>4–6 in</td><td>8–12 in</td></tr>
+    <tr><td>Bedding sand (coarse, washed)</td><td>About 1 in, screeded — not compacted before laying</td><td>About 1 in</td></tr>
+    <tr><td>Joint sand</td><td colspan="2">Swept into the joints after laying; polymeric sand resists weeds and washout</td></tr>
+  </tbody>
+</table></div>
+<ul>
+  <li><strong>Go deeper on clay, poorly drained soil or in cold climates</strong> where frost heave is a risk.</li>
+  <li><strong>Compact the base in lifts</strong> of 2 to 4 inches with a plate compactor rather than all at once.</li>
+  <li><strong>Extend the base 6 inches or so beyond the pavers</strong> so the edge restraint sits on solid ground. The calculator's 10% base allowance helps cover this.</li>
+  <li><strong>Don't use extra sand to fix a lumpy base.</strong> Level the gravel instead; thick sand shifts and ruts.</li>
+</ul>
+
+<h2>Edge restraint and joint sand</h2>
+<p>Pavers need an edge restraint — plastic or aluminum edging spiked into the base, a concrete curb or a soldier course set in mortar — so they can't creep outward. Buy edging to match the perimeter the calculator shows, minus any side that butts against a house wall or existing slab.</p>
+<p>Joint sand coverage depends heavily on paver size and joint width, so check the coverage printed on the bag. Small pavers have far more joints per square foot than large slabs and use much more sand.</p>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many pavers do I need for a 10 × 10 patio?</summary><p>100 square feet with 6 × 9 in pavers takes 267 pavers, or 294 with 10% extra. With 4 × 8 in pavers it's 450, or 495 with 10% extra.</p></details>
+  <details><summary>How much gravel do I need under pavers?</summary><p>For a 4-inch compacted base, about 1.4 cubic yards per 100 square feet including 10% for compaction — roughly 2 tons of road base.</p></details>
+  <details><summary>How much extra should I buy?</summary><p>10% for a simple rectangle in a running bond or stack pattern; 15% for herringbone, diagonal layouts or curved edges. Keep a few spares from the same batch for future repairs, since colors vary between production runs.</p></details>
+  <details><summary>Can I lay pavers directly on sand?</summary><p>Not for a lasting patio. Sand alone shifts under load and in wet weather. Use a compacted gravel base with a thin layer of bedding sand on top.</p></details>
+</div>
+
+<h2>Sources</h2>
+<ul class="sources">
+  <li>Interlocking Concrete Pavement Institute (ICPI) — base and bedding layer guidance for segmental concrete pavements.</li>
+  <li>Densities for base gravel and sand are typical planning values; see <a href="@methodology">how we calculate</a>.</li>
+</ul>

@@ -49,6 +49,23 @@
     var v = val(form, key);
     return isFinite(v) ? v * (TO_FT[unit(form, key)] || 1) : NaN;
   }
+  // Area in square feet from the shared area block (rect / circle / tri / known area).
+  function area(form) {
+    var shape = form.dataset.shape;
+    if (shape === 'rect') return len(form, 'L') * len(form, 'W');
+    if (shape === 'circle') { var r = len(form, 'D') / 2; return Math.PI * r * r; }
+    if (shape === 'tri') return len(form, 'B') * len(form, 'H') / 2;
+    if (shape === 'area') { var a = val(form, 'A'); return unit(form, 'A') === 'm2' ? a * 10.7639104 : a; }
+    return NaN;
+  }
+  // Perimeter in feet, where it can be known from the shape.
+  function perimeter(form) {
+    var shape = form.dataset.shape;
+    if (shape === 'rect') return 2 * (len(form, 'L') + len(form, 'W'));
+    if (shape === 'circle') return Math.PI * len(form, 'D');
+    if (shape === 'tri') { var b = len(form, 'B'), h = len(form, 'H'); return b + 2 * Math.sqrt(h * h + b * b / 4); }
+    return NaN;
+  }
   function fmt(n, dec) {
     if (!isFinite(n)) return '–';
     dec = dec == null ? 2 : dec;
@@ -146,6 +163,6 @@
 
   window.SMP = {
     TO_FT: TO_FT, FT3_PER_YD3: FT3_PER_YD3, M3_PER_FT3: M3_PER_FT3,
-    val: val, unit: unit, len: len, fmt: fmt, money: money, esc: esc, copy: copy, calculator: calculator
+    val: val, unit: unit, len: len, area: area, perimeter: perimeter, fmt: fmt, money: money, esc: esc, copy: copy, calculator: calculator
   };
 })();
