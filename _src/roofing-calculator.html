@@ -1,0 +1,104 @@
+---
+type: calculator
+category: structures
+order: 4
+icon: roof
+title: Roofing Calculator – Squares, Shingle Bundles & Pitch
+description: Calculate roof area from the footprint and pitch, then the squares, shingle bundles, ridge cap, underlayment and drip edge for a gable or hip roof.
+h1: Roofing Calculator
+lead: Measure the roof's footprint and pitch to get the true roof area in squares, the number of shingle bundles, and the ridge cap, underlayment and drip edge to go with them.
+card_title: Roofing Calculator
+card_desc: Roof area, squares, shingle bundles and accessories.
+crumb: Roofing Calculator
+updated: 2026-09-30
+script: roofing
+related: guides/roof-pitch-explained, deck-calculator, square-footage-calculator
+---
+<div class="calc">
+  <form class="panel" id="roof-form" novalidate>
+    <h2>Roof size and pitch</h2>
+    <div class="diagram"><svg viewBox="0 0 320 150" role="img" aria-label="Gable roof showing footprint, rise and run">
+      <path d="M40 120 L160 40 L280 120 Z" fill="#fed7aa" stroke="#9a3412" stroke-width="2"/>
+      <path d="M160 40 V120" stroke="#57534e" stroke-dasharray="4 4"/><path d="M40 120 H280" stroke="#57534e"/>
+      <text x="166" y="92">Rise</text><text x="88" y="136">Run (12 in)</text><text x="186" y="36">Ridge</text><text x="220" y="100">Pitch = rise / 12</text>
+    </svg></div>
+    <div class="fields">
+      <div class="field"><label for="r-rl">Footprint length</label><div class="inp"><input id="r-rl" data-k="rl" type="text" inputmode="decimal" value="40"><select data-u="rl" aria-label="Length unit"><option>ft</option><option>m</option></select></div><small>Along the ridge, incl. overhangs</small></div>
+      <div class="field"><label for="r-rw">Footprint width</label><div class="inp"><input id="r-rw" data-k="rw" type="text" inputmode="decimal" value="28"><select data-u="rw" aria-label="Width unit"><option>ft</option><option>m</option></select></div><small>Eave to eave, incl. overhangs</small></div>
+      <div class="field"><label for="r-pitch">Pitch (rise per 12 in)</label><select id="r-pitch" class="select" data-k="pitch">
+        <option value="2">2/12</option><option value="3">3/12</option><option value="4">4/12</option><option value="5">5/12</option><option value="6" selected>6/12</option><option value="7">7/12</option><option value="8">8/12</option><option value="9">9/12</option><option value="10">10/12</option><option value="12">12/12</option></select></div>
+      <div class="field"><label for="r-style">Roof style</label><select id="r-style" class="select" data-k="style"><option value="gable">Gable</option><option value="hip">Hip</option></select></div>
+    </div>
+    <h2 style="margin-top:20px">Materials</h2>
+    <div class="fields">
+      <div class="field"><label for="r-waste">Waste</label><div class="inp"><input id="r-waste" data-k="waste" type="text" inputmode="decimal" value="10"><span class="affix">%</span></div><small>10% gable, 15% hip or complex</small></div>
+      <div class="field"><label for="r-bps">Bundles per square</label><div class="inp"><input id="r-bps" data-k="bps" type="text" inputmode="decimal" value="3"></div><small>Check the wrapper</small></div>
+      <div class="field"><label for="r-ridge">Ridge cap per bundle</label><div class="inp"><input id="r-ridge" data-k="ridge" type="text" inputmode="decimal" value="25"><span class="affix">lin ft</span></div></div>
+      <div class="field"><label for="r-roll">Underlayment roll</label><div class="inp"><input id="r-roll" data-k="roll" type="text" inputmode="decimal" value="1000"><span class="affix">sq ft</span></div><small>Synthetic often 1,000</small></div>
+      <div class="field full"><label for="r-price">Price per bundle</label><div class="inp"><span class="affix pre">$</span><input id="r-price" data-k="price" type="text" inputmode="decimal" placeholder="optional"></div></div>
+    </div>
+    <div class="calc-actions">
+      <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
+      <button type="button" class="btn btn-ghost btn-sm js-share">Copy link</button>
+      <button type="button" class="btn btn-ghost btn-sm js-list">Copy shopping list</button>
+      <button type="button" class="btn btn-ghost btn-sm js-print">Print</button>
+    </div>
+  </form>
+  <section class="panel results" aria-live="polite" aria-label="Results">
+    <div id="roof-results"><p class="results-empty">Enter the roof footprint and pitch.</p></div>
+  </section>
+</div>
+<!-- content -->
+<h2>How to use the roofing calculator</h2>
+<ol>
+  <li><strong>Measure the footprint</strong> of the roof from the ground: the length and width of the house plus the overhangs. You don't need to climb up.</li>
+  <li><strong>Find the pitch</strong> — the rise in inches for every 12 inches of horizontal run. A pitch gauge app or a level and tape measure in the attic will tell you; see <a href="@guides/roof-pitch-explained">roof pitch explained</a>.</li>
+  <li><strong>Pick gable or hip.</strong> The style changes the ridge, hip and edge lengths. For complex roofs, calculate each section separately.</li>
+  <li><strong>Read squares and bundles.</strong> Roofing is sold by the square: 100 square feet of roof surface.</li>
+</ol>
+
+<h2>How roof area is calculated</h2>
+<div class="formula">Pitch factor  = √(1 + (rise ÷ 12)²)
+Roof area     = footprint length × footprint width × pitch factor
+Squares       = roof area ÷ 100
+Bundles       = squares × (1 + waste %) × bundles per square</div>
+<div class="example">
+  <p>Worked example: a 40 × 28 ft gable roof at 6/12</p>
+  <ol>
+    <li>Pitch factor: √(1 + 0.5²) = 1.118</li>
+    <li>Roof area: 40 × 28 × 1.118 = 1,252 sq ft = 12.5 squares</li>
+    <li>With 10% waste: 13.8 squares × 3 = <strong>42 bundles</strong></li>
+    <li>Ridge: 40 ft → 2 bundles of ridge cap at 25 ft per bundle</li>
+  </ol>
+</div>
+
+<h2>Pitch factor table</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Pitch</th><th>Angle</th><th>Multiply footprint by</th></tr></thead>
+  <tbody>
+    <tr><td>3/12</td><td>14.0°</td><td>1.031</td></tr>
+    <tr><td>4/12</td><td>18.4°</td><td>1.054</td></tr>
+    <tr><td>5/12</td><td>22.6°</td><td>1.083</td></tr>
+    <tr><td>6/12</td><td>26.6°</td><td>1.118</td></tr>
+    <tr><td>7/12</td><td>30.3°</td><td>1.158</td></tr>
+    <tr><td>8/12</td><td>33.7°</td><td>1.202</td></tr>
+    <tr><td>9/12</td><td>36.9°</td><td>1.250</td></tr>
+    <tr><td>10/12</td><td>39.8°</td><td>1.302</td></tr>
+    <tr><td>12/12</td><td>45.0°</td><td>1.414</td></tr>
+  </tbody>
+</table></div>
+
+<h2>Bundles, squares and waste</h2>
+<ul>
+  <li><strong>Bundles per square:</strong> most asphalt shingles come three bundles to a square, but some heavy designer shingles need four or more — the wrapper says.</li>
+  <li><strong>Waste:</strong> about 10% on a simple gable roof; 15% or more on hip roofs and roofs with valleys, dormers and many cuts.</li>
+  <li><strong>Starter and ridge:</strong> starter strip runs along the eaves (and often the rakes); ridge cap covers ridges and hips. Coverage per bundle varies a lot by product.</li>
+  <li><strong>Underlayment and ice barrier:</strong> synthetic underlayment rolls commonly cover about 1,000 sq ft; many codes also require ice barrier along the eaves in cold climates.</li>
+</ul>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many bundles of shingles for a 2,000 sq ft house?</summary><p>It depends on the roof, not the floor area. A single-story 2,000 sq ft house with 1 ft overhangs and a 6/12 roof has roughly 2,400–2,500 sq ft of roof — about 24 to 25 squares, or around 80 bundles with 10% waste.</p></details>
+  <details><summary>How big is a square of roofing?</summary><p>100 square feet of roof surface — a 10 × 10 ft area.</p></details>
+  <details><summary>Can I measure the roof from the ground?</summary><p>Yes. Measure the house footprint plus overhangs, and multiply by the pitch factor. That's safer than climbing and accurate enough for ordering on simple roofs.</p></details>
+</div>

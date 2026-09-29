@@ -1,0 +1,102 @@
+---
+type: calculator
+category: energy
+order: 2
+icon: layers
+title: Attic Insulation Calculator – R-Value, Depth & Bags
+description: Find the recommended attic R-value for your climate zone, how many inches of blown-in or batt insulation to add, and how many bags to buy.
+h1: Attic Insulation Calculator
+lead: Choose your climate zone and what's in the attic now to see the R-value to aim for, how deep the new insulation needs to be, and how many bags to buy.
+card_title: Insulation Calculator
+card_desc: Attic R-value by climate zone, depth to add and bags.
+crumb: Insulation Calculator
+updated: 2026-09-30
+script: insulation
+related: btu-calculator, square-footage-calculator, drywall-calculator
+---
+<div class="calc">
+  <form class="panel" id="ins-form" novalidate>
+    [[area_block {"L": 40, "W": 30, "D": 30, "A": 1200, "heading": "Attic floor area"}]]
+    <h2 style="margin-top:20px">Climate and insulation</h2>
+    <div class="fields">
+      <div class="field"><label for="i-zone">Climate zone</label><select id="i-zone" class="select" data-k="zone">
+        <option value="1">Zone 1 (south Florida, Hawaii)</option><option value="2">Zone 2 (Gulf Coast, south Texas, Arizona)</option>
+        <option value="3">Zone 3 (Southeast, southern Plains, California)</option><option value="4" selected>Zone 4 (Mid-Atlantic, central states, Pacific NW)</option>
+        <option value="5">Zone 5 (Midwest, Northeast, mountain West)</option><option value="6">Zone 6 (northern states)</option>
+        <option value="7">Zone 7 (far north, high mountains)</option><option value="8">Zone 8 (Alaska)</option></select><small>Approximate — check the DOE climate zone map</small></div>
+      <div class="field"><label for="i-existing">Current attic insulation</label><select id="i-existing" class="select" data-k="existing"><option value="none">None or known R-value</option><option value="some">About 3–4 inches</option></select></div>
+      <div class="field js-have"><label for="i-have">Existing R-value</label><div class="inp"><span class="affix pre">R-</span><input id="i-have" data-k="have" type="text" inputmode="decimal" value="0"></div></div>
+      <div class="field"><label for="i-mat">Insulation to add</label><select id="i-mat" class="select" data-k="mat"><option value="fiberglass">Blown-in fiberglass</option><option value="cellulose">Blown-in cellulose</option><option value="batts">Fiberglass batts</option></select></div>
+      <div class="field"><label for="i-target">Custom target (optional)</label><div class="inp"><span class="affix pre">R-</span><input id="i-target" data-k="target" type="text" inputmode="decimal" placeholder="e.g. 49"></div></div>
+      <div class="field"><label for="i-bag">Bag coverage at that R</label><div class="inp"><input id="i-bag" data-k="bag" type="text" inputmode="decimal" placeholder="from bag chart"><span class="affix">sq ft</span></div></div>
+    </div>
+    <div class="calc-actions">
+      <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
+      <button type="button" class="btn btn-ghost btn-sm js-share">Copy link</button>
+      <button type="button" class="btn btn-ghost btn-sm js-list">Copy result</button>
+      <button type="button" class="btn btn-ghost btn-sm js-print">Print</button>
+    </div>
+  </form>
+  <section class="panel results" aria-live="polite" aria-label="Results">
+    <div id="ins-results"><p class="results-empty">Enter the attic floor area.</p></div>
+  </section>
+</div>
+<!-- content -->
+<h2>How to use the insulation calculator</h2>
+<ol>
+  <li><strong>Measure the attic floor</strong> — usually the footprint of the heated part of the house below it.</li>
+  <li><strong>Choose your climate zone.</strong> The labels are a rough guide; the U.S. Department of Energy publishes a county-level climate zone map.</li>
+  <li><strong>Tell it what's there now.</strong> Measure the depth of the existing insulation. If it's about 3–4 inches, choose that option; otherwise enter its R-value (depth × R per inch for its type).</li>
+  <li><strong>Pick the insulation you'll add</strong> and, for bags, enter the coverage from the bag's chart at your target R-value.</li>
+</ol>
+
+<h2>Recommended attic R-values (ENERGY STAR)</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Climate zone</th><th>Uninsulated attic</th><th>Attic with 3–4 in existing</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>R-30</td><td>add R-25</td></tr>
+    <tr><td>2–3</td><td>R-49</td><td>add R-38</td></tr>
+    <tr><td>4–8</td><td>R-60</td><td>add R-49</td></tr>
+  </tbody>
+</table></div>
+<p class="table-note">ENERGY STAR recommendations for retrofitting existing wood-framed homes.</p>
+
+<h2>R-value per inch</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Material</th><th>R per inch (DOE range)</th><th>Inches for R-38</th><th>Inches for R-49</th></tr></thead>
+  <tbody>
+    <tr><td>Loose-fill fiberglass</td><td>2.2–2.7</td><td>14–17</td><td>18–22</td></tr>
+    <tr><td>Loose-fill cellulose</td><td>3.2–3.8</td><td>10–12</td><td>13–15</td></tr>
+    <tr><td>Fiberglass batts</td><td>2.9–3.8</td><td>10–13</td><td>13–17</td></tr>
+  </tbody>
+</table></div>
+<p>The calculator uses the middle of each range (2.5, 3.5 and 3.3). Blown-in products list the exact installed thickness and bag count for each R-value on the bag — follow that chart when you install.</p>
+<div class="example">
+  <p>Worked example: a 1,200 sq ft attic in zone 5 with 3–4 inches today</p>
+  <ol>
+    <li>ENERGY STAR recommends adding R-49</li>
+    <li>With blown-in fiberglass at R-2.5 per inch: 49 ÷ 2.5 = <strong>19.6 inches</strong> on top of what's there</li>
+    <li>With cellulose at R-3.5 per inch: 14 inches</li>
+  </ol>
+</div>
+
+<h2>Before you add insulation</h2>
+<ul>
+  <li><strong>Seal air leaks first</strong> — around chimneys, plumbing and wiring holes, recessed lights and the attic hatch. Air leaks can undo much of the benefit.</li>
+  <li><strong>Keep ventilation open:</strong> install baffles at the eaves so insulation doesn't block soffit vents.</li>
+  <li><strong>Mind clearances</strong> around chimneys, flues and recessed lights that aren't rated for insulation contact.</li>
+  <li><strong>Deal with moisture</strong> — wet or moldy insulation points to a roof leak or ventilation problem that needs fixing first.</li>
+</ul>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many inches of insulation is R-49?</summary><p>Roughly 18 to 22 inches of blown-in fiberglass, 13 to 15 inches of cellulose, or 13 to 17 inches of fiberglass batts.</p></details>
+  <details><summary>Can I put new insulation on top of old?</summary><p>Usually yes, if the old insulation is dry and free of mold or pests. Don't put faced batts (with a vapor retarder) on top of existing insulation — use unfaced batts or loose fill.</p></details>
+  <details><summary>How many bags of blown-in insulation do I need?</summary><p>Divide your attic area by the coverage per bag listed on the bag's chart for your target R-value. Coverage per bag drops as the target R-value rises.</p></details>
+</div>
+
+<h2>Sources</h2>
+<ul class="sources">
+  <li>ENERGY STAR, <em>Recommended home insulation R-values</em> — attic recommendations by climate zone.</li>
+  <li>U.S. Department of Energy, <em>Insulation materials</em> — R-value per inch ranges.</li>
+</ul>

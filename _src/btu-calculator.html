@@ -1,0 +1,102 @@
+---
+type: calculator
+category: energy
+order: 1
+icon: snow
+title: BTU Calculator – What Size Air Conditioner Do I Need?
+description: Find the right air conditioner or mini-split size for a room in BTU per hour, using the ENERGY STAR sizing chart with adjustments for sun, people and kitchens.
+h1: BTU Calculator
+lead: Enter the room size and a few details to find how many BTUs of cooling you need — the size to look for on a window, portable or mini-split air conditioner.
+card_title: BTU / AC Size Calculator
+card_desc: What size air conditioner for a room — BTU per hour and tons.
+crumb: BTU Calculator
+updated: 2026-09-30
+script: btu
+related: insulation-calculator, square-footage-calculator, guides/what-size-air-conditioner
+---
+<div class="calc">
+  <form class="panel" id="btu-form" novalidate>
+    [[area_block {"L": 16, "W": 14, "D": 16, "A": 224, "heading": "Room size"}]]
+    <h2 style="margin-top:20px">Room details</h2>
+    <div class="fields">
+      <div class="field"><label for="b-sun">Sunlight</label><select id="b-sun" class="select" data-k="sun"><option value="normal">Average</option><option value="shade">Heavily shaded</option><option value="sunny">Very sunny</option></select></div>
+      <div class="field"><label for="b-people">People usually in the room</label><div class="inp"><input id="b-people" data-k="people" type="text" inputmode="numeric" value="2"></div></div>
+      <div class="field"><label for="b-kitchen">Is it a kitchen?</label><select id="b-kitchen" class="select" data-k="kitchen"><option value="no">No</option><option value="yes">Yes</option></select></div>
+      <div class="field"><label for="b-ceil">Ceiling height</label><div class="inp"><input id="b-ceil" data-k="ceil" type="text" inputmode="decimal" value="8"><select data-u="ceil" aria-label="Ceiling height unit"><option>ft</option><option>in</option><option>m</option></select></div></div>
+    </div>
+    <div class="calc-actions">
+      <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
+      <button type="button" class="btn btn-ghost btn-sm js-share">Copy link</button>
+      <button type="button" class="btn btn-ghost btn-sm js-list">Copy result</button>
+      <button type="button" class="btn btn-ghost btn-sm js-print">Print</button>
+    </div>
+  </form>
+  <section class="panel results" aria-live="polite" aria-label="Results">
+    <div id="btu-results"><p class="results-empty">Enter the size of the room.</p></div>
+  </section>
+</div>
+<!-- content -->
+<h2>How to use the BTU calculator</h2>
+<ol>
+  <li><strong>Measure the room</strong> you want to cool. If it opens into another space without a door, include that area too.</li>
+  <li><strong>Describe the room:</strong> how sunny it is, how many people normally use it and whether it's a kitchen.</li>
+  <li><strong>Read the capacity</strong> in BTU per hour and pick the unit closest to it. Tons are shown too: one ton of cooling is 12,000 BTU/h.</li>
+</ol>
+
+<h2>ENERGY STAR sizing chart</h2>
+<p>These capacities, from ENERGY STAR's guidance for room air conditioners, assume a room with 8 ft ceilings.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Area to be cooled</th><th>Capacity needed</th></tr></thead>
+  <tbody>
+    <tr><td>100–150 sq ft</td><td>5,000 BTU/h</td></tr>
+    <tr><td>150–250 sq ft</td><td>6,000 BTU/h</td></tr>
+    <tr><td>250–300 sq ft</td><td>7,000 BTU/h</td></tr>
+    <tr><td>300–350 sq ft</td><td>8,000 BTU/h</td></tr>
+    <tr><td>350–400 sq ft</td><td>9,000 BTU/h</td></tr>
+    <tr><td>400–450 sq ft</td><td>10,000 BTU/h</td></tr>
+    <tr><td>450–550 sq ft</td><td>12,000 BTU/h</td></tr>
+    <tr><td>550–700 sq ft</td><td>14,000 BTU/h</td></tr>
+    <tr><td>700–1,000 sq ft</td><td>18,000 BTU/h</td></tr>
+    <tr><td>1,000–1,200 sq ft</td><td>21,000 BTU/h</td></tr>
+    <tr><td>1,200–1,400 sq ft</td><td>23,000 BTU/h</td></tr>
+    <tr><td>1,400–1,500 sq ft</td><td>24,000 BTU/h</td></tr>
+    <tr><td>1,500–2,000 sq ft</td><td>30,000 BTU/h</td></tr>
+    <tr><td>2,000–2,500 sq ft</td><td>34,000 BTU/h</td></tr>
+  </tbody>
+</table></div>
+
+<h2>Adjustments</h2>
+<ul>
+  <li><strong>Heavily shaded room:</strong> reduce capacity by 10%.</li>
+  <li><strong>Very sunny room:</strong> increase capacity by 10%.</li>
+  <li><strong>More than two people</strong> regularly in the room: add 600 BTU/h per extra person.</li>
+  <li><strong>Kitchen:</strong> add 4,000 BTU/h.</li>
+  <li><strong>Ceilings above 8 ft:</strong> ENERGY STAR only says to consider a larger unit. The calculator scales the capacity by ceiling height ÷ 8 as a simple estimate — treat it as a rough guide.</li>
+</ul>
+<div class="example">
+  <p>Worked example: a sunny 16 × 14 ft living room used by 4 people</p>
+  <ol>
+    <li>Area: 224 sq ft → chart: 6,000 BTU/h</li>
+    <li>Very sunny: 6,000 × 1.10 = 6,600</li>
+    <li>Two extra people: + 1,200 = <strong>7,800 BTU/h</strong> → an 8,000 BTU unit</li>
+  </ol>
+</div>
+
+<h2>Why bigger isn't better</h2>
+<p>An oversized air conditioner cools the air quickly and shuts off before it has removed much moisture, so the room feels cold and clammy — and short cycling wastes energy and wears the unit. An undersized one runs constantly and never quite reaches the set temperature on hot days. Choose the size closest to the calculated capacity.</p>
+
+<h2>Room units vs. central air</h2>
+<p>This chart is meant for single rooms: window, through-the-wall and portable units and single-zone mini-splits. Central air conditioners and heat pumps for a whole house should be sized with a load calculation (ACCA Manual J), which accounts for insulation, windows, air leakage, orientation and local climate. Square-footage rules of thumb often oversize whole-house systems.</p>
+<p>Portable air conditioners are also rated differently from window units; check the "SACC" (seasonally adjusted cooling capacity) on the label, which is usually lower than the headline BTU figure.</p>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many BTU do I need for a 12 × 12 room?</summary><p>144 sq ft falls in the 100–150 sq ft band: 5,000 BTU/h, or about 5,500 if it's very sunny.</p></details>
+  <details><summary>How many square feet does a 12,000 BTU air conditioner cool?</summary><p>About 450 to 550 square feet, according to the ENERGY STAR chart, before adjustments.</p></details>
+  <details><summary>What is a ton of air conditioning?</summary><p>12,000 BTU per hour — the cooling power of melting one ton of ice over 24 hours. A 24,000 BTU unit is a 2-ton unit.</p></details>
+</div>
+
+<h2>Sources</h2>
+<ul class="sources">
+  <li>ENERGY STAR, <em>Room air conditioners</em> — sizing chart and adjustments.</li>
+</ul>

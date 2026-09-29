@@ -237,3 +237,7 @@ code { font-family: var(--mono); font-size: .9em; background: var(--soft); paddi
 .row-foot .row-area { margin-left: auto; font-weight: 700; font-variant-numeric: tabular-nums; }
 .check { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
 .check input { width: 18px; height: 18px; accent-color: var(--brand); }
+.checks { list-style: none; padding: 0; margin: 14px 0 0; font-size: .92rem; }
+.checks li { padding: 6px 10px; border-radius: 8px; margin-bottom: 6px; }
+.checks li.ok { background: var(--accent-soft); color: #134e4a; }
+.checks li.bad { background: var(--warn-soft); color: #78350f; border: 1px solid var(--warn-line); }

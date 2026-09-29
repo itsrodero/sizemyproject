@@ -1,0 +1,94 @@
+---
+type: calculator
+category: concrete
+order: 2
+icon: brick
+title: Block & Brick Calculator – Blocks, Bricks & Mortar
+description: Calculate how many concrete blocks (CMU) or bricks you need for a wall and how many 80 lb bags of mortar mix to buy, with openings subtracted.
+h1: Block & Brick Calculator
+lead: Enter the wall length and height to find how many 8 × 8 × 16 concrete blocks or modular bricks to buy, and how much mortar mix they'll take.
+card_title: Block & Brick Calculator
+card_desc: Concrete blocks or bricks for a wall, plus mortar mix.
+crumb: Block & Brick Calculator
+updated: 2026-09-30
+script: block
+related: concrete-calculator, retaining-wall-calculator, paver-calculator
+---
+<div class="calc">
+  <form class="panel" id="block-form" novalidate>
+    <h2>Wall size</h2>
+    <div class="fields">
+      <div class="field"><label for="bk-wl">Wall length</label><div class="inp"><input id="bk-wl" data-k="wl" type="text" inputmode="decimal" value="20"><select data-u="wl" aria-label="Length unit"><option>ft</option><option>in</option><option>m</option></select></div></div>
+      <div class="field"><label for="bk-wh">Wall height</label><div class="inp"><input id="bk-wh" data-k="wh" type="text" inputmode="decimal" value="4"><select data-u="wh" aria-label="Height unit"><option>ft</option><option>in</option><option>m</option></select></div></div>
+      <div class="field"><label for="bk-open">Openings to subtract</label><div class="inp"><input id="bk-open" data-k="open" type="text" inputmode="decimal" value="0"><span class="affix">sq ft</span></div></div>
+      <div class="field"><label for="bk-waste">Extra</label><div class="inp"><input id="bk-waste" data-k="waste" type="text" inputmode="decimal" value="5"><span class="affix">%</span></div><small>For cuts and breakage</small></div>
+      <div class="field full"><label for="bk-unit">Block or brick</label><select id="bk-unit" class="select" data-k="unit">
+        <option value="cmu8">Concrete block, 8 × 8 × 16 in (also 6 in and 12 in wide)</option>
+        <option value="cmu4">Half-high concrete block, 4 × 8 × 16 in</option>
+        <option value="brick">Modular brick, 2¼ × 3⅝ × 7⅝ in</option>
+        <option value="custom">Other size…</option></select><small>Nominal sizes include a ⅜ in mortar joint</small></div>
+      <div class="field js-custom-unit" hidden><label for="bk-ul">Face length incl. joint</label><div class="inp"><input id="bk-ul" data-k="ul" type="text" inputmode="decimal" value="16"><span class="affix">in</span></div></div>
+      <div class="field js-custom-unit" hidden><label for="bk-uh">Face height incl. joint</label><div class="inp"><input id="bk-uh" data-k="uh" type="text" inputmode="decimal" value="8"><span class="affix">in</span></div></div>
+      <div class="field full"><label for="bk-price">Price per block or brick</label><div class="inp"><span class="affix pre">$</span><input id="bk-price" data-k="price" type="text" inputmode="decimal" placeholder="optional"></div></div>
+    </div>
+    <div class="calc-actions">
+      <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
+      <button type="button" class="btn btn-ghost btn-sm js-share">Copy link</button>
+      <button type="button" class="btn btn-ghost btn-sm js-list">Copy shopping list</button>
+      <button type="button" class="btn btn-ghost btn-sm js-print">Print</button>
+    </div>
+  </form>
+  <section class="panel results" aria-live="polite" aria-label="Results">
+    <div id="block-results"><p class="results-empty">Enter the wall size and the unit size.</p></div>
+  </section>
+</div>
+<!-- content -->
+<h2>How to use the block and brick calculator</h2>
+<ol>
+  <li><strong>Measure the wall length and height.</strong> For a building or planter, add the lengths of all walls.</li>
+  <li><strong>Subtract openings</strong> such as doors and windows in square feet.</li>
+  <li><strong>Choose the unit.</strong> Standard concrete blocks have a nominal 8 × 16 in face whatever their width (4, 6, 8 or 12 in); bricks are much smaller.</li>
+</ol>
+
+<h2>How the count works</h2>
+<p>Masonry units are sold by nominal size, which includes a ⅜ in mortar joint. An 8 × 8 × 16 block is actually 7⅝ × 7⅝ × 15⅝ in, so with mortar it occupies exactly 8 × 16 in of wall.</p>
+<div class="formula">Units per sq ft = 144 ÷ (nominal face length × nominal face height)
+Units           = wall area × units per sq ft × (1 + extra %)
+Mortar bags     = units ÷ units laid per bag</div>
+<div class="table-wrap"><table>
+  <thead><tr><th>Unit</th><th>Nominal face</th><th>Per sq ft</th><th>Per 80 lb bag of mortar mix*</th></tr></thead>
+  <tbody>
+    <tr><td>Concrete block</td><td>8 × 16 in</td><td>1.125</td><td>about 12</td></tr>
+    <tr><td>Half-high block</td><td>4 × 16 in</td><td>2.25</td><td>—</td></tr>
+    <tr><td>Modular brick</td><td>2⅔ × 8 in</td><td>6.75</td><td>about 37</td></tr>
+  </tbody>
+</table></div>
+<p class="table-note">*From the QUIKRETE Mortar Mix data sheet usage chart (60 lb: about 9 blocks or 28 bricks; 40 lb: about 6 blocks or 19 bricks).</p>
+<div class="example">
+  <p>Worked example: a 20 ft garden wall, 4 ft high, in 8 × 8 × 16 block</p>
+  <ol>
+    <li>Area: 80 sq ft × 1.125 = 90 blocks, plus 5% = <strong>95 blocks</strong></li>
+    <li>Mortar: 95 ÷ 12 = 7.9 → <strong>8 bags of 80 lb</strong> mortar mix</li>
+    <li>Courses: 48 in ÷ 8 in = 6 rows</li>
+  </ol>
+</div>
+
+<h2>Things the count doesn't include</h2>
+<ul>
+  <li><strong>Footing:</strong> block walls sit on a concrete footing, usually twice as wide as the wall — size it with the <a href="@concrete-calculator">concrete calculator</a>.</li>
+  <li><strong>Reinforcement and grout:</strong> structural and retaining block walls typically have rebar in cores filled with grout or concrete, per the design.</li>
+  <li><strong>Special units:</strong> corner blocks, bond beams and caps are counted separately if your design uses them.</li>
+</ul>
+<div class="callout"><p><strong>For retaining walls,</strong> interlocking segmental blocks designed for the job are easier and usually more reliable for DIY than mortared concrete block. See the <a href="@retaining-wall-calculator">retaining wall calculator</a>.</p></div>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many concrete blocks per square foot?</summary><p>1.125 standard 8 × 16 in blocks, or 112.5 per 100 sq ft of wall.</p></details>
+  <details><summary>How many bricks per square foot?</summary><p>About 6.75 modular bricks with ⅜ in joints — 675 per 100 sq ft of single-wythe wall.</p></details>
+  <details><summary>How many blocks does a bag of mortar lay?</summary><p>QUIKRETE lists about 12 standard 8 × 8 × 16 blocks per 80 lb bag of Mortar Mix, 9 per 60 lb bag and 6 per 40 lb bag.</p></details>
+</div>
+
+<h2>Sources</h2>
+<ul class="sources">
+  <li>QUIKRETE, <em>Mortar Mix (No. 1102) data sheet</em> — usage chart for block and brick.</li>
+</ul>

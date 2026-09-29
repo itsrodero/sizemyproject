@@ -1,0 +1,105 @@
+---
+type: calculator
+category: interior
+order: 5
+icon: wallpaper
+title: Wallpaper Calculator – How Many Rolls Do I Need?
+description: Work out how many rolls of wallpaper you need for a room or accent wall using the strip method, with pattern repeat and standard US and European roll sizes.
+h1: Wallpaper Calculator
+lead: Enter the wall size, the roll size and the pattern repeat to see how many strips you'll hang and how many rolls to buy — the way installers calculate it.
+card_title: Wallpaper Calculator
+card_desc: Rolls for a room or accent wall, with pattern repeat.
+crumb: Wallpaper Calculator
+updated: 2026-09-30
+script: wallpaper
+related: paint-calculator, drywall-calculator, square-footage-calculator
+---
+<div class="calc">
+  <form class="panel" id="wp-form" novalidate>
+    <h2>Walls</h2>
+    <div class="fields">
+      <div class="field full"><label for="wp-mode">What are you covering?</label><select id="wp-mode" class="select" data-k="mode"><option value="room">A whole room</option><option value="wall">One wall</option></select></div>
+    </div>
+    <div class="fields js-room" style="margin-top:14px">
+      <div class="field"><label for="wp-rl">Room length</label><div class="inp"><input id="wp-rl" data-k="rl" type="text" inputmode="decimal" value="12"><select data-u="rl" aria-label="Length unit"><option>ft</option><option>m</option></select></div></div>
+      <div class="field"><label for="wp-rw">Room width</label><div class="inp"><input id="wp-rw" data-k="rw" type="text" inputmode="decimal" value="10"><select data-u="rw" aria-label="Width unit"><option>ft</option><option>m</option></select></div></div>
+    </div>
+    <div class="fields js-wall" hidden style="margin-top:14px">
+      <div class="field"><label for="wp-ww">Wall width</label><div class="inp"><input id="wp-ww" data-k="ww" type="text" inputmode="decimal" value="12"><select data-u="ww" aria-label="Wall width unit"><option>ft</option><option>m</option></select></div></div>
+    </div>
+    <div class="fields" style="margin-top:14px">
+      <div class="field"><label for="wp-h">Wall height</label><div class="inp"><input id="wp-h" data-k="h" type="text" inputmode="decimal" value="8"><select data-u="h" aria-label="Height unit"><option>ft</option><option>in</option><option>m</option></select></div></div>
+      <div class="field"><label for="wp-open">Width of doors etc. to skip</label><div class="inp"><input id="wp-open" data-k="open" type="text" inputmode="decimal" value="3"><select data-u="open" aria-label="Opening width unit"><option>ft</option><option>m</option></select></div><small>Only full-height openings</small></div>
+    </div>
+    <h2 style="margin-top:20px">Wallpaper</h2>
+    <div class="fields">
+      <div class="field full"><label for="wp-roll">Roll size</label><select id="wp-roll" class="select" data-k="roll">
+        <option value="20.5x33">US double roll, 20.5 in × 33 ft (≈56 sq ft)</option>
+        <option value="27x27">US double roll, 27 in × 27 ft (≈61 sq ft)</option>
+        <option value="20.9x32.8">European roll, 53 cm × 10 m (≈57 sq ft)</option>
+        <option value="custom">Other size…</option></select></div>
+      <div class="field js-custom-roll" hidden><label for="wp-cw">Roll width</label><div class="inp"><input id="wp-cw" data-k="cw" type="text" inputmode="decimal" value="20.5"><span class="affix">in</span></div></div>
+      <div class="field js-custom-roll" hidden><label for="wp-cl">Roll length</label><div class="inp"><input id="wp-cl" data-k="cl" type="text" inputmode="decimal" value="33"><span class="affix">ft</span></div></div>
+      <div class="field"><label for="wp-rep">Pattern repeat</label><div class="inp"><input id="wp-rep" data-k="rep" type="text" inputmode="decimal" value="0"><span class="affix">in</span></div><small>0 for random match</small></div>
+      <div class="field"><label for="wp-extra">Extra</label><div class="inp"><input id="wp-extra" data-k="extra" type="text" inputmode="decimal" value="0"><span class="affix">%</span></div><small>Optional safety margin</small></div>
+      <div class="field full"><label for="wp-price">Price per roll</label><div class="inp"><span class="affix pre">$</span><input id="wp-price" data-k="price" type="text" inputmode="decimal" placeholder="optional"></div></div>
+    </div>
+    <div class="calc-actions">
+      <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
+      <button type="button" class="btn btn-ghost btn-sm js-share">Copy link</button>
+      <button type="button" class="btn btn-ghost btn-sm js-list">Copy result</button>
+      <button type="button" class="btn btn-ghost btn-sm js-print">Print</button>
+    </div>
+  </form>
+  <section class="panel results" aria-live="polite" aria-label="Results">
+    <div id="wp-results"><p class="results-empty">Enter the wall size and the roll size.</p></div>
+  </section>
+</div>
+<!-- content -->
+<h2>How to use the wallpaper calculator</h2>
+<ol>
+  <li><strong>Choose a whole room or one wall</strong> and enter its size and the wall height.</li>
+  <li><strong>Skip full-height openings</strong> like doors and floor-to-ceiling windows by entering their total width. Leave smaller windows in: the offcuts above and below them are rarely usable.</li>
+  <li><strong>Select the roll size</strong> printed on the label and the <strong>pattern repeat</strong> — the vertical distance before the design repeats.</li>
+</ol>
+
+<h2>How wallpaper is calculated: the strip method</h2>
+<p>Dividing the wall area by the roll area underestimates, because the end of every roll is too short for a full strip. Installers count strips instead:</p>
+<div class="formula">Strips         = wall width ÷ roll width                           (round up)
+Strip length   = wall height + pattern repeat + 4 in for trimming
+Strips per roll = roll length ÷ strip length                         (round down)
+Rolls          = strips ÷ strips per roll                             (round up)</div>
+<div class="example">
+  <p>Worked example: a 12 × 10 ft room, 8 ft walls, one door, 20.5 in × 33 ft rolls</p>
+  <ol>
+    <li>Wall width: 44 ft − 3 ft door = 41 ft = 492 in → 492 ÷ 20.5 = <strong>24 strips</strong></li>
+    <li>Strip length with no repeat: 96 + 0 + 4 = 100 in; a 396 in roll gives 3 strips</li>
+    <li>Rolls: 24 ÷ 3 = <strong>8 rolls</strong></li>
+    <li>With a 21 in pattern repeat, each strip is 121 in: still 3 per roll → 8 rolls. With a 36 in repeat, strips are 136 in and only 2 fit per roll → <strong>12 rolls</strong>. A large repeat can add several rolls.</li>
+  </ol>
+</div>
+
+<h2>Roll sizes</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Roll</th><th>Typical size</th><th>Coverage</th></tr></thead>
+  <tbody>
+    <tr><td>US single roll (priced by single, sold in doubles)</td><td>20.5–27 in × 13.5–16.5 ft</td><td>28–35 sq ft</td></tr>
+    <tr><td>US double roll</td><td>20.5–27 in × 27–33 ft</td><td>56–70 sq ft</td></tr>
+    <tr><td>European roll</td><td>53 cm × 10 m (20.9 in × 32.8 ft)</td><td>about 57 sq ft</td></tr>
+  </tbody>
+</table></div>
+<p>In the US, wallpaper is often priced per single roll but only sold in double rolls. Check whether the listing's price and your calculation refer to singles or doubles.</p>
+
+<h2>Pattern repeat and match</h2>
+<ul>
+  <li><strong>Random match:</strong> any strip lines up with any other — least waste. Enter 0.</li>
+  <li><strong>Straight match:</strong> the pattern lines up horizontally across strips; you lose up to one repeat per strip.</li>
+  <li><strong>Drop match:</strong> the pattern shifts half a repeat on alternate strips; plan for the full repeat per strip.</li>
+</ul>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many rolls of wallpaper for a 12 × 12 room?</summary><p>With 8 ft walls, one door and 20.5 in × 33 ft rolls with no repeat: 45 ft of wall width → 27 strips at 3 per roll → 9 double rolls.</p></details>
+  <details><summary>Should I subtract windows?</summary><p>Only large or full-height ones. Pieces above and below average windows are too short to use elsewhere, so they don't save rolls.</p></details>
+  <details><summary>Should I buy an extra roll?</summary><p>For patterned papers, yes — a spare from the same batch is valuable for mistakes and future repairs, and a later batch may not match.</p></details>
+</div>

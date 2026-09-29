@@ -37,8 +37,9 @@ CATEGORIES = {
     'concrete': ('Concrete & masonry', 'Slabs, footings, posts and steps: volume, bags and ready-mix.'),
     'hardscape': ('Patios, walls & paving', 'Pavers, retaining walls and asphalt for patios, paths and driveways.'),
     'landscaping': ('Landscaping & yard', 'Gravel, mulch, topsoil, sand and sod for beds, lawns and paths.'),
-    'structures': ('Decks & fences', 'Deck boards, joists, posts, rails, pickets and fasteners.'),
-    'interior': ('Interior & walls', 'Paint, drywall, flooring and tile for rooms and floors.'),
+    'structures': ('Decks, stairs, fences & roofs', 'Deck boards, stair layout, fence materials and roofing.'),
+    'interior': ('Interior & walls', 'Paint, drywall, flooring, tile and wallpaper for rooms.'),
+    'energy': ('Heating, cooling & insulation', 'Air conditioner sizing and attic insulation.'),
     'measure': ('Measuring', 'Square footage and area for rooms, lots and any project.'),
 }
 
@@ -64,6 +65,12 @@ ICONS = {
     'sheet': '<rect x="5" y="3" width="14" height="18" rx="1"/><path d="M9 7h.01M15 7h.01M9 12h.01M15 12h.01M9 17h.01M15 17h.01"/>',
     'floor': '<path d="M3 21h18M3 16h18M3 11h18"/><path d="M8 21v-5M15 16v-5M10 11V6h8v5"/>',
     'tile': '<rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/>',
+    'stairs': '<path d="M3 21h5v-5h5v-5h5V6h3"/>',
+    'snow': '<path d="M12 2v20M4.9 6.9l14.2 10.2M19.1 6.9 4.9 17.1"/><path d="m9 4 3 2 3-2M9 20l3-2 3 2"/>',
+    'roof': '<path d="M2 12 12 4l10 8"/><path d="M5 10v10h14V10"/>',
+    'layers': '<path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/>',
+    'wallpaper': '<rect x="4" y="3" width="16" height="18" rx="1"/><path d="M4 9h16M4 15h16M10 3v18"/>',
+    'brick': '<rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9.3h18M3 14.7h18M12 4v5.3M7.5 9.3v5.4M16.5 9.3v5.4M12 14.7V20"/>',
     'ruler': '<path d="M3 17 17 3l4 4L7 21z"/><path d="M7 13l2 2M10 10l2 2M13 7l2 2"/>',
 }
 
@@ -224,15 +231,32 @@ def calcs_by_category(pages):
 
 def guide_card(p):
     m = p['meta']
-    return (f'<a class="guide-card" href="{p["url"]}"><span class="guide-card-cat">Guide</span>'
+    label = CATEGORIES[m['category']][0] if m.get('category') in CATEGORIES else 'Guide'
+    return (f'<a class="guide-card" href="{p["url"]}"><span class="guide-card-cat">{esc(label)}</span>'
             f'<span class="guide-card-title">{esc(m.get("card_title", m["h1"]))}</span>'
             f'<span class="guide-card-desc">{esc(m.get("card_desc", m["description"]))}</span>'
             f'<span class="calc-card-cta">Read guide {icon("arrow", "icon icon-sm")}</span></a>')
 
 
-def guides_grid(pages):
+def guides_grid(pages, limit=None):
     gs = guide_pages(pages)
+    if limit:
+        gs = gs[:limit]
     return '<div class="guide-grid">' + ''.join(guide_card(p) for p in gs) + '</div>' if gs else ''
+
+
+def guides_by_category(pages):
+    out = []
+    gs = guide_pages(pages)
+    for cat, (name, _) in CATEGORIES.items():
+        items = [p for p in gs if p['meta'].get('category') == cat]
+        if items:
+            out.append(f'<section class="cat-group" id="guides-{cat}"><h2>{esc(name)}</h2>'
+                       f'<div class="guide-grid">{"".join(guide_card(p) for p in items)}</div></section>')
+    rest = [p for p in gs if p['meta'].get('category') not in CATEGORIES]
+    if rest:
+        out.append(f'<section class="cat-group"><h2>More guides</h2><div class="guide-grid">{"".join(guide_card(p) for p in rest)}</div></section>')
+    return ''.join(out)
 
 
 def sitemap_block(pages):
@@ -347,6 +371,8 @@ def expand_placeholders(body, page, pages):
     body = body.replace('[[calc_grid]]', calc_grid(pages))
     body = re.sub(r'\[\[calc_grid:(\w+)\]\]', lambda m: calc_grid(pages, m.group(1), exclude=page['key']), body)
     body = body.replace('[[guides]]', guides_grid(pages))
+    body = body.replace('[[guides_by_category]]', guides_by_category(pages))
+    body = re.sub(r'\[\[guides:(\d+)\]\]', lambda m: guides_grid(pages, int(m.group(1))), body)
     body = body.replace('[[sitemap]]', sitemap_block(pages))
     body = body.replace('[[email]]', f'<a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a>')
     return body

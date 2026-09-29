@@ -1,0 +1,98 @@
+---
+type: calculator
+category: structures
+order: 3
+icon: stairs
+title: Stair Calculator – Risers, Treads & Stringer Length
+description: Lay out a straight stair: number of risers and treads, exact riser height, total run, stringer length and angle, checked against residential code limits.
+h1: Stair Calculator
+lead: Enter the total height from floor to floor and your preferred riser and tread sizes. You'll get the step count, exact riser height, total run and stringer length — with code checks.
+card_title: Stair Calculator
+card_desc: Risers, treads, total run and stringer length, with code checks.
+crumb: Stair Calculator
+updated: 2026-09-30
+script: stair
+related: deck-calculator, guides/stair-dimensions-code, concrete-calculator
+---
+<div class="calc">
+  <form class="panel" id="stair-form" novalidate>
+    <h2>Stair dimensions</h2>
+    <div class="diagram"><svg viewBox="0 0 320 150" role="img" aria-label="Side view of a stair showing total rise, total run, riser and tread">
+      <path d="M40 130 H80 V110 H110 V90 H140 V70 H170 V50 H200 V30 H280" fill="none" stroke="#9a3412" stroke-width="3"/>
+      <path d="M40 130 L200 30" stroke="#a8a29e" stroke-dasharray="4 4"/>
+      <path d="M290 30 V130" stroke="#44403c"/><text x="238" y="86">Total rise</text>
+      <path d="M40 142 H200" stroke="#44403c"/><text x="92" y="150">Total run</text>
+      <text x="112" y="104">Riser</text><text x="140" y="64">Tread</text>
+    </svg></div>
+    <div class="fields">
+      <div class="field"><label for="st-rise">Total rise (floor to floor)</label><div class="inp"><input id="st-rise" data-k="rise" type="text" inputmode="decimal" value="108"><select data-u="rise" aria-label="Rise unit"><option>in</option><option>ft</option><option>cm</option></select></div><small>Finished floor to finished floor</small></div>
+      <div class="field"><label for="st-sw">Stair width</label><div class="inp"><input id="st-sw" data-k="sw" type="text" inputmode="decimal" value="36"><select data-u="sw" aria-label="Width unit"><option>in</option><option>ft</option><option>cm</option></select></div></div>
+      <div class="field"><label for="st-maxr">Maximum riser height</label><div class="inp"><input id="st-maxr" data-k="maxr" type="text" inputmode="decimal" value="7.5"><span class="affix">in</span></div><small>Code max 7¾ in; 7–7½ is comfortable</small></div>
+      <div class="field"><label for="st-tread">Tread depth (run)</label><div class="inp"><input id="st-tread" data-k="tread" type="text" inputmode="decimal" value="10.5"><span class="affix">in</span></div><small>Code min 10 in, excluding nosing</small></div>
+    </div>
+    <div class="calc-actions">
+      <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
+      <button type="button" class="btn btn-ghost btn-sm js-share">Copy link</button>
+      <button type="button" class="btn btn-ghost btn-sm js-list">Copy result</button>
+      <button type="button" class="btn btn-ghost btn-sm js-print">Print</button>
+    </div>
+  </form>
+  <section class="panel results" aria-live="polite" aria-label="Results">
+    <div id="stair-results"><p class="results-empty">Enter the total rise and your riser and tread sizes.</p></div>
+  </section>
+</div>
+<!-- content -->
+<h2>How to use the stair calculator</h2>
+<ol>
+  <li><strong>Measure the total rise</strong> from the finished floor at the bottom to the finished floor (or deck surface) at the top. Include flooring you haven't installed yet.</li>
+  <li><strong>Set the maximum riser height.</strong> The calculator divides the rise into equal risers no taller than this.</li>
+  <li><strong>Set the tread depth</strong> — the horizontal distance from one riser to the next, not counting any nosing overhang.</li>
+  <li><strong>Read the layout</strong> and the checks against the International Residential Code (IRC).</li>
+</ol>
+
+<h2>How the stair math works</h2>
+<div class="formula">Risers          = total rise ÷ maximum riser height   (round up)
+Riser height    = total rise ÷ risers                  (all risers equal)
+Treads          = risers − 1
+Total run       = treads × tread depth
+Stringer length = √(total rise² + total run²)
+Comfort check   = 2 × riser + tread ≈ 24–25 in</div>
+<div class="example">
+  <p>Worked example: 108 in (9 ft) floor to floor</p>
+  <ol>
+    <li>108 ÷ 7.5 = 14.4 → <strong>15 risers</strong> of 108 ÷ 15 = 7.2 in (about 7 3/16 in)</li>
+    <li>14 treads × 10.5 in = 147 in = <strong>12.25 ft of total run</strong></li>
+    <li>Stringer: √(108² + 147²) = 182.4 in ≈ <strong>15.2 ft</strong> along the pitch line — buy 16 ft boards</li>
+    <li>Comfort: 2 × 7.2 + 10.5 = 24.9 in ✓</li>
+  </ol>
+</div>
+<p>There's always one fewer tread than risers because the top floor itself acts as the last step. Forgetting this is one of the most common layout mistakes.</p>
+
+<h2>Residential code limits (IRC)</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Dimension</th><th>IRC requirement</th></tr></thead>
+  <tbody>
+    <tr><td>Riser height</td><td>7¾ in maximum</td></tr>
+    <tr><td>Tread depth</td><td>10 in minimum (measured nosing to nosing)</td></tr>
+    <tr><td>Variation between risers or treads</td><td>⅜ in maximum within a flight</td></tr>
+    <tr><td>Headroom</td><td>6 ft 8 in minimum</td></tr>
+    <tr><td>Width</td><td>36 in minimum clear width</td></tr>
+  </tbody>
+</table></div>
+<p>Many local codes adopt the IRC with amendments, and commercial stairs follow different rules. Check with your building department — and see our <a href="@guides/stair-dimensions-code">guide to stair dimensions</a> for nosings, handrails and landings.</p>
+
+<h2>Why equal risers matter</h2>
+<p>Your feet learn the rhythm of a stair after two or three steps. A single riser that's taller or shorter than the rest — often the top or bottom one, where flooring was added later — is a classic cause of trips and falls. That's why the code limits the variation to ⅜ inch and why the calculator divides the rise exactly rather than using a round number.</p>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many steps for an 8 ft rise?</summary><p>96 in ÷ 7.5 in = 12.8, so 13 risers of about 7⅜ in, with 12 treads. At 10½ in treads that's a total run of 10.5 ft.</p></details>
+  <details><summary>How long should a stair stringer be?</summary><p>At least the diagonal of the total rise and run, plus extra at the ends for the top connection and bottom cut. The calculator gives the pitch-line length; round up to the next standard board length.</p></details>
+  <details><summary>How many stringers do I need?</summary><p>A common rule is to space stringers no more than about 16 to 18 inches apart, so a 36 in wide stair uses three. Thinner or composite treads may need closer spacing — check the tread manufacturer and your local code.</p></details>
+  <details><summary>What is the most comfortable stair?</summary><p>Stairs where two risers plus one tread add up to about 24 to 25 inches, such as a 7 in riser with an 11 in tread, match a natural stride.</p></details>
+</div>
+
+<h2>Sources</h2>
+<ul class="sources">
+  <li>International Residential Code, Section R311.7 — stairway dimensions.</li>
+</ul>
