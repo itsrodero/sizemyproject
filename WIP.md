@@ -1,9 +1,8 @@
-# SizeMyProject — work in progress (NOT published, no domain yet)
+# SizeMyProject — work in progress (LIVE at sizemyproject.com since 2026-09-30)
 
 Second site of the AdSense business (see niche research, 2026-09-29): free material calculators
-for home & yard projects, English only, US audience. Working name/domain: sizemyproject.com
-(not bought yet — the user will buy a domain; change SITE_URL, SITE_NAME and CONTACT_EMAIL in
-`_tools/build.py` if the name changes).
+for home & yard projects, English only, US audience. Domain sizemyproject.com (Namecheap),
+hosted on GitHub Pages from this public repo.
 
 ## How it works
 - Edit pages in `_src/*.html` (front matter + body); guides go in `_src/guides/`.
@@ -22,8 +21,21 @@ for home & yard projects, English only, US audience. Working name/domain: sizemy
 - Quality: every calculator tested in the browser against its worked examples; tables recomputed;
   Lighthouse 100/100/100/100 on sampled pages; all fields labelled; no horizontal overflow at 375 px
   on any page; 0 broken internal links.
-- Private GitHub repo: github.com/itsrodero/sizemyproject (branch main).
-- Launch steps: see LAUNCH.md.
+- GitHub repo github.com/itsrodero/sizemyproject (branch main), public since 2026-09-30.
+- Launch (2026-09-30), see LAUNCH.md for the checklist:
+  - Domain bought; Namecheap registrant contact verified (2026-09-30).
+  - GitHub Pages from main / root, custom domain via `CNAME`, domain verified for the account
+    (TXT `_github-pages-challenge-itsrodero`).
+  - DNS at Namecheap: 4 A records for `@`, CNAME `www` → itsrodero.github.io, TXT for Google.
+  - Search Console: Domain property `sc-domain:sizemyproject.com` verified (Google account of
+    Chrome authuser 2, the same one as TubeTools).
+
+## Pending launch steps
+- HTTPS: wait for GitHub's certificate, then tick "Enforce HTTPS" (Settings → Pages).
+- Then submit `https://sizemyproject.com/sitemap.xml` and request indexing (≤10 URLs/day):
+  home, /calculators.html, concrete, gravel, mulch, paver, deck, paint, square footage, fence,
+  then roofing, BTU, the other calculators and the guides.
+- Email forwarding `hello@sizemyproject.com` (Namecheap → Domain → Mail Settings).
 
 ## Next (after launch)
 1. More calculators: rebar, board foot/lumber, siding, epoxy, pool volume/chlorine, garden soil for raised beds,

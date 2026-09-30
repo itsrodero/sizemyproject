@@ -1,6 +1,8 @@
 # Launch checklist — SizeMyProject
 
-The site is complete and tested locally. Nothing is public yet. Steps in order:
+Status 2026-09-30: steps 1–4 done and the Search Console property is verified. Still open: Enforce HTTPS
+(waiting for GitHub's certificate), sitemap, indexing requests and email forwarding — see `WIP.md`.
+Steps in order:
 
 ## 1. Buy the domain (user)
 - Preferred: **sizemyproject.com** (free as of 2026-09-29 — re-check at purchase).
