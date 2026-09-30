@@ -1,7 +1,7 @@
 # Launch checklist — SizeMyProject
 
 Status 2026-09-30: steps 1–4 done and the Search Console property is verified. Still open: Enforce HTTPS
-(waiting for GitHub's certificate), sitemap, indexing requests and email forwarding — see `WIP.md`.
+(waiting for GitHub's certificate), sitemap and indexing requests — see `WIP.md`.
 Steps in order:
 
 ## 1. Buy the domain (user)

@@ -27,6 +27,8 @@ hosted on GitHub Pages from this public repo.
   - GitHub Pages from main / root, custom domain via `CNAME`, domain verified for the account
     (TXT `_github-pages-challenge-itsrodero`).
   - DNS at Namecheap: 4 A records for `@`, CNAME `www` → itsrodero.github.io, TXT for Google.
+  - Email: `hello@sizemyproject.com` forwards to the owner's Gmail inbox (Namecheap Redirect Email,
+    Mail Settings = Email Forwarding). WHOIS privacy on; auto-renew on (expires 2027-09-30).
   - Search Console: Domain property `sc-domain:sizemyproject.com` verified (Google account of
     Chrome authuser 2, the same one as TubeTools).
 
@@ -35,7 +37,6 @@ hosted on GitHub Pages from this public repo.
 - Then submit `https://sizemyproject.com/sitemap.xml` and request indexing (≤10 URLs/day):
   home, /calculators.html, concrete, gravel, mulch, paver, deck, paint, square footage, fence,
   then roofing, BTU, the other calculators and the guides.
-- Email forwarding `hello@sizemyproject.com` (Namecheap → Domain → Mail Settings).
 
 ## Next (after launch)
 1. More calculators: rebar, board foot/lumber, siding, epoxy, pool volume/chlorine, garden soil for raised beds,
