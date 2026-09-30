@@ -32,10 +32,13 @@ hosted on GitHub Pages from this public repo.
   - Search Console: Domain property `sc-domain:sizemyproject.com` verified (Google account of
     Chrome authuser 2, the same one as TubeTools).
 
-## Pending launch steps
-- HTTPS: wait for GitHub's certificate, then tick "Enforce HTTPS" (Settings → Pages).
-- Then submit `https://sizemyproject.com/sitemap.xml` and request indexing (≤10 URLs/day):
-  home, /calculators.html, concrete, gravel, mulch, paver, deck, paint, square footage, fence,
+## Launch status
+- HTTPS: certificate issued and "Enforce HTTPS" on (2026-09-30). http and www redirect to https://sizemyproject.com.
+- Sitemap `https://sizemyproject.com/sitemap.xml` (51 URLs) submitted in Search Console on 2026-09-30.
+  It first shows "No se ha podido obtener" until Google's first read — normal for a new property.
+- Indexing requests: none yet. The daily quota is per Google account and was used up by TubeTools
+  on 2026-09-30. Queue (≤10/day, shared with TubeTools):
+  home, /calculators.html, concrete, gravel, mulch, paver, deck, paint, square-footage, fence,
   then roofing, BTU, the other calculators and the guides.
 
 ## Next (after launch)
