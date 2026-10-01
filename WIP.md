@@ -40,10 +40,11 @@ hosted on GitHub Pages from this public repo.
 - HTTPS: certificate issued and "Enforce HTTPS" on (2026-09-30). http and www redirect to https://sizemyproject.com.
 - Sitemap `https://sizemyproject.com/sitemap.xml` (51 URLs) submitted in Search Console on 2026-09-30.
   It first shows "No se ha podido obtener" until Google's first read — normal for a new property.
-- Indexing: the home page was indexed on its own from the sitemap (seen 2026-10-01). No requests
-  sent yet: the daily quota is per Google account and is shared with TubeTools (5 + 5 per day agreed).
-  Queue: /calculators.html, concrete, gravel, mulch, paver, deck, paint, square-footage, fence,
-  then roofing, BTU, the other calculators and the guides.
+- Indexing: the home page and /concrete-calculator.html were indexed on their own from the sitemap
+  (seen 2026-10-01). The daily quota is per Google account and is shared with TubeTools (5 + 5 per
+  day agreed); it behaves like a rolling 24 h window.
+  - Requested 2026-10-01 (~21:00): /calculators.html, gravel, mulch, paver, deck.
+  - Queue: paint, square-footage, fence, roofing, BTU, the other calculators, then the guides.
 
 ## Next (after launch)
 1. More calculators: rebar, board foot/lumber, siding, epoxy, pool volume/chlorine, garden soil for raised beds,
