@@ -35,9 +35,10 @@ Steps in order:
 - Optional: Bing Webmaster Tools → import from Search Console.
 
 ## 6. Later
-- Analytics: if added, it needs a consent banner for EU/UK visitors and a privacy policy update
-  (the policy currently says the site sets no cookies).
+- Analytics: done 2026-10-01 (`GA_ID` in `build.py`, consent mode denied by default in
+  EEA/UK/CH, privacy policy updated). EEA/UK visitors are counted without cookies until a CMP exists.
 - **AdSense only after TubeTools is approved** and this site has been indexed for a while:
   add the site in AdSense, add `ads.txt`, enable Google's CMP (Privacy & messaging),
-  set `ADSENSE_CLIENT` in `build.py`, update the privacy policy (advertising + cookies section).
+  set `ADSENSE_CLIENT` in `build.py` (and load the ads script with the same consent defaults),
+  update the privacy policy (advertising section; the cookies section already covers Analytics).
 - Keep publishing: 1–2 guides or calculators per week (ideas in `WIP.md`).

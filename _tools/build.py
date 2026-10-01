@@ -24,14 +24,22 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = os.path.join(ROOT, '_src')
 
-# The domain isn't registered yet. Change these two lines once it is.
 SITE_URL = 'https://sizemyproject.com'
 SITE_NAME = 'SizeMyProject'
 CONTACT_EMAIL = 'hello@sizemyproject.com'
 AUTHOR_NAME = 'Daniel'
-# Ads and analytics stay off until the site is live and approved.
+# Ads stay off until AdSense approves the site.
 ADSENSE_CLIENT = None
-GA_ID = None
+GA_ID = 'G-QZ5WB2LV6Q'
+
+# EEA + UK + Switzerland: consent is denied by default. Analytics then runs
+# without cookies there until a Google-certified CMP (AdSense > Privacy &
+# messaging) is added and collects consent.
+CONSENT_REGIONS = [
+    'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT',
+    'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO',
+    'GB', 'CH',
+]
 
 CATEGORIES = {
     'concrete': ('Concrete & masonry', 'Slabs, footings, posts and steps: volume, bags and ready-mix.'),
@@ -404,9 +412,21 @@ def head_html(page, title_full, canonical):
         '<meta name="twitter:card" content="summary_large_image">',
     ]
     if GA_ID:
-        lines.append('<script async src="https://www.googletagmanager.com/gtag/js?id=' + GA_ID + '"></script>'
-                     "<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}"
-                     "gtag('js',new Date());gtag('config','" + GA_ID + "');</script>")
+        regions = json.dumps(CONSENT_REGIONS)
+        lines += [
+            '<link rel="dns-prefetch" href="https://www.googletagmanager.com">',
+            '<script>'
+            'window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}'
+            "gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',"
+            f"analytics_storage:'denied',region:{regions},wait_for_update:500}});"
+            "gtag('consent','default',{ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted',"
+            "analytics_storage:'granted'});"
+            "gtag('js',new Date());gtag('config','" + GA_ID + "');"
+            # Analytics loads after the page has rendered so it doesn't compete with the calculator.
+            "addEventListener('load',function(){setTimeout(function(){var s=document.createElement('script');"
+            "s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=" + GA_ID + "';document.head.appendChild(s);},1200);});"
+            '</script>',
+        ]
     if ADSENSE_CLIENT and m.get('ads', 'true') != 'false':
         lines.append(f'<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={ADSENSE_CLIENT}" crossorigin="anonymous"></script>')
     lines.append(f'<style>{CSS}</style>')

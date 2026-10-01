@@ -29,6 +29,10 @@ hosted on GitHub Pages from this public repo.
   - DNS at Namecheap: 4 A records for `@`, CNAME `www` → itsrodero.github.io, TXT for Google.
   - Email: `hello@sizemyproject.com` forwards to the owner's Gmail inbox (Namecheap Redirect Email,
     Mail Settings = Email Forwarding). WHOIS privacy on; auto-renew on (expires 2027-09-30).
+  - Google Analytics (2026-10-01): property "SizeMyProject" (ID 556936348) in the same GA account
+    as TubeTools, web stream measurement ID G-QZ5WB2LV6Q; event retention 14 months; Google
+    signals off. Tag uses consent mode (denied in EEA/UK/CH) and loads after the page; privacy
+    policy describes Analytics and cookies.
   - Search Console: Domain property `sc-domain:sizemyproject.com` verified (Google account of
     Chrome authuser 2, the same one as TubeTools).
 
