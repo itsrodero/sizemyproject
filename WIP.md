@@ -40,9 +40,9 @@ hosted on GitHub Pages from this public repo.
 - HTTPS: certificate issued and "Enforce HTTPS" on (2026-09-30). http and www redirect to https://sizemyproject.com.
 - Sitemap `https://sizemyproject.com/sitemap.xml` (51 URLs) submitted in Search Console on 2026-09-30.
   It first shows "No se ha podido obtener" until Google's first read — normal for a new property.
-- Indexing requests: none yet. The daily quota is per Google account and was used up by TubeTools
-  on 2026-09-30. Queue (≤10/day, shared with TubeTools):
-  home, /calculators.html, concrete, gravel, mulch, paver, deck, paint, square-footage, fence,
+- Indexing: the home page was indexed on its own from the sitemap (seen 2026-10-01). No requests
+  sent yet: the daily quota is per Google account and is shared with TubeTools (5 + 5 per day agreed).
+  Queue: /calculators.html, concrete, gravel, mulch, paver, deck, paint, square-footage, fence,
   then roofing, BTU, the other calculators and the guides.
 
 ## Next (after launch)
@@ -50,4 +50,7 @@ hosted on GitHub Pages from this public repo.
    carpet, grout, mortar for pavers, electrical wire size (careful: safety).
 2. More guides: concrete curing, choosing pavers, retaining wall blocks, how to insulate an attic,
    paint sheen guide, how to install vinyl plank, etc.
-3. After ~1–2 months indexed and TubeTools approved: AdSense (see LAUNCH.md §6).
+3. AdSense (see LAUNCH.md §6) when this site is ready on its own — it does NOT wait for TubeTools
+   (rule changed with the user on 2026-10-01). Ready = most pages indexed in Search Console and some
+   organic visits in Analytics; expected 4–8 weeks after launch. Record here when it is requested and
+   the result (the weekly reminder reads this file).
