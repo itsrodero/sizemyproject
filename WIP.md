@@ -44,7 +44,10 @@ hosted on GitHub Pages from this public repo.
   (seen 2026-10-01). The daily quota is per Google account and is shared with TubeTools (5 + 5 per
   day agreed); it behaves like a rolling 24 h window.
   - Requested 2026-10-01 (~21:00): /calculators.html, gravel, mulch, paver, deck.
-  - Queue: paint, square-footage, fence, roofing, BTU, the other calculators, then the guides.
+  - Requested 2026-10-02 (~21:00): roofing, flooring, drywall, block, asphalt.
+  - Already indexed on their own by 2026-10-02: home, concrete, paint, fence, BTU, tile,
+    retaining wall, topsoil, square footage, sod, sand, stair.
+  - Queue: wallpaper, insulation (check first), then /guides.html and the guides.
 
 ## Next (after launch)
 1. More calculators: rebar, board foot/lumber, siding, epoxy, pool volume/chlorine, garden soil for raised beds,
