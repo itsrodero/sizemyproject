@@ -49,7 +49,12 @@ hosted on GitHub Pages from this public repo.
   - Requested 2026-10-02 (~21:00): roofing, flooring, drywall, block, asphalt.
   - Already indexed on their own by 2026-10-02: home, concrete, paint, fence, BTU, tile,
     retaining wall, topsoil, square footage, sod, sand, stair.
-  - Queue: wallpaper, insulation (check first), then /guides.html and the guides.
+  - Check 2026-10-03: at least 25 of 53 URLs indexed (the 10 requested on 10-01/10-02 not re-checked). Not indexed: /raised-bed-soil-calculator.html and
+    /guides/how-long-does-concrete-take-to-cure.html (new), /wallpaper-calculator.html, /guides.html,
+    guides: how-to-calculate-cubic-yards, how-to-mix-bagged-concrete, how-many-coats-of-paint,
+    paver-patio-base, retaining-wall-planning, roof-pitch-explained, stair-dimensions-code,
+    what-size-air-conditioner, gravel-types, how-to-lay-sod, mulching-mistakes; /about.html
+    (/contact.html and /sitemap-page.html: low priority). The user requests them by hand from 2026-10-03.
 
 ## Next (after launch)
 1. More calculators: rebar, board foot/lumber, siding, epoxy, pool volume/chlorine, garden soil for raised beds,
