@@ -67,6 +67,7 @@ ICONS = {
     'wall': '<path d="M3 20h18M3 15h18M3 10h18"/><path d="M8 20v-5M16 20v-5M12 15v-5M6 10V6h12v4"/>',
     'road': '<path d="M8 3 4 21M16 3l4 18"/><path d="M12 5v2M12 11v2M12 17v2"/>',
     'grass': '<path d="M3 20h18"/><path d="M6 20c0-4 1-7 3-9M11 20c0-5 0-9 1-12M16 20c0-4-1-7-3-9M19 20c0-3 0-5-1-7"/>',
+    'bed': '<rect x="3" y="13" width="18" height="7" rx="1"/><path d="M3 16.5h18"/><path d="M8 13c0-3 1-5 3-6M12 13c0-4 2-6 4-7M16 13c0-2-1-4-3-5"/>',
     'fence': '<path d="M5 21V6l2-3 2 3v15M15 21V6l2-3 2 3v15"/><path d="M3 10h18M3 16h18"/>',
     'deck': '<path d="M3 8h18M3 12h18M3 16h18"/><path d="M5 16v5M19 16v5"/>',
     'roller': '<rect x="3" y="3" width="15" height="6" rx="1.5"/><path d="M18 6h3v5h-9v3"/><rect x="10" y="14" width="4" height="7" rx="1"/>',

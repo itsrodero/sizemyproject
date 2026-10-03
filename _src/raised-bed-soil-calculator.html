@@ -1,0 +1,126 @@
+---
+type: calculator
+category: landscaping
+order: 6
+icon: bed
+title: Raised Bed Soil Calculator – Cubic Feet, Yards & Bags
+description: Work out how much soil you need to fill one or more raised garden beds, in cubic feet, cubic yards and bags, with a breakdown for your soil mix.
+h1: Raised Bed Soil Calculator
+lead: Enter the size of your beds and how deep you'll fill them to see how many cubic feet or yards of soil to buy — and how much topsoil, compost or other ingredients go into the mix.
+card_title: Raised Bed Soil Calculator
+card_desc: Fill garden beds — cubic feet, yards, bags and soil mix.
+crumb: Raised Bed Soil Calculator
+updated: 2026-10-03
+script: raised-bed
+related: topsoil-calculator, mulch-calculator, guides/topsoil-vs-fill-dirt
+---
+<div class="calc">
+  <form class="panel" id="bed-form" novalidate>
+    [[area_block {"L": 8, "W": 4, "D": 6, "A": 32, "heading": "Size of each bed"}]]
+    <h2 style="margin-top:20px">Filling the beds</h2>
+    <div class="fields">
+      <div class="field"><label for="r-depth">Soil depth</label><div class="inp"><input id="r-depth" data-k="depth" type="text" inputmode="decimal" value="12"><select data-u="depth" aria-label="Soil depth unit"><option>in</option><option>ft</option><option>cm</option></select></div><small>Usually 1–2 in below the top of the bed</small></div>
+      <div class="field"><label for="r-n">Number of beds</label><div class="inp"><input id="r-n" data-k="n" type="text" inputmode="numeric" value="1"><span class="affix">beds</span></div></div>
+      <div class="field"><label for="r-fill">Filler at the bottom</label><div class="inp"><input id="r-fill" data-k="fill" type="text" inputmode="decimal" value="0"><select data-u="fill" aria-label="Filler depth unit"><option>in</option><option>ft</option><option>cm</option></select></div><small>Logs, branches or leaves in tall beds</small></div>
+      <div class="field"><label for="r-extra">Extra</label><div class="inp"><input id="r-extra" data-k="extra" type="text" inputmode="decimal" value="10"><span class="affix">%</span></div><small>New soil settles after watering</small></div>
+      <div class="field full"><label for="r-mix">Soil mix</label>
+        <select id="r-mix" class="select" data-k="mix">
+          <option value="60-40" selected>Topsoil and compost, 60 / 40</option>
+          <option value="50-50">Topsoil and compost, 50 / 50</option>
+          <option value="mels">Mel's Mix — compost, peat moss and vermiculite in equal parts</option>
+          <option value="bagged">One bagged raised-bed or garden soil</option>
+        </select></div>
+    </div>
+    <details class="cost-box">
+      <summary>Add a price (optional)</summary>
+      <div class="fields"><div class="field full"><label for="r-price">Price</label><div class="inp"><span class="affix pre">$</span>
+        <input id="r-price" data-k="price" type="text" inputmode="decimal" placeholder="0.00">
+        <select data-u="price" aria-label="Price unit"><option value="bag1">per 1 cu ft bag</option><option value="bag1.5">per 1.5 cu ft bag</option><option value="bag2">per 2 cu ft bag</option><option value="yd">per cubic yard</option></select></div></div></div>
+    </details>
+    <div class="calc-actions">
+      <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
+      <button type="button" class="btn btn-ghost btn-sm js-share">Copy link</button>
+      <button type="button" class="btn btn-ghost btn-sm js-list">Copy shopping list</button>
+      <button type="button" class="btn btn-ghost btn-sm js-print">Print</button>
+    </div>
+  </form>
+  <section class="panel results" aria-live="polite" aria-label="Results">
+    <div id="bed-results"><p class="results-empty">Enter the size of your beds and the soil depth.</p></div>
+  </section>
+</div>
+<!-- content -->
+<h2>How to use the raised bed soil calculator</h2>
+<ol>
+  <li><strong>Measure the inside of one bed</strong> — the space the soil fills, not the outside of the boards. Choose the circle option for round beds and stock tanks.</li>
+  <li><strong>Enter the soil depth.</strong> Most people fill to an inch or two below the top so soil and mulch don't wash over the edge.</li>
+  <li><strong>Add the number of beds</strong> if you're building several of the same size, and any filler you'll put in the bottom of tall beds.</li>
+  <li><strong>Pick a soil mix</strong> to see how much of each ingredient to buy, and compare bags with bulk delivery.</li>
+</ol>
+
+<h2>How to calculate soil for a raised bed</h2>
+<div class="formula">Soil depth (ft)  = (fill depth − filler depth) in inches ÷ 12
+Volume (ft³)     = length × width × soil depth × number of beds
+With extra       = volume × (1 + extra % ÷ 100)
+Cubic yards      = cubic feet ÷ 27
+Bags             = cubic feet ÷ bag size (round up)</div>
+<div class="example">
+  <p>Worked example: one 4 × 8 ft bed filled 12 inches deep</p>
+  <ol>
+    <li>Volume: 4 × 8 × 1 = 32 ft³ (1.19 yd³)</li>
+    <li>Plus 10% for settling: <strong>35.2 cubic feet</strong> (1.30 yd³)</li>
+    <li>That's 24 bags of 1.5 cu ft or 18 bags of 2 cu ft. In a 60 / 40 mix, about 21 ft³ of topsoil and 14 ft³ of compost.</li>
+  </ol>
+</div>
+<div class="example">
+  <p>Worked example: three 4 × 8 ft beds, 18 inches tall, with 6 inches of logs in the bottom</p>
+  <ol>
+    <li>Soil depth: 18 − 6 = 12 inches, so 32 ft³ per bed</li>
+    <li>Three beds plus 10%: 3 × 32 × 1.1 = <strong>105.6 ft³, or 3.91 cubic yards</strong></li>
+    <li>Filling all 18 inches with soil would take 5.87 cubic yards, so the filler saves about 2 yards — and at nearly 4 yards, bulk delivery is far cheaper than 71 bags of 1.5 cu ft.</li>
+  </ol>
+</div>
+
+<h2>How much soil for common raised bed sizes</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Bed size</th><th>6 in deep</th><th>12 in deep</th><th>18 in deep</th><th>12 in deep, cu yd</th></tr></thead>
+  <tbody>
+    <tr><td>4 × 4 ft</td><td>8 cu ft</td><td>16 cu ft</td><td>24 cu ft</td><td>0.59</td></tr>
+    <tr><td>3 × 6 ft</td><td>9 cu ft</td><td>18 cu ft</td><td>27 cu ft</td><td>0.67</td></tr>
+    <tr><td>3 × 8 ft</td><td>12 cu ft</td><td>24 cu ft</td><td>36 cu ft</td><td>0.89</td></tr>
+    <tr><td>4 × 8 ft</td><td>16 cu ft</td><td>32 cu ft</td><td>48 cu ft</td><td>1.19</td></tr>
+    <tr><td>4 × 12 ft</td><td>24 cu ft</td><td>48 cu ft</td><td>72 cu ft</td><td>1.78</td></tr>
+    <tr><td>Round, 6 ft across</td><td>14.1 cu ft</td><td>28.3 cu ft</td><td>42.4 cu ft</td><td>1.05</td></tr>
+  </tbody>
+</table></div>
+<p>Figures are the inside volume without any allowance for settling. One cubic yard is 27 cubic feet — that's 18 bags of 1.5 cu ft or 13½ bags of 2 cu ft.</p>
+
+<h2>What soil mix to use</h2>
+<ul>
+  <li><strong>Topsoil and compost.</strong> A blend of screened topsoil with a generous share of compost — around 60 / 40 or half and half — is the most affordable way to fill large beds. The topsoil gives body and holds water; the compost adds organic matter and nutrients. Many landscape suppliers sell a ready-made "garden mix" along these lines by the yard.</li>
+  <li><strong>Mel's Mix.</strong> The square-foot gardening blend from Mel Bartholomew uses equal volumes of compost, peat moss (or coconut coir) and coarse vermiculite. It stays light and loose, but the peat and vermiculite make it expensive beyond a bed or two.</li>
+  <li><strong>Bagged raised-bed soil.</strong> The easiest choice for one or two small beds. Compare the price per cubic foot with bulk soil before buying more than about a cubic yard's worth.</li>
+</ul>
+<div class="callout"><p><strong>Skip the gravel layer.</strong> Rocks or gravel in the bottom of a bed don't improve drainage. Water doesn't move from fine soil into a coarse layer until the soil above is saturated, so the gravel actually keeps the bottom of the root zone wetter. Fill the whole depth with soil, or with logs and organic filler in very tall beds.</p></div>
+
+<h2>How deep should a raised bed be?</h2>
+<ul>
+  <li><strong>6 inches</strong> works for shallow-rooted crops such as lettuce, spinach and many herbs, as long as the ground underneath is loose enough for roots to go further.</li>
+  <li><strong>10 to 12 inches</strong> suits most vegetables and is the most common depth for garden beds.</li>
+  <li><strong>18 inches or more</strong> helps with deep roots like carrots, parsnips and potatoes, beds on top of pavement or very compacted soil, and gardeners who'd rather not bend down. Use filler in the bottom to keep the soil bill down.</li>
+</ul>
+<p>Expect new soil to sink in the first season as it settles and the organic matter breaks down. The extra allowance covers most of that, and a layer of compost each spring keeps beds topped up.</p>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many bags of soil do I need for a 4 × 8 raised bed?</summary><p>Filled 12 inches deep, a 4 × 8 bed holds 32 cubic feet — 22 bags of 1.5 cu ft or 16 bags of 2 cu ft. Add about 10% if you want enough to allow for settling.</p></details>
+  <details><summary>How much soil for a 4 × 4 raised bed?</summary><p>16 cubic feet at 12 inches deep, or 8 cubic feet at 6 inches — that's 11 or 6 bags of 1.5 cu ft.</p></details>
+  <details><summary>How many cubic yards of soil for a raised bed?</summary><p>Multiply length × width × depth in feet and divide by 27. A 4 × 8 bed 12 inches deep needs about 1.2 cubic yards.</p></details>
+  <details><summary>Is it cheaper to buy soil in bulk or in bags?</summary><p>Once you need more than about a cubic yard, bulk soil from a landscape supplier is usually much cheaper per cubic foot than bags — but check the delivery fee, and make sure you have somewhere to tip the load.</p></details>
+  <details><summary>What can I put in the bottom of a tall raised bed?</summary><p>Untreated logs, branches, leaves and other woody material (an approach known as hügelkultur) take up space and break down slowly over the years. Put the woody material at the bottom and at least 10 to 12 inches of soil on top for planting.</p></details>
+</div>
+
+<h2>Sources</h2>
+<ul class="sources">
+  <li>Mel Bartholomew, <em>All New Square Foot Gardening</em> — the equal-parts compost, peat moss and vermiculite mix.</li>
+  <li>Bag sizes are typical retail sizes; check the volume printed on the products you buy. <a href="@methodology">How we calculate</a>.</li>
+</ul>
