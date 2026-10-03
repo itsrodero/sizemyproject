@@ -47,6 +47,8 @@ hosted on GitHub Pages from this public repo.
   day agreed); it behaves like a rolling 24 h window.
   - Requested 2026-10-01 (~21:00): /calculators.html, gravel, mulch, paver, deck.
   - Requested 2026-10-02 (~21:00): roofing, flooring, drywall, block, asphalt.
+  - Requested 2026-10-03 (~21:05): /raised-bed-soil-calculator.html, /guides/how-long-does-concrete-take-to-cure.html,
+    /wallpaper-calculator.html, /guides.html, /guides/how-to-calculate-cubic-yards.html.
   - Already indexed on their own by 2026-10-02: home, concrete, paint, fence, BTU, tile,
     retaining wall, topsoil, square footage, sod, sand, stair.
   - Check 2026-10-03: at least 25 of 53 URLs indexed (the 10 requested on 10-01/10-02 not re-checked). Not indexed: /raised-bed-soil-calculator.html and
