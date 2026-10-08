@@ -20,6 +20,8 @@ hosted on GitHub Pages from this public repo.
   OG image, logo, touch icon, Organization logo in structured data.
 - v0.3 (2026-10-03): Raised Bed Soil Calculator (beds × depth − filler, soil mixes, bags) and guide
   "How long does concrete take to cure?" — 23 calculators, 21 guides.
+- v0.4 (2026-10-08): Rebar Calculator (two-way slab grid, lap splices, stock-length cutting, weight, ties)
+  and Board Foot Calculator (4 rows, fractions like 5/4, price per bf) — 25 calculators, 21 guides.
 - Quality: every calculator tested in the browser against its worked examples; tables recomputed;
   Lighthouse 100/100/100/100 on sampled pages; all fields labelled; no horizontal overflow at 375 px
   on any page; 0 broken internal links.

@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sizemyproject.com/</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://sizemyproject.com/about.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://sizemyproject.com/asphalt-calculator.html</loc>
@@ -17,12 +17,16 @@
     <lastmod>2026-09-30</lastmod>
   </url>
   <url>
+    <loc>https://sizemyproject.com/board-foot-calculator.html</loc>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
     <loc>https://sizemyproject.com/btu-calculator.html</loc>
     <lastmod>2026-09-30</lastmod>
   </url>
   <url>
     <loc>https://sizemyproject.com/calculators.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://sizemyproject.com/concrete-calculator.html</loc>
@@ -30,7 +34,7 @@
   </url>
   <url>
     <loc>https://sizemyproject.com/contact.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://sizemyproject.com/deck-calculator.html</loc>
@@ -54,7 +58,7 @@
   </url>
   <url>
     <loc>https://sizemyproject.com/guides.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://sizemyproject.com/guides/bagged-concrete-vs-ready-mix.html</loc>
@@ -146,7 +150,7 @@
   </url>
   <url>
     <loc>https://sizemyproject.com/methodology.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://sizemyproject.com/mulch-calculator.html</loc>
@@ -169,6 +173,10 @@
     <lastmod>2026-10-03</lastmod>
   </url>
   <url>
+    <loc>https://sizemyproject.com/rebar-calculator.html</loc>
+    <lastmod>2026-10-08</lastmod>
+  </url>
+  <url>
     <loc>https://sizemyproject.com/retaining-wall-calculator.html</loc>
     <lastmod>2026-09-30</lastmod>
   </url>
@@ -182,7 +190,7 @@
   </url>
   <url>
     <loc>https://sizemyproject.com/sitemap-page.html</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-08</lastmod>
   </url>
   <url>
     <loc>https://sizemyproject.com/sod-calculator.html</loc>

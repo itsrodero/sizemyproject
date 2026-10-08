@@ -1,0 +1,131 @@
+---
+type: calculator
+category: measure
+order: 2
+icon: board
+title: Board Foot Calculator – Lumber Volume & Cost
+description: Calculate board feet for lumber and hardwood: several board sizes at once, thickness in inches or quarters (4/4, 8/4), and the cost per board foot.
+h1: Board Foot Calculator
+lead: Enter the thickness, width, length and quantity of each board to get the total board feet — the unit lumberyards and hardwood dealers use to price wood — and what your order will cost.
+card_title: Board Foot Calculator
+card_desc: Lumber and hardwood in board feet, with cost per board foot.
+crumb: Board Foot Calculator
+updated: 2026-10-08
+script: board-foot
+related: deck-calculator, fence-calculator, stair-calculator
+---
+<div class="calc">
+  <form class="panel" id="bf-form" novalidate>
+    <h2>Boards</h2>
+    <p style="margin:0 0 12px;color:var(--muted);font-size:.9rem">Thickness and width in inches (you can type 5/4 or 1 1/2), length in feet. Leave unused rows empty.</p>
+    <div class="fields">
+      <div class="field"><label for="bf-t1">1 · Thickness</label><div class="inp"><input id="bf-t1" data-k="t1" type="text" inputmode="decimal" value="2"><span class="affix">in</span></div></div>
+      <div class="field"><label for="bf-w1">1 · Width</label><div class="inp"><input id="bf-w1" data-k="w1" type="text" inputmode="decimal" value="6"><span class="affix">in</span></div></div>
+      <div class="field"><label for="bf-l1">1 · Length</label><div class="inp"><input id="bf-l1" data-k="l1" type="text" inputmode="decimal" value="8"><span class="affix">ft</span></div></div>
+      <div class="field"><label for="bf-q1">1 · Quantity</label><div class="inp"><input id="bf-q1" data-k="q1" type="text" inputmode="numeric" value="10"><span class="affix">pcs</span></div></div>
+    </div>
+    <div class="fields" style="margin-top:12px">
+      <div class="field"><label for="bf-t2">2 · Thickness</label><div class="inp"><input id="bf-t2" data-k="t2" type="text" inputmode="decimal"><span class="affix">in</span></div></div>
+      <div class="field"><label for="bf-w2">2 · Width</label><div class="inp"><input id="bf-w2" data-k="w2" type="text" inputmode="decimal"><span class="affix">in</span></div></div>
+      <div class="field"><label for="bf-l2">2 · Length</label><div class="inp"><input id="bf-l2" data-k="l2" type="text" inputmode="decimal"><span class="affix">ft</span></div></div>
+      <div class="field"><label for="bf-q2">2 · Quantity</label><div class="inp"><input id="bf-q2" data-k="q2" type="text" inputmode="numeric"><span class="affix">pcs</span></div></div>
+    </div>
+    <div class="fields" style="margin-top:12px">
+      <div class="field"><label for="bf-t3">3 · Thickness</label><div class="inp"><input id="bf-t3" data-k="t3" type="text" inputmode="decimal"><span class="affix">in</span></div></div>
+      <div class="field"><label for="bf-w3">3 · Width</label><div class="inp"><input id="bf-w3" data-k="w3" type="text" inputmode="decimal"><span class="affix">in</span></div></div>
+      <div class="field"><label for="bf-l3">3 · Length</label><div class="inp"><input id="bf-l3" data-k="l3" type="text" inputmode="decimal"><span class="affix">ft</span></div></div>
+      <div class="field"><label for="bf-q3">3 · Quantity</label><div class="inp"><input id="bf-q3" data-k="q3" type="text" inputmode="numeric"><span class="affix">pcs</span></div></div>
+    </div>
+    <div class="fields" style="margin-top:12px">
+      <div class="field"><label for="bf-t4">4 · Thickness</label><div class="inp"><input id="bf-t4" data-k="t4" type="text" inputmode="decimal"><span class="affix">in</span></div></div>
+      <div class="field"><label for="bf-w4">4 · Width</label><div class="inp"><input id="bf-w4" data-k="w4" type="text" inputmode="decimal"><span class="affix">in</span></div></div>
+      <div class="field"><label for="bf-l4">4 · Length</label><div class="inp"><input id="bf-l4" data-k="l4" type="text" inputmode="decimal"><span class="affix">ft</span></div></div>
+      <div class="field"><label for="bf-q4">4 · Quantity</label><div class="inp"><input id="bf-q4" data-k="q4" type="text" inputmode="numeric"><span class="affix">pcs</span></div></div>
+    </div>
+    <div class="fields" style="margin-top:12px">
+      <div class="field"><label for="bf-waste">Extra</label><div class="inp"><input id="bf-waste" data-k="waste" type="text" inputmode="decimal" value="0"><span class="affix">%</span></div><small>For defects and offcuts, if you're buying to a cut list</small></div>
+    </div>
+    <details class="cost-box">
+      <summary>Add a price (optional)</summary>
+      <div class="fields"><div class="field full"><label for="bf-price">Price per board foot</label><div class="inp"><span class="affix pre">$</span>
+        <input id="bf-price" data-k="price" type="text" inputmode="decimal" placeholder="0.00"></div></div></div>
+    </details>
+    <div class="calc-actions">
+      <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
+      <button type="button" class="btn btn-ghost btn-sm js-share">Copy link</button>
+      <button type="button" class="btn btn-ghost btn-sm js-list">Copy shopping list</button>
+      <button type="button" class="btn btn-ghost btn-sm js-print">Print</button>
+    </div>
+  </form>
+  <section class="panel results" aria-live="polite" aria-label="Results">
+    <div id="bf-results"><p class="results-empty">Enter the size and number of your boards.</p></div>
+  </section>
+</div>
+<!-- content -->
+<h2>What is a board foot?</h2>
+<p>A board foot is a volume of wood equal to a board 1 inch thick, 12 inches wide and 1 foot long — 144 cubic inches. Lumberyards and hardwood dealers price wood by the board foot because it lets them compare boards of any size: a 2-inch-thick board 6 inches wide holds exactly as much wood per foot as a 1-inch board 12 inches wide.</p>
+
+<h2>How to calculate board feet</h2>
+<div class="formula">Board feet = thickness (in) × width (in) × length (ft) ÷ 12
+            = thickness (in) × width (in) × length (in) ÷ 144
+Cost       = board feet × price per board foot</div>
+<div class="example">
+  <p>Worked example: ten 2×6 boards, 8 ft long</p>
+  <ol>
+    <li>One board: 2 × 6 × 8 ÷ 12 = 8 board feet</li>
+    <li>Ten boards: <strong>80 board feet</strong></li>
+  </ol>
+</div>
+<div class="example">
+  <p>Worked example: one 8/4 walnut board, 7 in wide and 6 ft long, at $12 per board foot</p>
+  <ol>
+    <li>8/4 means 8 quarters of an inch, so 2 inches thick</li>
+    <li>2 × 7 × 6 ÷ 12 = <strong>7 board feet</strong>, costing 7 × $12 = <strong>$84</strong></li>
+  </ol>
+</div>
+
+<h2>Board feet for common lumber sizes</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Nominal size</th><th>Per foot of length</th><th>8 ft board</th><th>12 ft board</th></tr></thead>
+  <tbody>
+    <tr><td>1×4</td><td>0.33 bf</td><td>2.67 bf</td><td>4 bf</td></tr>
+    <tr><td>1×6</td><td>0.5 bf</td><td>4 bf</td><td>6 bf</td></tr>
+    <tr><td>1×8</td><td>0.67 bf</td><td>5.33 bf</td><td>8 bf</td></tr>
+    <tr><td>2×4</td><td>0.67 bf</td><td>5.33 bf</td><td>8 bf</td></tr>
+    <tr><td>2×6</td><td>1 bf</td><td>8 bf</td><td>12 bf</td></tr>
+    <tr><td>2×8</td><td>1.33 bf</td><td>10.67 bf</td><td>16 bf</td></tr>
+    <tr><td>2×10</td><td>1.67 bf</td><td>13.33 bf</td><td>20 bf</td></tr>
+    <tr><td>2×12</td><td>2 bf</td><td>16 bf</td><td>24 bf</td></tr>
+    <tr><td>4×4</td><td>1.33 bf</td><td>10.67 bf</td><td>16 bf</td></tr>
+    <tr><td>6×6</td><td>3 bf</td><td>24 bf</td><td>36 bf</td></tr>
+  </tbody>
+</table></div>
+
+<h2>Nominal or actual size?</h2>
+<p>Construction lumber is sold by its nominal size: a 2×4 actually measures about 1½ × 3½ inches after drying and planing. Dimensional softwood lumber is usually priced using the nominal size, so a 2×4 counts as 2 × 4 inches. Hardwood dealers work differently: they measure rough-sawn boards by thickness in quarters of an inch and by their actual width and length.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Hardwood thickness</th><th>Rough thickness</th></tr></thead>
+  <tbody>
+    <tr><td>4/4 ("four quarter")</td><td>1 in</td></tr>
+    <tr><td>5/4</td><td>1¼ in</td></tr>
+    <tr><td>6/4</td><td>1½ in</td></tr>
+    <tr><td>8/4</td><td>2 in</td></tr>
+    <tr><td>12/4</td><td>3 in</td></tr>
+  </tbody>
+</table></div>
+<p>If you're comparing prices between a lumberyard and a hardwood dealer, or buying surfaced boards, ask which measurement the price is based on — it can change the board-foot count noticeably.</p>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many board feet are in a 2×4×8?</summary><p>2 × 4 × 8 ÷ 12 = 5⅓ board feet, using the nominal size.</p></details>
+  <details><summary>Is a board foot the same as a linear foot?</summary><p>No. A linear foot is just length, whatever the size of the board. A board foot is a volume, so a foot of 2×12 is 2 board feet while a foot of 1×4 is a third of a board foot.</p></details>
+  <details><summary>How many board feet in a cubic foot?</summary><p>12. A cubic foot is 1,728 cubic inches, and a board foot is 144 cubic inches.</p></details>
+  <details><summary>What is a board foot in metric?</summary><p>One board foot is about 2.36 liters, or 0.00236 cubic meters. A cubic meter is about 424 board feet.</p></details>
+</div>
+
+<h2>Sources</h2>
+<ul class="sources">
+  <li>American Softwood Lumber Standard (NIST Voluntary Product Standard PS 20) — nominal and actual sizes of softwood lumber.</li>
+  <li>National Hardwood Lumber Association (NHLA) rules — thickness in quarters and board-foot measure for hardwood lumber.</li>
+  <li><a href="@methodology">How we calculate</a>.</li>
+</ul>

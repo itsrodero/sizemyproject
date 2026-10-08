@@ -1,0 +1,120 @@
+---
+type: calculator
+category: concrete
+order: 3
+icon: rebar
+title: Rebar Calculator – Bars, 20 ft Sticks, Laps & Weight
+description: Calculate the rebar grid for a concrete slab: number of bars each way, total length with lap splices, how many 20 ft sticks to buy, weight and ties.
+h1: Rebar Calculator
+lead: Enter the size of your slab, the bar size and spacing to see how many bars you need in each direction, how many stock lengths to buy, and the total length and weight of steel.
+card_title: Rebar Calculator
+card_desc: Rebar grid for slabs — bars, sticks, lap splices and weight.
+crumb: Rebar Calculator
+updated: 2026-10-08
+script: rebar
+related: concrete-calculator, guides/concrete-slab-thickness, guides/how-long-does-concrete-take-to-cure
+---
+<div class="calc">
+  <form class="panel" id="rebar-form" novalidate>
+    <h2>Slab size</h2>
+    <div class="diagram"><svg viewBox="0 0 320 150" role="img" aria-label="Slab seen from above with a grid of rebar inside the edges">
+      <rect x="40" y="18" width="240" height="110" fill="#e7e5e4" stroke="#57534e" stroke-width="2"/>
+      <g stroke="#9a3412" stroke-width="2.5"><path d="M52 30H268M52 50H268M52 70H268M52 90H268M52 110H268"/><path d="M52 30V116M82 30V116M112 30V116M142 30V116M172 30V116M202 30V116M232 30V116M262 30V116"/></g>
+      <text x="138" y="144">Length</text><text x="288" y="76">Width</text><text x="44" y="12">Edge distance</text>
+    </svg></div>
+    <div class="fields">
+      <div class="field"><label for="r-L">Slab length</label><div class="inp"><input id="r-L" data-k="L" type="text" inputmode="decimal" value="24"><select data-u="L" aria-label="Length unit"><option>ft</option><option>in</option><option>m</option></select></div></div>
+      <div class="field"><label for="r-W">Slab width</label><div class="inp"><input id="r-W" data-k="W" type="text" inputmode="decimal" value="20"><select data-u="W" aria-label="Width unit"><option>ft</option><option>in</option><option>m</option></select></div></div>
+    </div>
+    <h2 style="margin-top:20px">Rebar</h2>
+    <div class="fields">
+      <div class="field"><label for="r-size">Bar size</label>
+        <select id="r-size" class="select" data-k="size">
+          <option value="3">#3 (3/8 in)</option>
+          <option value="4" selected>#4 (1/2 in)</option>
+          <option value="5">#5 (5/8 in)</option>
+          <option value="6">#6 (3/4 in)</option>
+        </select></div>
+      <div class="field"><label for="r-sp">Spacing (on center)</label><div class="inp"><input id="r-sp" data-k="sp" type="text" inputmode="decimal" value="18"><span class="affix">in</span></div><small>12–18 in is common for slabs</small></div>
+      <div class="field"><label for="r-edge">Distance from edges</label><div class="inp"><input id="r-edge" data-k="edge" type="text" inputmode="decimal" value="3"><span class="affix">in</span></div><small>Keeps the steel covered by concrete</small></div>
+      <div class="field"><label for="r-stock">Stock length</label><select id="r-stock" class="select" data-k="stock"><option>10</option><option selected>20</option><option>40</option></select><small>feet per bar as sold</small></div>
+      <div class="field"><label for="r-lap">Lap splice</label><div class="inp"><input id="r-lap" data-k="lap" type="text" inputmode="decimal" value="40"><span class="affix">bar diameters</span></div><small>Where bars overlap; follow your plans</small></div>
+    </div>
+    <details class="cost-box">
+      <summary>Add a price (optional)</summary>
+      <div class="fields"><div class="field full"><label for="r-price">Price</label><div class="inp"><span class="affix pre">$</span>
+        <input id="r-price" data-k="price" type="text" inputmode="decimal" placeholder="0.00">
+        <select data-u="price" aria-label="Price unit"><option value="stick">per stock-length bar</option><option value="ft">per foot</option></select></div></div></div>
+    </details>
+    <div class="calc-actions">
+      <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
+      <button type="button" class="btn btn-ghost btn-sm js-share">Copy link</button>
+      <button type="button" class="btn btn-ghost btn-sm js-list">Copy shopping list</button>
+      <button type="button" class="btn btn-ghost btn-sm js-print">Print</button>
+    </div>
+  </form>
+  <section class="panel results" aria-live="polite" aria-label="Results">
+    <div id="rebar-results"><p class="results-empty">Enter the size of the slab and the rebar spacing.</p></div>
+  </section>
+</div>
+<!-- content -->
+<h2>How to use the rebar calculator</h2>
+<ol>
+  <li><strong>Enter the slab's length and width</strong> — the outside dimensions of the forms.</li>
+  <li><strong>Choose the bar size and spacing</strong> from your plans. If there are no plans, #3 or #4 bars at 12 to 18 inches on center are typical for driveways, patios and garage slabs on good ground.</li>
+  <li><strong>Set the distance from the edges</strong> so the bars stay inside the concrete, and the <strong>stock length</strong> your supplier sells.</li>
+  <li><strong>Check the lap splice.</strong> Bars longer than one stock length are spliced by overlapping two bars; the calculator adds that overlap and works out how to cut your sticks.</li>
+</ol>
+
+<h2>How the rebar grid is calculated</h2>
+<div class="formula">Bar run lengths  = slab length − 2 × edge distance   (and the same for the width)
+Bars along length = (width − 2 × edge) ÷ spacing, rounded down, + 1
+Bars along width  = (length − 2 × edge) ÷ spacing, rounded down, + 1
+Lap splice        = lap (bar diameters) × bar diameter
+Weight            = total length × weight per foot</div>
+<div class="example">
+  <p>Worked example: a 24 × 20 ft garage slab with #4 bars at 18 in, 3 in from the edges</p>
+  <ol>
+    <li>Bars running the 24 ft way: (234 in ÷ 18) + 1 = <strong>14 bars of 23.5 ft</strong></li>
+    <li>Bars running the 20 ft way: (282 in ÷ 18 = 15.7 → 15) + 1 = <strong>16 bars of 19.5 ft</strong></li>
+    <li>Each 23.5 ft run is longer than a 20 ft stick, so it needs one splice: 40 × ½ in = 20 in of overlap, making 25.2 ft of bar per run</li>
+    <li>Total: 14 × 25.2 + 16 × 19.5 = <strong>664 ft of #4 bar, about 444 lb</strong></li>
+    <li>Sticks: one per 19.5 ft bar (16), one full stick plus a 5.2 ft piece per 23.5 ft run (14 + 5 sticks cut into three pieces each) = <strong>35 sticks of 20 ft</strong>, with 224 intersections to tie</li>
+  </ol>
+</div>
+
+<h2>Rebar sizes and weights</h2>
+<div class="table-wrap"><table>
+  <thead><tr><th>Bar size</th><th>Diameter</th><th>Weight per foot</th><th>20 ft bar weighs</th><th>40-diameter lap</th></tr></thead>
+  <tbody>
+    <tr><td>#3</td><td>3/8 in (0.375 in)</td><td>0.376 lb</td><td>7.5 lb</td><td>15 in</td></tr>
+    <tr><td>#4</td><td>1/2 in (0.500 in)</td><td>0.668 lb</td><td>13.4 lb</td><td>20 in</td></tr>
+    <tr><td>#5</td><td>5/8 in (0.625 in)</td><td>1.043 lb</td><td>20.9 lb</td><td>25 in</td></tr>
+    <tr><td>#6</td><td>3/4 in (0.750 in)</td><td>1.502 lb</td><td>30.0 lb</td><td>30 in</td></tr>
+  </tbody>
+</table></div>
+<p>The bar number is the diameter in eighths of an inch, so #4 is 4/8 = ½ inch. Weights are the standard nominal values for deformed reinforcing bars.</p>
+
+<h2>Placing rebar in a slab</h2>
+<ul>
+  <li><strong>Keep it off the ground.</strong> Rebar lying on the dirt does nothing. Support the grid on chairs or concrete blocks ("dobies") so it sits in the middle or upper part of the slab, and don't rely on pulling it up during the pour.</li>
+  <li><strong>Keep it covered.</strong> Bars too close to the surface or the edges can rust and crack the concrete. Concrete cast against the ground needs about 3 inches of cover to the earth.</li>
+  <li><strong>Tie the intersections</strong> with tie wire so the grid doesn't shift while concrete is placed — every intersection, or every other one on large slabs.</li>
+  <li><strong>Overlap splices</strong> by the lap length and stagger them so they don't all line up in one place.</li>
+</ul>
+<div class="callout"><p><strong>Rebar or wire mesh?</strong> Both help hold cracks tight; neither stops a slab from cracking. Rebar is stiffer and easier to keep at the right height, which is why many contractors prefer it for driveways. Control joints, a well-compacted base and the right <a href="@guides/concrete-slab-thickness">slab thickness</a> matter just as much.</p></div>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How much rebar do I need for a 10 × 10 slab?</summary><p>With #4 bars at 12 inches and 3 inches from the edges, you need 10 bars of 9.5 ft each way — 20 bars and 190 ft of rebar, about 127 lb. That's 20 sticks of 10 ft, or 10 of 20 ft cut in half.</p></details>
+  <details><summary>What size rebar for a driveway?</summary><p>#3 or #4 bars at 12 to 18 inches on center are common for residential driveways on well-prepared ground. Heavier loads, poor soil or local code may call for more — follow your plans or ask a local contractor.</p></details>
+  <details><summary>How long should rebar overlap?</summary><p>A common rule of thumb is 40 bar diameters — 20 inches for #4 bar — but the required lap depends on the bar size, concrete strength and design. Structural drawings take precedence.</p></details>
+  <details><summary>How much does rebar weigh?</summary><p>#3 weighs 0.376 lb per foot, #4 weighs 0.668 lb and #5 weighs 1.043 lb. A 20 ft stick of #4 is about 13.4 lb.</p></details>
+</div>
+
+<h2>Sources</h2>
+<ul class="sources">
+  <li>ASTM A615 / Concrete Reinforcing Steel Institute (CRSI) — standard bar sizes, diameters and nominal weights.</li>
+  <li>American Concrete Institute (ACI) 318 — concrete cover for reinforcement cast against earth.</li>
+  <li>The calculator gives quantities for planning; it doesn't design reinforcement. <a href="@methodology">How we calculate</a>.</li>
+</ul>
