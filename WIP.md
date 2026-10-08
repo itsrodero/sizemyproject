@@ -49,6 +49,10 @@ hosted on GitHub Pages from this public repo.
   - Requested 2026-10-02 (~21:00): roofing, flooring, drywall, block, asphalt.
   - Requested 2026-10-03 (~21:05): /raised-bed-soil-calculator.html, /guides/how-long-does-concrete-take-to-cure.html,
     /wallpaper-calculator.html, /guides.html, /guides/how-to-calculate-cubic-yards.html.
+  - Check 2026-10-08: about 49 of 53 indexed. Not indexed: /guides/how-long-does-concrete-take-to-cure.html
+    and /guides/how-to-calculate-cubic-yards.html ("crawled – not indexed", crawled 2026-10-03; give it
+    time), /contact.html and /sitemap-page.html (low priority).
+  - Search Console 2026-09-29..10-05: 326 impressions, 0 clicks, average position 64.9.
   - Already indexed on their own by 2026-10-02: home, concrete, paint, fence, BTU, tile,
     retaining wall, topsoil, square footage, sod, sand, stair.
   - Check 2026-10-03: at least 25 of 53 URLs indexed (the 10 requested on 10-01/10-02 not re-checked). Not indexed: /raised-bed-soil-calculator.html and
