@@ -22,6 +22,12 @@ hosted on GitHub Pages from this public repo.
   "How long does concrete take to cure?" — 23 calculators, 21 guides.
 - v0.4 (2026-10-08): Rebar Calculator (two-way slab grid, lap splices, stock-length cutting, weight, ties)
   and Board Foot Calculator (4 rows, fractions like 5/4, price per bf) — 25 calculators, 21 guides.
+- 2026-10-09: internal linking pass — every guide now gets links from its calculators (in-content links +
+  4-item "related" lists with guides; 4 related cards lay out in one row). Expanded "How to calculate cubic
+  yards" (quick-reference table, uneven depth, triangle example, common mistakes) — it was "crawled – not
+  indexed" with 0 internal links. Search Console Pages report (lags a few days): 45 indexed, 3 redirects
+  (http/www, fine), 2 discovered (contact, sitemap page), 6 crawled-not-indexed of which 4 were already
+  indexed on live inspection; still out: cubic-yards guide and concrete-curing guide.
 - Quality: every calculator tested in the browser against its worked examples; tables recomputed;
   Lighthouse 100/100/100/100 on sampled pages; all fields labelled; no horizontal overflow at 375 px
   on any page; 0 broken internal links.

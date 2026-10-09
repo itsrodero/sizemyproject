@@ -191,6 +191,10 @@ code { font-family: var(--mono); font-size: .9em; background: var(--soft); paddi
 .toc ol { margin: 10px 0 2px; padding-left: 20px; font-size: .95rem; }
 .related { padding: 36px 0 12px; }
 .related h2 { margin-top: 0; }
+/* Four related cards: one row on desktop, 2 × 2 on tablets, stacked on phones. */
+.related .related-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 900px) { .related .related-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 559px) { .related .related-4 { grid-template-columns: 1fr; } }
 .sitemap-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px 28px; }
 .sitemap-cols h2 { font-size: 1.1rem; }
 

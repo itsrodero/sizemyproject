@@ -544,7 +544,8 @@ def related_html(page, pages):
         cards.append(calc_card(p) if p['meta']['type'] == 'calculator' else guide_card(p))
     if not cards:
         return ''
-    return f'<section class="related"><div class="container"><h2 data-notoc>Related</h2><div class="calc-grid">{"".join(cards)}</div></div></section>'
+    return (f'<section class="related"><div class="container"><h2 data-notoc>Related</h2>'
+            f'<div class="calc-grid related-{len(cards)}">{"".join(cards)}</div></div></section>')
 
 
 def author_line(page, pages, minutes=None):
