@@ -79,3 +79,15 @@ hosted on GitHub Pages from this public repo.
    (rule changed with the user on 2026-10-01). Ready = most pages indexed in Search Console and some
    organic visits in Analytics; expected 4–8 weeks after launch. Record here when it is requested and
    the result (the weekly reminder reads this file).
+
+## Pinterest (prepared 2026-10-09)
+- 46 vertical pins (1000x1500 JPEG), one per calculator and guide: `assets/img/pins/<name>.jpg`, published on
+  the site so Pinterest can fetch them by URL. Regenerate with `python _tools/pins.py` then
+  `node _tools/pins.mjs` (`--all` to redo every image). Template: `_tools/img/pin.html`.
+- `_tools/pinterest-pins.csv`: Title, Media URL, Pinterest board, Description, Link, Publish date, Keywords
+  (column order reported by Pinterest users for bulk Pin upload — compare with the template in that tool).
+  Scheduled 4 pins/day from 2026-10-12; change FIRST_DAY in pins.py if the account starts later.
+- 7 boards, one per category (names in pins.py BOARDS).
+- Claim the domain: paste the content of Pinterest's `p:domain_verify` tag into PINTEREST_VERIFY in build.py.
+- Pending (user): create the Pinterest business account, claim sizemyproject.com, create the 7 boards.
+

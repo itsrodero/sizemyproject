@@ -31,6 +31,8 @@ AUTHOR_NAME = 'Daniel'
 # Ads stay off until AdSense approves the site.
 ADSENSE_CLIENT = None
 GA_ID = 'G-QZ5WB2LV6Q'
+# Pinterest "claim website" code (the content of its p:domain_verify meta tag); added to the home page.
+PINTEREST_VERIFY = None
 
 # EEA + UK + Switzerland: consent is denied by default. Analytics then runs
 # without cookies there until a Google-certified CMP (AdSense > Privacy &
@@ -414,6 +416,8 @@ def head_html(page, title_full, canonical):
         '<meta property="og:image:height" content="630">',
         '<meta name="twitter:card" content="summary_large_image">',
     ]
+    if PINTEREST_VERIFY and m['type'] == 'home':
+        lines.append(f'<meta name="p:domain_verify" content="{esc(PINTEREST_VERIFY)}">')
     if GA_ID:
         regions = json.dumps(CONSENT_REGIONS)
         lines += [
