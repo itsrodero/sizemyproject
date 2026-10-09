@@ -80,6 +80,9 @@ hosted on GitHub Pages from this public repo.
    organic visits in Analytics; expected 4–8 weeks after launch. Record here when it is requested and
    the result (the weekly reminder reads this file).
 
+- Indexing 2026-10-09: /rebar-calculator.html, /board-foot-calculator.html (~17:40) and the expanded
+  /guides/how-to-calculate-cubic-yards.html (~19:35).
+
 ## Pinterest (prepared 2026-10-09)
 - 46 vertical pins (1000x1500 JPEG), one per calculator and guide: `assets/img/pins/<name>.jpg`, published on
   the site so Pinterest can fetch them by URL. Regenerate with `python _tools/pins.py` then
@@ -89,5 +92,6 @@ hosted on GitHub Pages from this public repo.
   Scheduled 4 pins/day (15:00–23:00 Spain) from 2026-10-10; uploaded 2026-10-09 via Settings > Import content.
 - 7 boards, one per category (names in pins.py BOARDS).
 - Claim the domain: paste the content of Pinterest's `p:domain_verify` tag into PINTEREST_VERIFY in build.py.
-- Account created 2026-10-09 (business, "SizeMyProject", login roderolabs). Claim tag added to the home page.
+- Account created 2026-10-09 (business, "SizeMyProject", pinterest.com/roderolabs); site claimed ("Conectado");
+  profile photo + bio set; 7 boards created; CSV uploaded — 46 pins scheduled (checked 19:30).
 
