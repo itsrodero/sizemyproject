@@ -89,5 +89,5 @@ hosted on GitHub Pages from this public repo.
   Scheduled 4 pins/day from 2026-10-12; change FIRST_DAY in pins.py if the account starts later.
 - 7 boards, one per category (names in pins.py BOARDS).
 - Claim the domain: paste the content of Pinterest's `p:domain_verify` tag into PINTEREST_VERIFY in build.py.
-- Pending (user): create the Pinterest business account, claim sizemyproject.com, create the 7 boards.
+- Account created 2026-10-09 (business, "SizeMyProject", login roderolabs). Claim tag added to the home page.
 

@@ -32,7 +32,7 @@ AUTHOR_NAME = 'Daniel'
 ADSENSE_CLIENT = None
 GA_ID = 'G-QZ5WB2LV6Q'
 # Pinterest "claim website" code (the content of its p:domain_verify meta tag); added to the home page.
-PINTEREST_VERIFY = None
+PINTEREST_VERIFY = 'c4d6495fd37586b1ad3e0fe9aa22699a'
 
 # EEA + UK + Switzerland: consent is denied by default. Analytics then runs
 # without cookies there until a Google-certified CMP (AdSense > Privacy &
