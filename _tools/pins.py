@@ -6,8 +6,9 @@ Pinterest pins for SizeMyProject.
     node _tools/pins.mjs           # renders the missing pin images into assets/img/pins/
 
 One vertical pin (1000x1500) per calculator and guide. pins.json drives the
-renderer; the CSV follows the column order reported to work with Pinterest's
-bulk Pin upload (check it against the template Pinterest offers in that tool).
+renderer; the CSV follows Pinterest's "Bulk upload Pins" help article (Title, Media URL,
+Pinterest board, Thumbnail — empty for images —, Description, Link, Publish date, Keywords).
+Upload it in Pinterest: Settings > Import content > Upload .csv or .txt file.
 """
 import csv
 import datetime
@@ -59,14 +60,24 @@ HOOKS = {
     'square-footage-calculator': 'How do I calculate square footage?',
     'board-foot-calculator': 'How many board feet of lumber?',
 }
+# Strongest topics first when interleaving the schedule.
+PRIORITY = ['concrete', 'landscaping', 'hardscape', 'structures', 'interior', 'measure', 'energy']
 PINS_PER_DAY = 4
-FIRST_DAY = datetime.date(2026, 10, 12)
-TIMES_UTC = ['14:00', '17:00', '20:00', '23:00']  # morning to evening across US time zones
+FIRST_DAY = datetime.date(2026, 10, 10)
+# Account time (Spain): 15:00–23:00 is morning to evening across US time zones.
+TIMES = ['15:00', '18:00', '21:00', '23:00']
 
 
 def clip(text, n):
     text = ' '.join(text.split())
     return text if len(text) <= n else text[:n - 1].rsplit(' ', 1)[0] + '…'
+
+
+def keywords(m, label):
+    words = [m['card_title'].lower()] if m.get('card_title') else []
+    words += [w.strip().lower() for w in label.replace('&', ',').split(',') if w.strip()]
+    words += ['diy', 'home improvement']
+    return ', '.join(dict.fromkeys(words))
 
 
 def main():
@@ -101,14 +112,15 @@ def main():
             'link': B.SITE_URL + p['url'],
             'board': BOARDS[cat],
             'title': clip(title, 100),
-            'description': clip(m['description'] + ' Free, no sign-up, with the math shown — from SizeMyProject.', 500),
+            'description': clip(m['description'] + ' Free and no sign-up — SizeMyProject.', 500),
             'order': int(m.get('order', 99)),
+            'keywords': keywords(m, B.CATEGORIES[cat][0]),
         }
         (calcs if m['type'] == 'calculator' else guides).append(job)
 
     # Publish calculators first, alternating categories so a board never gets a burst.
     def interleave(items):
-        by_cat = {}
+        by_cat = {BOARDS[c]: [] for c in PRIORITY}
         for j in sorted(items, key=lambda j: j['order']):
             by_cat.setdefault(j['board'], []).append(j)
         out = []
@@ -120,16 +132,16 @@ def main():
     jobs = interleave(calcs) + interleave(guides)
     for i, j in enumerate(jobs):
         day = FIRST_DAY + datetime.timedelta(days=i // PINS_PER_DAY)
-        j['publish'] = f'{day.isoformat()}T{TIMES_UTC[i % PINS_PER_DAY]}:00Z'
+        j['publish'] = f'{day.isoformat()}T{TIMES[i % PINS_PER_DAY]}:00'
 
     here = os.path.dirname(os.path.abspath(__file__))
     with open(os.path.join(here, 'pins.json'), 'w', encoding='utf-8', newline='\n') as f:
         json.dump(jobs, f, ensure_ascii=False, indent=1)
     with open(os.path.join(here, 'pinterest-pins.csv'), 'w', encoding='utf-8', newline='') as f:
         w = csv.writer(f)
-        w.writerow(['Title', 'Media URL', 'Pinterest board', 'Description', 'Link', 'Publish date', 'Keywords'])
+        w.writerow(['Title', 'Media URL', 'Pinterest board', 'Thumbnail', 'Description', 'Link', 'Publish date', 'Keywords'])
         for j in jobs:
-            w.writerow([j['title'], B.SITE_URL + '/' + j['out'], j['board'], j['description'], j['link'], j['publish'], ''])
+            w.writerow([j['title'], B.SITE_URL + '/' + j['out'], j['board'], '', j['description'], j['link'], j['publish'], j['keywords']])
     print(f'{len(jobs)} pins ({len(calcs)} calculators, {len(guides)} guides); '
           f'publishing {jobs[0]["publish"][:10]} to {jobs[-1]["publish"][:10]}')
 

@@ -85,8 +85,8 @@ hosted on GitHub Pages from this public repo.
   the site so Pinterest can fetch them by URL. Regenerate with `python _tools/pins.py` then
   `node _tools/pins.mjs` (`--all` to redo every image). Template: `_tools/img/pin.html`.
 - `_tools/pinterest-pins.csv`: Title, Media URL, Pinterest board, Description, Link, Publish date, Keywords
-  (column order reported by Pinterest users for bulk Pin upload — compare with the template in that tool).
-  Scheduled 4 pins/day from 2026-10-12; change FIRST_DAY in pins.py if the account starts later.
+  plus an empty Thumbnail column — the format in Pinterest's "Bulk upload Pins" help article.
+  Scheduled 4 pins/day (15:00–23:00 Spain) from 2026-10-10; uploaded 2026-10-09 via Settings > Import content.
 - 7 boards, one per category (names in pins.py BOARDS).
 - Claim the domain: paste the content of Pinterest's `p:domain_verify` tag into PINTEREST_VERIFY in build.py.
 - Account created 2026-10-09 (business, "SizeMyProject", login roderolabs). Claim tag added to the home page.
