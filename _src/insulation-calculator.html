@@ -3,14 +3,14 @@ type: calculator
 category: energy
 order: 2
 icon: layers
-title: Attic Insulation Calculator – R-Value, Depth & Bags
-description: Find the recommended attic R-value for your climate zone, how many inches of blown-in or batt insulation to add, and how many bags to buy.
+title: Attic Insulation Calculator – R-Value, Batts & Blown-In Bags
+description: Find the attic R-value for your climate zone, how many inches of blown-in or batt insulation to add, which batts to stack, and bags or packages to buy.
 h1: Attic Insulation Calculator
-lead: Choose your climate zone and what's in the attic now to see the R-value to aim for, how deep the new insulation needs to be, and how many bags to buy.
+lead: Choose your climate zone and what's in the attic now to see the R-value to aim for, how deep the new insulation needs to be — blown-in or batts — and how many bags or packages to buy.
 card_title: Insulation Calculator
 card_desc: Attic R-value by climate zone, depth to add and bags.
 crumb: Insulation Calculator
-updated: 2026-09-30
+updated: 2026-10-10
 script: insulation
 related: btu-calculator, guides/blown-in-vs-batt-insulation, square-footage-calculator, drywall-calculator
 ---
@@ -28,7 +28,7 @@ related: btu-calculator, guides/blown-in-vs-batt-insulation, square-footage-calc
       <div class="field js-have"><label for="i-have">Existing R-value</label><div class="inp"><span class="affix pre">R-</span><input id="i-have" data-k="have" type="text" inputmode="decimal" value="0"></div></div>
       <div class="field"><label for="i-mat">Insulation to add</label><select id="i-mat" class="select" data-k="mat"><option value="fiberglass">Blown-in fiberglass</option><option value="cellulose">Blown-in cellulose</option><option value="batts">Fiberglass batts</option></select></div>
       <div class="field"><label for="i-target">Custom target (optional)</label><div class="inp"><span class="affix pre">R-</span><input id="i-target" data-k="target" type="text" inputmode="decimal" placeholder="e.g. 49"></div></div>
-      <div class="field"><label for="i-bag">Bag coverage at that R</label><div class="inp"><input id="i-bag" data-k="bag" type="text" inputmode="decimal" placeholder="from bag chart"><span class="affix">sq ft</span></div></div>
+      <div class="field"><label for="i-bag">Coverage per bag or package</label><div class="inp"><input id="i-bag" data-k="bag" type="text" inputmode="decimal" placeholder="from the label"><span class="affix">sq ft</span></div><small>Printed on the bag or batt package</small></div>
     </div>
     <div class="calc-actions">
       <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>

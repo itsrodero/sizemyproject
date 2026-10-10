@@ -1,4 +1,4 @@
-/* Insulation calculator: target R-value by climate zone, depth needed and bags for attic insulation. */
+/* Insulation calculator: target R-value by climate zone, depth needed, batt layers and bags or packages for attic insulation. */
 (function () {
   'use strict';
   var S = window.SMP;
@@ -14,6 +14,21 @@
     cellulose: { r: 3.5, name: 'Blown-in cellulose', range: '3.2–3.8' },
     batts: { r: 3.3, name: 'Fiberglass batts', range: '2.9–3.8' }
   };
+
+  // Common unfaced fiberglass batt R-values for attics; suggest one or two layers that reach the R to add.
+  var BATTS = [13, 19, 30, 38];
+  function battLayers(add) {
+    var best = null;
+    BATTS.forEach(function (a) {
+      [0].concat(BATTS).forEach(function (b) {
+        if (b > a) return; // each pair once, larger layer first
+        var r = a + b, n = b ? 2 : 1;
+        if (r < add) return;
+        if (!best || n < best.n || (n === best.n && r < best.r)) best = { r: r, n: n, text: b ? 'R-' + a + ' + R-' + b : 'R-' + a };
+      });
+    });
+    return best;
+  }
 
   function compute() {
     var area = S.area(form);
@@ -33,6 +48,8 @@
     var ft3 = area * depth / 12;
     var bagCov = S.val(form, 'bag');
     var bags = bagCov > 0 ? Math.ceil(area / bagCov - 1e-9) : NaN;
+    var isBatt = form.querySelector('[data-k="mat"]').value === 'batts';
+    var layers = isBatt && add > 0 ? battLayers(add) : null;
 
     var some = existing === 'some' && !(custom > 0);
     var rows = '<li><span>' + (some ? 'Recommended to add' : 'Recommended total') + '</span><strong>R-' + S.fmt(target, 0) + (custom > 0 ? ' (your target)' : ' (ENERGY STAR, zone ' + zone + ')') + '</strong></li>' +
@@ -40,16 +57,17 @@
       '<li><span>R-value to add</span><strong>R-' + S.fmt(add, 0) + '</strong></li>' +
       '<li><span>' + S.esc(mat.name) + ' at R-' + mat.r + '/in</span><strong>' + S.fmt(depth, 1) + ' in deep</strong></li>' +
       '<li><span>Volume</span><strong>' + S.fmt(ft3, 0) + ' ft³ (' + S.fmt(ft3 / 27, 1) + ' yd³)</strong></li>' +
-      (isFinite(bags) ? '<li><span>Bags (' + S.fmt(bagCov, 0) + ' sq ft per bag at this R)</span><strong>' + bags + '</strong></li>' : '');
+      (layers ? '<li><span>Batts to add (standard sizes)</span><strong>' + layers.text + (layers.n > 1 ? ' = R-' + layers.r : '') + '</strong></li>' : '') +
+      (isFinite(bags) ? '<li><span>' + (isBatt ? 'Packages' + (layers && layers.n > 1 ? ' per layer' : '') : 'Bags') + ' (' + S.fmt(bagCov, 0) + ' sq ft each)</span><strong>' + bags + '</strong></li>' : '');
 
     out.innerHTML =
       '<div class="result-main"><div class="k">' + (some ? 'Add R-' + S.fmt(add, 0) + ' on top' : 'Add to reach R-' + S.fmt(target, 0)) + '</div><div class="v">' + S.fmt(depth, 1) + '<small>inches</small></div>' +
       '<div class="sub">R-' + S.fmt(add, 0) + ' of ' + S.esc(mat.name.toLowerCase()) + ' over ' + S.fmt(area, 0) + ' sq ft</div></div>' +
       '<ul class="result-rows">' + rows + '</ul>' +
-      '<p class="note">Bag coverage depends on the product and the R-value — use the coverage chart printed on the bag for your target R. Seal air leaks and keep soffit vents clear before adding insulation.</p>';
+      '<p class="note">' + (isBatt ? (layers && layers.n > 1 ? 'Lay the second layer of unfaced batts at right angles to the first, across the joists. ' : 'Use unfaced batts when adding on top of existing insulation. ') : 'Bag coverage depends on the product and the R-value — use the coverage chart printed on the bag for your target R. ') + 'Seal air leaks and keep soffit vents clear before adding insulation.</p>';
 
     return 'Attic insulation: add R-' + S.fmt(add, 0) + ' (' + S.fmt(depth, 1) + ' in of ' + mat.name.toLowerCase() + ') over ' + S.fmt(area, 0) + ' sq ft' +
-      (isFinite(bags) ? '\n- ' + bags + ' bags' : '') + '\n' + location.href;
+      (layers ? '\n- batts: ' + layers.text : '') + (isFinite(bags) ? '\n- ' + bags + (isBatt ? ' packages' : ' bags') : '') + '\n' + location.href;
   }
 
   S.calculator(form, compute);

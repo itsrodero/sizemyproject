@@ -83,6 +83,15 @@ hosted on GitHub Pages from this public repo.
 - Indexing 2026-10-09: /rebar-calculator.html, /board-foot-calculator.html (~17:40) and the expanded
   /guides/how-to-calculate-cubic-yards.html (~19:35).
 
+## Search Console queries (28 days to 2026-10-06) — what to build next
+- Impressions with no matching page yet: "deck mud calculator (square feet)" (19 imp, pos ~55) and
+  "sandbag calculator" (4 imp, pos ~77) → candidates for new calculators.
+- Near page 1: "batt insulation calculator" pos 10.6 → insulation calculator retitled for batts and now
+  suggests standard batt layers (2026-10-10). "roof calculator" pos 30 → roofing page retitled "Roof Calculator".
+- Others: pickets/picketing (fence), retaining wall estimator, paver gravel calculator, tile calculator, BTU queries.
+- Index status 2026-10-10: everything indexed except /guides/how-long-does-concrete-take-to-cure.html
+  (crawled 10-03, not re-crawled yet — re-request), /contact.html and /sitemap-page.html.
+
 ## Pinterest (prepared 2026-10-09)
 - 46 vertical pins (1000x1500 JPEG), one per calculator and guide: `assets/img/pins/<name>.jpg`, published on
   the site so Pinterest can fetch them by URL. Regenerate with `python _tools/pins.py` then
