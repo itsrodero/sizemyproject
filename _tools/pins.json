@@ -416,6 +416,22 @@
   "publish": "2026-10-16T18:00:00"
  },
  {
+  "name": "sandbag-calculator",
+  "out": "assets/img/pins/sandbag-calculator.jpg",
+  "headline": "How many sandbags do I need?",
+  "sub": "Flood walls and doorways — bags, sand and weight.",
+  "label": "Landscaping & yard",
+  "cta": "Free calculator",
+  "icon": "<path d=\"M3 18c3-6 6-9 9-9s6 3 9 9z\"/><path d=\"M8 18h.01M12 15h.01M15 18h.01M11 18h.01\"/>",
+  "link": "https://sizemyproject.com/sandbag-calculator.html",
+  "board": "Landscaping & Garden DIY",
+  "title": "How many sandbags do I need? Free Sandbag Calculator",
+  "description": "Estimate how many sandbags and how much sand you need for a flood barrier or doorway, using the U.S. Army Corps of Engineers sandbag levee guidelines. Free and no sign-up — SizeMyProject.",
+  "order": 7,
+  "keywords": "sandbag calculator, landscaping, yard, diy, home improvement",
+  "publish": "2026-10-16T21:00:00"
+ },
+ {
   "name": "guides-bagged-concrete-vs-ready-mix",
   "out": "assets/img/pins/guides-bagged-concrete-vs-ready-mix.jpg",
   "headline": "Bagged concrete vs. ready-mix: how to decide",
@@ -429,7 +445,7 @@
   "description": "When is bagged concrete cheaper than a ready-mix truck? A simple way to compare total cost, labor and risk for your slab, footings or posts. Free and no sign-up — SizeMyProject.",
   "order": 2,
   "keywords": "concrete, masonry, diy, home improvement",
-  "publish": "2026-10-16T21:00:00"
+  "publish": "2026-10-16T23:00:00"
  },
  {
   "name": "guides-gravel-driveway-guide",
@@ -445,7 +461,7 @@
   "description": "How a gravel driveway is built in layers, how deep each layer should be, which stone to use, and how to work out the tons to order. Free and no sign-up — SizeMyProject.",
   "order": 3,
   "keywords": "landscaping, yard, diy, home improvement",
-  "publish": "2026-10-16T23:00:00"
+  "publish": "2026-10-17T15:00:00"
  },
  {
   "name": "guides-paver-patio-base",
@@ -461,7 +477,7 @@
   "description": "How deep to excavate for a paver patio, how thick the gravel base and sand layer should be, how far to extend the base and how to slope it for drainage. Free and no sign-up — SizeMyProject.",
   "order": 6,
   "keywords": "patios, walls, paving, diy, home improvement",
-  "publish": "2026-10-17T15:00:00"
+  "publish": "2026-10-17T18:00:00"
  },
  {
   "name": "guides-roof-pitch-explained",
@@ -477,7 +493,7 @@
   "description": "What roof pitch means (like 6/12), how to measure it safely, how to convert it to degrees, and how pitch changes the roof area and the shingles you buy. Free and no sign-up — SizeMyProject.",
   "order": 10,
   "keywords": "decks, stairs, fences, roofs, diy, home improvement",
-  "publish": "2026-10-17T18:00:00"
+  "publish": "2026-10-17T21:00:00"
  },
  {
   "name": "guides-measure-room-for-flooring",
@@ -493,7 +509,7 @@
   "description": "How to measure a room for laminate, vinyl plank, hardwood or tile: closets, doorways, odd shapes, layout direction, waste allowance and boxes to buy. Free and no sign-up — SizeMyProject.",
   "order": 17,
   "keywords": "interior, walls, diy, home improvement",
-  "publish": "2026-10-17T21:00:00"
+  "publish": "2026-10-17T23:00:00"
  },
  {
   "name": "guides-how-to-measure-irregular-areas",
@@ -509,7 +525,7 @@
   "description": "A simple, accurate method to measure curved beds, odd-shaped yards and L-shaped patios so you order the right amount of mulch, gravel, sod or pavers. Free and no sign-up — SizeMyProject.",
   "order": 1,
   "keywords": "measuring, diy, home improvement",
-  "publish": "2026-10-17T23:00:00"
+  "publish": "2026-10-18T15:00:00"
  },
  {
   "name": "guides-what-size-air-conditioner",
@@ -525,7 +541,7 @@
   "description": "How to choose the right air conditioner size for a room: the ENERGY STAR BTU chart, adjustments for sun and kitchens, and why oversizing backfires. Free and no sign-up — SizeMyProject.",
   "order": 9,
   "keywords": "heating, cooling, insulation, diy, home improvement",
-  "publish": "2026-10-18T15:00:00"
+  "publish": "2026-10-18T18:00:00"
  },
  {
   "name": "guides-concrete-slab-thickness",
@@ -541,7 +557,7 @@
   "description": "Recommended concrete thickness for patios, walkways, driveways, shed and hot tub pads, plus the base, reinforcement and control joints each one needs. Free and no sign-up — SizeMyProject.",
   "order": 5,
   "keywords": "concrete, masonry, diy, home improvement",
-  "publish": "2026-10-18T18:00:00"
+  "publish": "2026-10-18T21:00:00"
  },
  {
   "name": "guides-mulching-mistakes",
@@ -557,7 +573,7 @@
   "description": "The most common mulching mistakes — volcano mulching, layers that are too deep, fabric under wood mulch — and how to buy the right amount for your beds. Free and no sign-up — SizeMyProject.",
   "order": 7,
   "keywords": "landscaping, yard, diy, home improvement",
-  "publish": "2026-10-18T21:00:00"
+  "publish": "2026-10-18T23:00:00"
  },
  {
   "name": "guides-retaining-wall-planning",
@@ -573,7 +589,7 @@
   "description": "Plan a segmental block retaining wall: height limits and permits, layout, base trench, buried course, drainage stone, drain pipe, backfill and caps. Free and no sign-up — SizeMyProject.",
   "order": 8,
   "keywords": "patios, walls, paving, diy, home improvement",
-  "publish": "2026-10-18T23:00:00"
+  "publish": "2026-10-19T15:00:00"
  },
  {
   "name": "guides-stair-dimensions-code",
@@ -589,7 +605,7 @@
   "description": "Residential stair dimensions under the International Residential Code: riser height, tread depth, nosing, width, headroom, handrails, guards and landings. Free and no sign-up — SizeMyProject.",
   "order": 11,
   "keywords": "decks, stairs, fences, roofs, diy, home improvement",
-  "publish": "2026-10-19T15:00:00"
+  "publish": "2026-10-19T18:00:00"
  },
  {
   "name": "guides-how-many-coats-of-paint",
@@ -605,7 +621,7 @@
   "description": "When one coat of paint is enough, when you need two or three, and when primer saves paint — for new drywall, color changes, stains and gloss. Free and no sign-up — SizeMyProject.",
   "order": 18,
   "keywords": "interior, walls, diy, home improvement",
-  "publish": "2026-10-19T18:00:00"
+  "publish": "2026-10-19T21:00:00"
  },
  {
   "name": "guides-cubic-yards-to-tons",
@@ -621,7 +637,7 @@
   "description": "How to convert cubic yards to tons (and back) for gravel, crushed stone, sand, topsoil, mulch and asphalt, with a conversion chart and worked examples. Free and no sign-up — SizeMyProject.",
   "order": 4,
   "keywords": "measuring, diy, home improvement",
-  "publish": "2026-10-19T21:00:00"
+  "publish": "2026-10-19T23:00:00"
  },
  {
   "name": "guides-blown-in-vs-batt-insulation",
@@ -637,7 +653,7 @@
   "description": "Compare blown-in fiberglass, blown-in cellulose and fiberglass batts for the attic: R-value per inch, coverage, DIY difficulty and best uses. Free and no sign-up — SizeMyProject.",
   "order": 19,
   "keywords": "heating, cooling, insulation, diy, home improvement",
-  "publish": "2026-10-19T23:00:00"
+  "publish": "2026-10-20T15:00:00"
  },
  {
   "name": "guides-how-to-mix-bagged-concrete",
@@ -653,7 +669,7 @@
   "description": "How much water to add to a bag of concrete, how many bags a mixer can handle, and how to mix, place and cure bagged concrete for a strong result. Free and no sign-up — SizeMyProject.",
   "order": 12,
   "keywords": "concrete, masonry, diy, home improvement",
-  "publish": "2026-10-20T15:00:00"
+  "publish": "2026-10-20T18:00:00"
  },
  {
   "name": "guides-gravel-types",
@@ -669,7 +685,7 @@
   "description": "A plain-English guide to common gravel and crushed stone types — #57, #411, crusher run, pea gravel, river rock, decomposed granite — and what each is best for. Free and no sign-up — SizeMyProject.",
   "order": 13,
   "keywords": "landscaping, yard, diy, home improvement",
-  "publish": "2026-10-20T18:00:00"
+  "publish": "2026-10-20T21:00:00"
  },
  {
   "name": "guides-deck-board-spacing",
@@ -685,7 +701,7 @@
   "description": "How much gap to leave between deck boards for pressure-treated, kiln-dried and composite decking, end gaps, joist spacing and why the gaps matter. Free and no sign-up — SizeMyProject.",
   "order": 20,
   "keywords": "decks, stairs, fences, roofs, diy, home improvement",
-  "publish": "2026-10-20T21:00:00"
+  "publish": "2026-10-20T23:00:00"
  },
  {
   "name": "guides-how-to-calculate-cubic-yards",
@@ -701,7 +717,7 @@
   "description": "How to calculate cubic yards for concrete, gravel, mulch or soil: the formula, converting inches and feet, circles and odd shapes, with worked examples. Free and no sign-up — SizeMyProject.",
   "order": 16,
   "keywords": "measuring, diy, home improvement",
-  "publish": "2026-10-20T23:00:00"
+  "publish": "2026-10-21T15:00:00"
  },
  {
   "name": "guides-how-long-does-concrete-take-to-cure",
@@ -717,7 +733,7 @@
   "description": "When you can walk on new concrete, drive on it, remove forms and seal it — plus how to cure it properly and how weather changes the timeline. Free and no sign-up — SizeMyProject.",
   "order": 21,
   "keywords": "concrete, masonry, diy, home improvement",
-  "publish": "2026-10-21T15:00:00"
+  "publish": "2026-10-21T18:00:00"
  },
  {
   "name": "guides-topsoil-vs-fill-dirt",
@@ -733,7 +749,7 @@
   "description": "The difference between fill dirt, topsoil, garden soil and compost, what each is for, how deep to use them and how to avoid paying topsoil prices for fill. Free and no sign-up — SizeMyProject.",
   "order": 14,
   "keywords": "landscaping, yard, diy, home improvement",
-  "publish": "2026-10-21T18:00:00"
+  "publish": "2026-10-21T21:00:00"
  },
  {
   "name": "guides-how-to-lay-sod",
@@ -749,6 +765,6 @@
   "description": "Step-by-step guide to laying sod: measuring and ordering, preparing the soil, laying and staggering pieces, and watering until the new lawn roots. Free and no sign-up — SizeMyProject.",
   "order": 15,
   "keywords": "landscaping, yard, diy, home improvement",
-  "publish": "2026-10-21T21:00:00"
+  "publish": "2026-10-21T23:00:00"
  }
 ]

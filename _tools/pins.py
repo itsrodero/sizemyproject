@@ -62,6 +62,7 @@ HOOKS = {
     'square-footage-calculator': 'How do I calculate square footage?',
     'board-foot-calculator': 'How many board feet of lumber?',
     'deck-mud-calculator': 'How much deck mud for a shower pan?',
+    'sandbag-calculator': 'How many sandbags do I need?',
 }
 # Strongest topics first when interleaving the schedule.
 PRIORITY = ['concrete', 'landscaping', 'hardscape', 'structures', 'interior', 'measure', 'energy']

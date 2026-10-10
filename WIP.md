@@ -30,6 +30,8 @@ hosted on GitHub Pages from this public repo.
   indexed on live inspection; still out: cubic-yards guide and concrete-curing guide.
 - 2026-10-10: Deck Mud Calculator (sloped shower pan / mortar bed; QUIKRETE Floor Mud 0.66 ft³ per 80 lb bag;
   own mix 4–5:1) — built because Search Console showed "deck mud calculator" impressions. 26 calculators.
+- 2026-10-10: Sandbag Calculator (USACE levee figures 600/2,100/4,500/7,800 bags per 100 ft = 4.5h² + 1.5h
+  bags per ft; single row 3 bags/ft up to 1 ft; ~60 bags per yd³) — from "sandbag calculator" impressions. 27 calculators.
 - Quality: every calculator tested in the browser against its worked examples; tables recomputed;
   Lighthouse 100/100/100/100 on sampled pages; all fields labelled; no horizontal overflow at 375 px
   on any page; 0 broken internal links.

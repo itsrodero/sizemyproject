@@ -1,0 +1,105 @@
+---
+type: calculator
+category: landscaping
+order: 7
+icon: sand
+title: Sandbag Calculator – Bags & Sand for a Flood Wall
+description: Estimate how many sandbags and how much sand you need for a flood barrier or doorway, using the U.S. Army Corps of Engineers sandbag levee guidelines.
+h1: Sandbag Calculator
+lead: Enter how long and how high your sandbag barrier needs to be to see how many bags to fill, how much sand to order and roughly how much it all weighs.
+card_title: Sandbag Calculator
+card_desc: Flood walls and doorways — bags, sand and weight.
+crumb: Sandbag Calculator
+updated: 2026-10-10
+script: sandbag
+related: sand-calculator, guides/cubic-yards-to-tons, gravel-calculator, square-footage-calculator
+---
+<div class="calc">
+  <form class="panel" id="bag-form" novalidate>
+    <h2>Barrier</h2>
+    <div class="diagram"><svg viewBox="0 0 320 150" role="img" aria-label="Cross-section of a sandbag levee, three times as wide at the base as it is high">
+      <path d="M20 128 H300" stroke="#57534e" stroke-width="2"/>
+      <g fill="#e7e5e4" stroke="#57534e" stroke-width="1.5">
+        <rect x="70" y="106" width="36" height="20" rx="8"/><rect x="108" y="106" width="36" height="20" rx="8"/><rect x="146" y="106" width="36" height="20" rx="8"/><rect x="184" y="106" width="36" height="20" rx="8"/><rect x="222" y="106" width="36" height="20" rx="8"/>
+        <rect x="89" y="85" width="36" height="20" rx="8"/><rect x="127" y="85" width="36" height="20" rx="8"/><rect x="165" y="85" width="36" height="20" rx="8"/><rect x="203" y="85" width="36" height="20" rx="8"/>
+        <rect x="108" y="64" width="36" height="20" rx="8"/><rect x="146" y="64" width="36" height="20" rx="8"/><rect x="184" y="64" width="36" height="20" rx="8"/>
+      </g>
+      <path d="M272 64 V126" stroke="#44403c"/><text x="278" y="98">Height</text>
+      <path d="M70 140 H258" stroke="#44403c"/><text x="122" y="150">Base ≈ 3 × height</text>
+      <path d="M20 70 H60" stroke="#0369a1" stroke-width="3"/><text x="18" y="60">Water</text>
+    </svg></div>
+    <div class="fields">
+      <div class="field"><label for="s-L">Length of the barrier</label><div class="inp"><input id="s-L" data-k="L" type="text" inputmode="decimal" value="50"><select data-u="L" aria-label="Length unit"><option>ft</option><option>m</option><option>in</option></select></div></div>
+      <div class="field"><label for="s-H">Height of the barrier</label><div class="inp"><input id="s-H" data-k="H" type="text" inputmode="decimal" value="2"><select data-u="H" aria-label="Height unit"><option>ft</option><option>in</option><option>m</option><option>cm</option></select></div><small>Plan 1 ft above the expected water level</small></div>
+      <div class="field"><label for="s-type">Type</label>
+        <select id="s-type" class="select" data-k="type">
+          <option value="pyramid" selected>Levee (pyramid, base 3 × height)</option>
+          <option value="single">Single row (low walls and doorways, up to 1 ft)</option>
+        </select></div>
+      <div class="field"><label for="s-perYd">Bags per cubic yard of sand</label><div class="inp"><input id="s-perYd" data-k="perYd" type="text" inputmode="decimal" value="60"><span class="affix">bags</span></div><small>About 60 for half- to two-thirds-full bags</small></div>
+    </div>
+    <div class="calc-actions">
+      <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
+      <button type="button" class="btn btn-ghost btn-sm js-share">Copy link</button>
+      <button type="button" class="btn btn-ghost btn-sm js-list">Copy shopping list</button>
+      <button type="button" class="btn btn-ghost btn-sm js-print">Print</button>
+    </div>
+  </form>
+  <section class="panel results" aria-live="polite" aria-label="Results">
+    <div id="bag-results"><p class="results-empty">Enter the length and height of the barrier.</p></div>
+  </section>
+</div>
+<!-- content -->
+<h2>How to use the sandbag calculator</h2>
+<ol>
+  <li><strong>Measure the length</strong> of the barrier along the ground — around a building, across a driveway, or the width of a doorway.</li>
+  <li><strong>Choose the height:</strong> the expected water level plus about a foot of extra height, as emergency management offices commonly recommend.</li>
+  <li><strong>Pick the type.</strong> Anything taller than a foot should be a levee (pyramid) with a base about three times as wide as it is high. A single row works only for low barriers such as a doorway.</li>
+</ol>
+
+<h2>How many sandbags per 100 feet</h2>
+<p>The U.S. Army Corps of Engineers publishes these planning figures for a sandbag levee built as a pyramid with a base three times its height:</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Height</th><th>Bags per 100 ft of levee</th><th>Sand, approx.</th></tr></thead>
+  <tbody>
+    <tr><td>1 ft</td><td>600</td><td>10 yd³</td></tr>
+    <tr><td>2 ft</td><td>2,100</td><td>35 yd³</td></tr>
+    <tr><td>3 ft</td><td>4,500</td><td>75 yd³</td></tr>
+    <tr><td>4 ft</td><td>7,800</td><td>130 yd³</td></tr>
+    <tr><td>1 ft, single row</td><td>300</td><td>5 yd³</td></tr>
+  </tbody>
+</table></div>
+<p>The calculator scales these figures to your length and to heights in between: they follow bags per foot = 4.5 × height² + 1.5 × height, with the height in feet. Sand assumes about 60 filled bags per cubic yard.</p>
+<div class="example">
+  <p>Worked example: a barrier 50 ft long and 2 ft high</p>
+  <ol>
+    <li>Bags per foot: 4.5 × 2² + 1.5 × 2 = 21</li>
+    <li>50 ft × 21 = <strong>1,050 sandbags</strong></li>
+    <li>Sand: 1,050 ÷ 60 ≈ <strong>17.5 cubic yards</strong> — about 24 tons of dry sand</li>
+  </ol>
+</div>
+
+<h2>Filling and placing sandbags</h2>
+<ul>
+  <li><strong>Fill bags one-half to two-thirds full</strong> — about 35 to 40 lb. Overfilled bags don't bed against each other and leave gaps that let water through.</li>
+  <li><strong>Use the right size bag.</strong> The most common sandbags are about 14 × 26 inches.</li>
+  <li><strong>Lay bags lengthwise along the flow</strong>, fold the open end under, and overlap each bag about half over the one beneath. Tamp each bag into place.</li>
+  <li><strong>Stagger the joints</strong> between courses, like bricks.</li>
+  <li><strong>For doorways,</strong> lay plastic sheeting under and on the water side of a low wall of bags, and keep it short — sandbags slow water down but don't make a watertight seal.</li>
+</ul>
+<div class="callout"><p><strong>Plan ahead:</strong> sandbag barriers take far longer to build than most people expect. Many towns hand out sand and empty bags before a forecast flood — check with your local emergency management office, and follow evacuation orders over any barrier.</p></div>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many sandbags do I need for a doorway?</summary><p>For a 3 ft doorway and a 1 ft high single-row wall, about 9 bags (3 bags per foot), with plastic sheeting under and in front of them.</p></details>
+  <details><summary>How many sandbags are in a ton of sand?</summary><p>Roughly 45 bags filled half to two-thirds full, at about 1.35 tons per cubic yard of dry sand and 60 bags per cubic yard.</p></details>
+  <details><summary>How much does a filled sandbag weigh?</summary><p>About 35 to 40 lb when filled half to two-thirds full with sand — heavier if the sand is wet.</p></details>
+  <details><summary>How high can a sandbag wall be?</summary><p>Single rows are for low barriers. Taller barriers need a levee with a base about three times the height; for anything over a few feet, follow the guidance of your local emergency managers.</p></details>
+</div>
+
+<h2>Sources</h2>
+<ul class="sources">
+  <li>U.S. Army Corps of Engineers, <em>Sandbagging Techniques</em> pamphlet — bags per 100 ft of levee by height, a base about 3 × the height, filling and placing bags.</li>
+  <li>Conservation authority and county emergency management sandbag guides — about 60 filled bags per cubic yard of sand, 35–40 lb per bag, 1 ft of extra height above the expected crest.</li>
+  <li><a href="@methodology">How we calculate</a>.</li>
+</ul>
