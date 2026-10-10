@@ -28,6 +28,8 @@ hosted on GitHub Pages from this public repo.
   indexed" with 0 internal links. Search Console Pages report (lags a few days): 45 indexed, 3 redirects
   (http/www, fine), 2 discovered (contact, sitemap page), 6 crawled-not-indexed of which 4 were already
   indexed on live inspection; still out: cubic-yards guide and concrete-curing guide.
+- 2026-10-10: Deck Mud Calculator (sloped shower pan / mortar bed; QUIKRETE Floor Mud 0.66 ft³ per 80 lb bag;
+  own mix 4–5:1) — built because Search Console showed "deck mud calculator" impressions. 26 calculators.
 - Quality: every calculator tested in the browser against its worked examples; tables recomputed;
   Lighthouse 100/100/100/100 on sampled pages; all fields labelled; no horizontal overflow at 375 px
   on any page; 0 broken internal links.

@@ -1,0 +1,114 @@
+---
+type: calculator
+category: interior
+order: 6
+icon: tile
+title: Deck Mud Calculator – Shower Pan & Mortar Bed Bags
+description: Calculate deck mud (dry-pack mortar) for a sloped shower pan or tile mortar bed: thickness at the wall, cubic feet, 80 lb bags, or sand and cement to mix.
+h1: Deck Mud Calculator
+lead: Enter the size of the shower floor, the distance from the drain to the farthest wall and the slope to see how thick the mortar bed gets, how much deck mud you need, and how many bags to buy.
+card_title: Deck Mud Calculator
+card_desc: Sloped shower pans and mortar beds — cubic feet and bags.
+crumb: Deck Mud Calculator
+updated: 2026-10-10
+script: deck-mud
+related: tile-calculator, guides/measure-room-for-flooring, concrete-calculator, square-footage-calculator
+---
+<div class="calc">
+  <form class="panel" id="mud-form" novalidate>
+    <h2>Shower floor</h2>
+    <div class="diagram"><svg viewBox="0 0 320 150" role="img" aria-label="Cross-section of a sloped mortar bed, thinner at the drain and thicker at the wall">
+      <path d="M30 118 H290" stroke="#57534e" stroke-width="2"/>
+      <path d="M30 118 V82 L160 104 L290 82 V118 Z" fill="#e7e5e4" stroke="#57534e" stroke-width="2"/>
+      <rect x="152" y="104" width="16" height="14" fill="#9a3412"/>
+      <path d="M160 132 H290" stroke="#44403c"/><text x="176" y="146">Drain to wall</text>
+      <text x="168" y="98">At drain</text><text x="232" y="76">At wall</text>
+    </svg></div>
+    <div class="fields">
+      <div class="field"><label for="m-L">Length</label><div class="inp"><input id="m-L" data-k="L" type="text" inputmode="decimal" value="5"><select data-u="L" aria-label="Length unit"><option>ft</option><option>in</option><option>m</option></select></div></div>
+      <div class="field"><label for="m-W">Width</label><div class="inp"><input id="m-W" data-k="W" type="text" inputmode="decimal" value="3"><select data-u="W" aria-label="Width unit"><option>ft</option><option>in</option><option>m</option></select></div></div>
+      <div class="field"><label for="m-d">Drain to farthest wall</label><div class="inp"><input id="m-d" data-k="d" type="text" inputmode="decimal" value="2.5"><select data-u="d" aria-label="Distance unit"><option>ft</option><option>in</option><option>m</option></select></div><small>Half the length for a center drain</small></div>
+    </div>
+    <h2 style="margin-top:20px">Mortar bed</h2>
+    <div class="fields">
+      <div class="field"><label for="m-t0">Thickness at the drain</label><div class="inp"><input id="m-t0" data-k="t0" type="text" inputmode="decimal" value="1"><span class="affix">in</span></div><small>At least ¾ in; follow your drain and membrane</small></div>
+      <div class="field"><label for="m-slope">Slope</label><div class="inp"><input id="m-slope" data-k="slope" type="text" inputmode="decimal" value="0.25"><span class="affix">in per ft</span></div><small>¼ in per foot is standard</small></div>
+      <div class="field"><label for="m-extra">Extra</label><div class="inp"><input id="m-extra" data-k="extra" type="text" inputmode="decimal" value="10"><span class="affix">%</span></div><small>Uneven subfloor and waste</small></div>
+      <div class="field"><label for="m-mix">Mix</label>
+        <select id="m-mix" class="select" data-k="mix">
+          <option value="bag" selected>Premixed floor mud, 80 lb bags</option>
+          <option value="5">Mix your own, 5 parts sand : 1 cement</option>
+          <option value="4">Mix your own, 4 parts sand : 1 cement</option>
+        </select></div>
+    </div>
+    <div class="calc-actions">
+      <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
+      <button type="button" class="btn btn-ghost btn-sm js-share">Copy link</button>
+      <button type="button" class="btn btn-ghost btn-sm js-list">Copy shopping list</button>
+      <button type="button" class="btn btn-ghost btn-sm js-print">Print</button>
+    </div>
+  </form>
+  <section class="panel results" aria-live="polite" aria-label="Results">
+    <div id="mud-results"><p class="results-empty">Enter the size of the shower floor.</p></div>
+  </section>
+</div>
+<!-- content -->
+<h2>What deck mud is</h2>
+<p>Deck mud — also called dry-pack mortar or floor mud — is a stiff mix of sand and Portland cement with just enough water to hold together when you squeeze it. Because it hardly slumps, you can pack and screed it into a sloped shower pan or a flat mortar bed that tile is set on. You can buy it premixed in bags or mix your own from sand and cement.</p>
+
+<h2>How to use the deck mud calculator</h2>
+<ol>
+  <li><strong>Measure the shower floor</strong> inside the curb and walls.</li>
+  <li><strong>Measure from the drain to the farthest wall.</strong> With a drain in the middle that's about half the length; with a linear drain along one wall, it's the full width of the floor.</li>
+  <li><strong>Set the thickness at the drain and the slope.</strong> The bed gets thicker as it rises toward the walls — usually ¼ inch for every foot.</li>
+  <li><strong>Choose premixed bags or your own mix</strong> to see what to buy.</li>
+</ol>
+
+<h2>How the volume is calculated</h2>
+<div class="formula">Rise to the wall    = slope (in/ft) × drain-to-wall distance (ft)
+Thickness at wall   = thickness at drain + rise
+Average thickness   ≈ thickness at drain + rise ÷ 2
+Volume (ft³)        = floor area (ft²) × average thickness (in) ÷ 12
+80 lb bags          = volume ÷ 0.66 ft³ per bag (round up)</div>
+<div class="example">
+  <p>Worked example: a 5 × 3 ft shower with a center drain, 1 inch thick at the drain</p>
+  <ol>
+    <li>Drain to farthest wall: 2.5 ft, so the rise is 2.5 × ¼ = ⅝ in and the bed is 1⅝ in thick at the wall</li>
+    <li>Average thickness: 1 + ⅝ ÷ 2 ≈ 1.31 in</li>
+    <li>Volume: 15 sq ft × 1.31 ÷ 12 = 1.64 ft³, plus 10% = <strong>1.8 cubic feet</strong></li>
+    <li>That's <strong>3 bags of 80 lb</strong> premixed floor mud (1.8 ÷ 0.66 = 2.7)</li>
+  </ol>
+</div>
+
+<h2>Mixing your own deck mud</h2>
+<p>A common home-made mix is 4 to 5 parts sand to 1 part Portland cement by volume, with just enough water that a handful holds its shape when squeezed but crumbles when you tap it. Because the cement fills the gaps between the sand grains, plan on roughly as much sand as the finished volume of mud, plus the cement on top of that.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>For 1 cubic foot of deck mud</th><th>5 : 1 mix</th><th>4 : 1 mix</th></tr></thead>
+  <tbody>
+    <tr><td>Sand</td><td>about 1 ft³ (≈ 2 bags of 50 lb)</td><td>about 1 ft³ (≈ 2 bags of 50 lb)</td></tr>
+    <tr><td>Portland cement</td><td>about 0.2 ft³ (≈ 19 lb)</td><td>about 0.25 ft³ (≈ 24 lb)</td></tr>
+  </tbody>
+</table></div>
+<p>These are planning figures — sand bulks up when damp and bags vary — so buy a little extra sand.</p>
+
+<h2>Shower pan tips</h2>
+<ul>
+  <li><strong>Mind the slope.</strong> Too flat and water ponds; much steeper than ¼ inch per foot and the floor feels uneven underfoot.</li>
+  <li><strong>Check the drain height first.</strong> It sets the thickness at the drain, and the wall thickness follows from the slope. A drain set too high is the usual reason for an unexpectedly thick, heavy bed.</li>
+  <li><strong>Follow your waterproofing system.</strong> Traditional pans use a sloped pre-bed under a liner and a second mortar bed on top; surface-applied membranes go over a single sloped bed. Each system specifies its own minimum thicknesses.</li>
+  <li><strong>Keep it dry-ish.</strong> Too much water makes the mud shrink and crack as it cures.</li>
+</ul>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many bags of deck mud for a shower pan?</summary><p>A typical 5 × 3 ft shower, 1 inch thick at the drain with a ¼ inch per foot slope, needs about 1.8 cubic feet — 3 bags of 80 lb premixed floor mud.</p></details>
+  <details><summary>How much does an 80 lb bag of floor mud cover?</summary><p>QUIKRETE's data sheet gives about 0.66 cubic feet per 80 lb bag — roughly 8 square feet at 1 inch thick, or 5 square feet at 1½ inches.</p></details>
+  <details><summary>What is the ratio for deck mud?</summary><p>Most installers use 4 or 5 parts sand to 1 part Portland cement by volume, mixed stiff.</p></details>
+  <details><summary>How thick should a shower mortar bed be?</summary><p>Usually at least ¾ inch at the drain, getting thicker toward the walls with the slope. Your drain and waterproofing system's instructions set the exact minimum.</p></details>
+</div>
+
+<h2>Sources</h2>
+<ul class="sources">
+  <li>QUIKRETE, <em>Floor Mud (No. 1548-81) product data sheet</em> — yield of about 0.66 ft³ per 80 lb bag.</li>
+  <li>Slope and thickness are common industry practice; check your local plumbing code and the drain and membrane manufacturer's instructions. <a href="@methodology">How we calculate</a>.</li>
+</ul>
