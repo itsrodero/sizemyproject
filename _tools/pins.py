@@ -3,6 +3,8 @@
 Pinterest pins for SizeMyProject.
 
     python _tools/pins.py          # writes _tools/pins.json and _tools/pinterest-pins.csv
+    python _tools/pins.py --only deck-mud-calculator --start 2026-10-22
+                                   # also writes _tools/pinterest-pins-new.csv with just those pins
     node _tools/pins.mjs           # renders the missing pin images into assets/img/pins/
 
 One vertical pin (1000x1500) per calculator and guide. pins.json drives the
@@ -59,6 +61,7 @@ HOOKS = {
     'insulation-calculator': 'How much attic insulation do I need?',
     'square-footage-calculator': 'How do I calculate square footage?',
     'board-foot-calculator': 'How many board feet of lumber?',
+    'deck-mud-calculator': 'How much deck mud for a shower pan?',
 }
 # Strongest topics first when interleaving the schedule.
 PRIORITY = ['concrete', 'landscaping', 'hardscape', 'structures', 'interior', 'measure', 'energy']
@@ -142,6 +145,19 @@ def main():
         w.writerow(['Title', 'Media URL', 'Pinterest board', 'Thumbnail', 'Description', 'Link', 'Publish date', 'Keywords'])
         for j in jobs:
             w.writerow([j['title'], B.SITE_URL + '/' + j['out'], j['board'], '', j['description'], j['link'], j['publish'], j['keywords']])
+    # Pins added after the first upload: a separate CSV with only them, scheduled from --start.
+    if '--only' in sys.argv:
+        names = sys.argv[sys.argv.index('--only') + 1].split(',')
+        start = datetime.date.fromisoformat(sys.argv[sys.argv.index('--start') + 1])
+        new = [j for j in jobs if j['name'] in names]
+        with open(os.path.join(here, 'pinterest-pins-new.csv'), 'w', encoding='utf-8', newline='') as f:
+            w = csv.writer(f)
+            w.writerow(['Title', 'Media URL', 'Pinterest board', 'Thumbnail', 'Description', 'Link', 'Publish date', 'Keywords'])
+            for i, j in enumerate(new):
+                day = start + datetime.timedelta(days=i // PINS_PER_DAY)
+                w.writerow([j['title'], B.SITE_URL + '/' + j['out'], j['board'], '', j['description'], j['link'],
+                            f'{day.isoformat()}T{TIMES[i % PINS_PER_DAY]}:00', j['keywords']])
+        print(f'pinterest-pins-new.csv: {len(new)} pin(s) from {start}')
     print(f'{len(jobs)} pins ({len(calcs)} calculators, {len(guides)} guides); '
           f'publishing {jobs[0]["publish"][:10]} to {jobs[-1]["publish"][:10]}')
 
