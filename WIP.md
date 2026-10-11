@@ -95,6 +95,19 @@ hosted on GitHub Pages from this public repo.
 - Others: pickets/picketing (fence), retaining wall estimator, paver gravel calculator, tile calculator, BTU queries.
 - Index status 2026-10-10: everything indexed except /guides/how-long-does-concrete-take-to-cure.html
   (crawled 10-03, not re-crawled yet — re-request), /contact.html and /sitemap-page.html.
+- Indexing 2026-10-11 (~11:45): /deck-mud-calculator.html, /sandbag-calculator.html and a re-request of
+  /guides/how-long-does-concrete-take-to-cure.html.
+- Search Console last 7 days (data to ~10-08): 561 impressions, 0 clicks, average position 65.1 (up from
+  326 impressions in the first week). Top queries: roof calculator (21, pos 31), deck mud calculator square
+  feet (15, pos 54), batt insulation calculator (12, pos 10.6), retaining wall estimator (12, pos 78),
+  paver gravel calculator (11, pos 88), gravel calculator for pavers (7, pos 90), BTU / AC size queries.
+
+## Bing / IndexNow (2026-10-11)
+- Neither site showed up on Bing (site: search) on 2026-10-11. Bing also feeds ChatGPT search, Copilot,
+  DuckDuckGo and Yahoo, so it matters more than its own market share.
+- IndexNow key file `13b4b2688fc6f3ae179306c80db0e37a.txt` at the site root. After publishing new or changed
+  pages run `python _tools/indexnow.py page.html other.html` (no arguments = every URL in the sitemap).
+- Still to do: Bing Webmaster Tools (the user signs in; then import the site from Search Console).
 
 ## Pinterest (prepared 2026-10-09)
 - 46 vertical pins (1000x1500 JPEG), one per calculator and guide: `assets/img/pins/<name>.jpg`, published on
