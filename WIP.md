@@ -107,7 +107,8 @@ hosted on GitHub Pages from this public repo.
   DuckDuckGo and Yahoo, so it matters more than its own market share.
 - IndexNow key file `13b4b2688fc6f3ae179306c80db0e37a.txt` at the site root. After publishing new or changed
   pages run `python _tools/indexnow.py page.html other.html` (no arguments = every URL in the sitemap).
-- Still to do: Bing Webmaster Tools (the user signs in; then import the site from Search Console).
+- Bing Webmaster Tools (2026-10-11): site imported from Search Console (Google account of authuser 2);
+  sitemap https://sizemyproject.com/sitemap.xml submitted (Processing). Check indexing and queries there in a week.
 
 ## Pinterest (prepared 2026-10-09)
 - 46 vertical pins (1000x1500 JPEG), one per calculator and guide: `assets/img/pins/<name>.jpg`, published on
