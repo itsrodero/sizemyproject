@@ -47,7 +47,7 @@ CATEGORIES = {
     'concrete': ('Concrete & masonry', 'Slabs, footings, posts and steps: volume, bags and ready-mix.'),
     'hardscape': ('Patios, walls & paving', 'Pavers, retaining walls and asphalt for patios, paths and driveways.'),
     'landscaping': ('Landscaping & yard', 'Gravel, mulch, topsoil, sand and sod for beds, lawns and paths.'),
-    'structures': ('Decks, stairs, fences & roofs', 'Deck boards, stair layout, fence materials and roofing.'),
+    'structures': ('Decks, fences, roofs & siding', 'Deck boards, stair layout, fence materials, roofing and siding.'),
     'interior': ('Interior & walls', 'Paint, drywall, flooring, tile and wallpaper for rooms.'),
     'energy': ('Heating, cooling & insulation', 'Air conditioner sizing and attic insulation.'),
     'measure': ('Measuring', 'Square footage and area for rooms, lots and any project.'),
@@ -84,6 +84,7 @@ ICONS = {
     'layers': '<path d="m12 3 9 5-9 5-9-5z"/><path d="m3 13 9 5 9-5"/>',
     'wallpaper': '<rect x="4" y="3" width="16" height="18" rx="1"/><path d="M4 9h16M4 15h16M10 3v18"/>',
     'brick': '<rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9.3h18M3 14.7h18M12 4v5.3M7.5 9.3v5.4M16.5 9.3v5.4M12 14.7V20"/>',
+    'siding': '<path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/><path d="M5 13h14M5 16h14M5 19h14"/>',
     'ruler': '<path d="M3 17 17 3l4 4L7 21z"/><path d="M7 13l2 2M10 10l2 2M13 7l2 2"/>',
 }
 

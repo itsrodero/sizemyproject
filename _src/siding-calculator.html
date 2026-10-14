@@ -1,0 +1,114 @@
+---
+type: calculator
+category: structures
+order: 7
+icon: siding
+title: Siding Calculator – Squares, Vinyl Boxes & Lap Boards
+description: Estimate siding for a house: wall and gable area minus doors and windows, squares with waste, vinyl boxes or lap boards, plus J-channel and trim.
+h1: Siding Calculator
+lead: Enter the size of the house, the gable ends and the doors and windows to see how many squares of siding to order — as vinyl boxes or lap boards — plus starter strip, J-channel, trim and corner posts.
+card_title: Siding Calculator
+card_desc: Squares, vinyl boxes or lap boards, and trim.
+crumb: Siding Calculator
+updated: 2026-10-14
+script: siding
+related: roofing-calculator, paint-calculator, square-footage-calculator, guides/roof-pitch-explained
+---
+<div class="calc">
+  <form class="panel" id="sd-form" novalidate>
+    <h2>House</h2>
+    <div class="diagram"><svg viewBox="0 0 320 150" role="img" aria-label="House with two long walls, two gable ends and lap siding">
+      <path d="M60 138 V70 L130 30 L200 70 V138 Z" fill="#e7e5e4" stroke="#57534e" stroke-width="2"/>
+      <path d="M200 70 L280 70 L280 138 L200 138" fill="#f5f5f4" stroke="#57534e" stroke-width="2"/>
+      <path d="M60 82 H200 M60 94 H200 M60 106 H200 M60 118 H200 M60 130 H200 M200 82 H280 M200 94 H280 M200 106 H280 M200 118 H280 M200 130 H280" stroke="#a8a29e"/>
+      <rect x="112" y="104" width="22" height="34" fill="#fff" stroke="#57534e"/><rect x="220" y="84" width="22" height="18" fill="#fff" stroke="#57534e"/>
+      <text x="102" y="58">Gable</text><text x="208" y="62">Wall</text><text x="128" y="148">Width</text><text x="225" y="148">Length</text>
+    </svg></div>
+    <div class="fields">
+      <div class="field"><label for="sd-L">House length</label><div class="inp"><input id="sd-L" data-k="L" type="text" inputmode="decimal" value="40"><select data-u="L" aria-label="Length unit"><option>ft</option><option>m</option></select></div></div>
+      <div class="field"><label for="sd-W">House width</label><div class="inp"><input id="sd-W" data-k="W" type="text" inputmode="decimal" value="30"><select data-u="W" aria-label="Width unit"><option>ft</option><option>m</option></select></div><small>The gable-end side</small></div>
+      <div class="field"><label for="sd-H">Wall height</label><div class="inp"><input id="sd-H" data-k="H" type="text" inputmode="decimal" value="9"><select data-u="H" aria-label="Height unit"><option>ft</option><option>m</option></select></div><small>Ground or foundation to eaves</small></div>
+      <div class="field"><label for="sd-gables">Gable ends to side</label><select id="sd-gables" class="select" data-k="gables"><option value="0">None (hip roof)</option><option value="1">1</option><option value="2" selected>2</option></select></div>
+      <div class="field"><label for="sd-pitch">Roof pitch</label><div class="inp"><input id="sd-pitch" data-k="pitch" type="text" inputmode="decimal" value="6"><span class="affix">in 12</span></div><small>6 means 6/12</small></div>
+      <div class="field"><label for="sd-waste">Waste</label><div class="inp"><input id="sd-waste" data-k="waste" type="text" inputmode="decimal" value="10"><span class="affix">%</span></div><small>10% typical, 15% for many corners</small></div>
+    </div>
+    <h2 style="margin-top:20px">Openings</h2>
+    <div class="fields">
+      <div class="field"><label for="sd-doors">Doors</label><div class="inp"><input id="sd-doors" data-k="doors" type="text" inputmode="numeric" value="2"></div><small>About 3 × 7 ft each</small></div>
+      <div class="field"><label for="sd-windows">Windows</label><div class="inp"><input id="sd-windows" data-k="windows" type="text" inputmode="numeric" value="12"></div><small>About 3 × 5 ft each</small></div>
+      <div class="field"><label for="sd-garage">Garage doors</label><div class="inp"><input id="sd-garage" data-k="garage" type="text" inputmode="numeric" value="1"></div><small>16 × 7 ft each</small></div>
+    </div>
+    <h2 style="margin-top:20px">Siding</h2>
+    <div class="fields">
+      <div class="field"><label for="sd-type">Type</label><select id="sd-type" class="select" data-k="type"><option value="vinyl" selected>Vinyl (sold by the square)</option><option value="lap">Lap boards (fiber cement, wood, engineered)</option></select></div>
+      <div class="field" data-lap hidden><label for="sd-exp">Exposure (reveal)</label><div class="inp"><input id="sd-exp" data-k="exposure" type="text" inputmode="decimal" value="7"><span class="affix">in</span></div><small>7 in for 8¼ in fiber cement</small></div>
+      <div class="field" data-lap hidden><label for="sd-blen">Board length</label><div class="inp"><input id="sd-blen" data-k="blen" type="text" inputmode="decimal" value="12"><span class="affix">ft</span></div></div>
+    </div>
+    <div class="calc-actions">
+      <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
+      <button type="button" class="btn btn-ghost btn-sm js-share">Copy link</button>
+      <button type="button" class="btn btn-ghost btn-sm js-list">Copy shopping list</button>
+      <button type="button" class="btn btn-ghost btn-sm js-print">Print</button>
+    </div>
+  </form>
+  <section class="panel results" aria-live="polite" aria-label="Results">
+    <div id="sd-results"><p class="results-empty">Enter the length, width and wall height of the house.</p></div>
+  </section>
+</div>
+<!-- content -->
+<h2>How to use the siding calculator</h2>
+<ol>
+  <li><strong>Measure the footprint and wall height.</strong> Length and width of the house, and the height of the walls from where the siding starts to the eaves.</li>
+  <li><strong>Count the gable ends</strong> — the triangles under a gable roof — and enter the roof pitch. A hip roof has none.</li>
+  <li><strong>Count the openings.</strong> The calculator subtracts typical sizes for doors, windows and garage doors.</li>
+  <li><strong>Pick the siding type</strong> to see squares and vinyl boxes, or the number of lap boards for your exposure and board length.</li>
+</ol>
+
+<h2>How siding is calculated</h2>
+<p>Siding is sold by the <strong>square</strong>: 100 square feet of wall. Work out the wall area, add the gable triangles, subtract the openings, then add waste for cuts and overlaps.</p>
+<div class="formula">Walls          = 2 × (length + width) × wall height
+Each gable     = width × (width ÷ 2 × pitch ÷ 12) ÷ 2
+Net area       = walls + gables − doors × 21 − windows × 15 − garage doors × 112
+Squares        = net area × (1 + waste %) ÷ 100
+Lap boards     = net area × (1 + waste %) ÷ (board length × exposure ÷ 12)</div>
+<div class="example">
+  <p>Worked example: a 40 × 30 ft house with 9 ft walls, two 6/12 gables, 2 doors, 12 windows and a garage door</p>
+  <ol>
+    <li>Walls: 2 × (40 + 30) × 9 = 1,260 sq ft. Gables: 30 × (15 × 6 ÷ 12) ÷ 2 = 112.5 sq ft each, 225 sq ft for both.</li>
+    <li>Openings: 2 × 21 + 12 × 15 + 112 = 334 sq ft, so the net area is <strong>1,151 sq ft</strong>.</li>
+    <li>With 10% waste: 1,266 sq ft = 12.7 squares → order <strong>13 squares</strong> of vinyl (about 7 boxes of 2 squares).</li>
+    <li>In fiber cement lap boards with a 7-inch exposure, each 12 ft board covers 7 sq ft: 1,266 ÷ 7 = <strong>181 boards</strong>.</li>
+  </ol>
+</div>
+
+<h2>Trim and accessories</h2>
+<p>The siding itself is only part of the order. The calculator also estimates the lineal feet of the main accessories, in the 12½ ft lengths vinyl trim usually comes in:</p>
+<ul>
+  <li><strong>Starter strip</strong> along the bottom of every wall, except across doors and garage doors.</li>
+  <li><strong>J-channel</strong> around windows (all four sides) and doors (top and sides), and along the sloped rakes of the gables.</li>
+  <li><strong>Finish or undersill trim</strong> under the eaves, where the top course is cut.</li>
+  <li><strong>Outside corner posts</strong> on the four corners, usually 10 ft long — taller walls need two per corner.</li>
+</ul>
+<p>Inside corners, window head flashing, soffit and fascia aren't included. Count them separately if your house has them.</p>
+
+<h2>Vinyl vs lap siding: buying tips</h2>
+<ul>
+  <li><strong>Vinyl</strong> is priced and packed by the square. Most cartons hold about 2 squares, but check the label: the coverage depends on the profile (for example double 4-inch or double 5-inch).</li>
+  <li><strong>Fiber cement and engineered wood lap</strong> is sold by the board. Coverage depends on the exposure — the part that shows once boards overlap — not the full board width. An 8¼-inch fiber cement plank is usually installed with a 7-inch exposure.</li>
+  <li><strong>Waste:</strong> 10% suits a simple rectangle; houses with many corners, dormers or bays need 15% or more.</li>
+  <li><strong>Buy it all at once.</strong> Colors and textures can vary between production runs.</li>
+</ul>
+
+<h2>Frequently asked questions</h2>
+<div class="faq">
+  <details><summary>How many squares of siding do I need for a 2,000 sq ft house?</summary><p>The floor area doesn't tell you directly — siding depends on the wall area. A two-story 2,000 sq ft house often has 2,000 to 3,000 sq ft of wall, or 20 to 30 squares before openings and waste. Measure the walls to be sure.</p></details>
+  <details><summary>How many square feet are in a square of siding?</summary><p>100 square feet.</p></details>
+  <details><summary>How much does a box of vinyl siding cover?</summary><p>Usually about 2 squares (200 sq ft), but it depends on the profile, so check the carton.</p></details>
+  <details><summary>Should I subtract windows and doors?</summary><p>Yes for large openings like garage doors and patio doors. Many installers don't subtract small windows, which leaves extra for waste — the calculator subtracts them and adds the waste percentage instead.</p></details>
+</div>
+
+<h2>Sources</h2>
+<ul class="sources">
+  <li>Industry convention of selling siding by the square (100 sq ft); fiber cement plank exposure from manufacturer installation guides (for example 7 in for 8¼ in lap planks).</li>
+  <li>Gable area from triangle geometry and the roof pitch; see <a href="@guides/roof-pitch-explained">roof pitch explained</a>. <a href="@methodology">How we calculate</a>.</li>
+</ul>

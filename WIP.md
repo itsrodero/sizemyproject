@@ -87,6 +87,13 @@ hosted on GitHub Pages from this public repo.
 - Indexing 2026-10-09: /rebar-calculator.html, /board-foot-calculator.html (~17:40) and the expanded
   /guides/how-to-calculate-cubic-yards.html (~19:35).
 
+- 2026-10-14: Siding Calculator (walls + gables − openings, squares, vinyl boxes or lap boards by exposure, starter,
+  J-channel, finish trim, corner posts) — 28 calculators. "structures" category renamed "Decks, fences, roofs & siding".
+  Slab thickness guide retitled "How Thick Should Concrete Be? Slabs, Sidewalks, Driveways & Pads" with sidewalk and
+  garage rows/FAQs (queries "concrete slab thickness", "how thick concrete for sidewalk" at pos ~87).
+- Search Console 28 days to ~10-13: 883 impressions, 0 clicks, average position 62.9. Pages report (data 10-09):
+  52 indexed, 6 not (3 redirects, 2 crawled, 1 discovered).
+
 ## Search Console queries (28 days to 2026-10-06) — what to build next
 - Impressions with no matching page yet: "deck mud calculator (square feet)" (19 imp, pos ~55) and
   "sandbag calculator" (4 imp, pos ~77) → candidates for new calculators.
