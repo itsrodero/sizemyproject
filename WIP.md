@@ -94,6 +94,15 @@ hosted on GitHub Pages from this public repo.
 - Search Console 28 days to ~10-13: 883 impressions, 0 clicks, average position 62.9. Pages report (data 10-09):
   52 indexed, 6 not (3 redirects, 2 crawled, 1 discovered).
 
+- 2026-10-19: Roof Calculator reinforced (GSC: "roof calculator" pos ~29.5, "roofing calculator" ~49).
+  - H1 and card renamed to "Roof Calculator"; more pitches (11, 14, 16, 18/12).
+  - "Other roof sections" sq ft field.
+  - Materials list: starter bundles (eaves + rakes), ice barrier rolls (1 or 2 courses), nails (~320 per square, 7,200 per box)
+    and decking sheets.
+  - Quote check: price per square and per sq ft.
+  - New sections: materials coverage table and "checking a roofing quote"; 3 new FAQs.
+  - Worked example 40×28 at 6/12 still gives 42 bundles.
+
 ## Search Console queries (28 days to 2026-10-06) — what to build next
 - Impressions with no matching page yet: "deck mud calculator (square feet)" (19 imp, pos ~55) and
   "sandbag calculator" (4 imp, pos ~77) → candidates for new calculators.

@@ -1,4 +1,5 @@
-/* Roofing calculator: roof area from footprint and pitch, squares, shingle bundles, underlayment, ridge cap and drip edge. */
+/* Roof calculator: roof area from footprint and pitch (plus other sections), squares, shingle bundles and the materials list:
+   starter, ridge cap, underlayment, ice barrier, drip edge, nails, decking — and a quote's price per square. */
 (function () {
   'use strict';
   var S = window.SMP;
@@ -15,7 +16,9 @@
     }
     var style = form.querySelector('[data-k="style"]').value;
     var factor = Math.sqrt(1 + Math.pow(pitch / 12, 2));
-    var area = L * W * factor;
+    var extra = S.val(form, 'extra');
+    extra = isFinite(extra) && extra > 0 ? extra : 0;   // other sections, already measured on the slope
+    var area = L * W * factor + extra;
     var waste = S.val(form, 'waste');
     waste = isFinite(waste) && waste >= 0 ? waste : 0;
     var squares = area / 100;
@@ -40,15 +43,27 @@
     var roll = S.val(form, 'roll');
     var rolls = roll > 0 ? Math.ceil(area * 1.10 / roll - 1e-9) : NaN;   // +10% for laps
     var drip = eaves + rakes;
+    var starterLf = S.val(form, 'starter') || 105;
+    var starterBundles = Math.ceil((eaves + rakes) / starterLf - 1e-9);   // eaves and rakes
+    var ice = +form.querySelector('[data-k="ice"]').value || 0;           // 3-ft courses along the eaves
+    var iceRolls = ice ? Math.ceil(eaves * ice / 66 - 1e-9) : 0;           // ~2 squares per roll: 3 ft x ~66 ft
+    var orderSq = squares * (1 + waste / 100);
+    var nails = Math.round(orderSq * 320 / 10) * 10;                      // 4 nails per shingle
+    var sheets = Math.ceil(area * 1.10 / 32 - 1e-9);                       // 4x8 sheets + 10% if the deck is replaced
+    var quote = S.val(form, 'quote');
 
     var rows = '<li><span>Pitch factor (' + S.fmt(pitch, 1) + '/12)</span><strong>× ' + S.fmt(factor, 3) + '</strong></li>' +
       '<li><span>Roof surface area</span><strong>' + S.fmt(area, 0) + ' sq ft = ' + S.fmt(squares, 2) + ' squares</strong></li>' +
-      '<li><span>Starter strip (eaves)</span><strong>' + S.fmt(eaves, 0) + ' ft</strong></li>' +
+      '<li><span>Starter strip (eaves + rakes)</span><strong>' + S.fmt(eaves + rakes, 0) + ' ft · ' + starterBundles + ' bundles</strong></li>' +
       '<li><span>Ridge' + (style === 'hip' ? ' + hips' : '') + ' cap</span><strong>' + S.fmt(ridge, 0) + ' ft · ' + ridgeBundles + ' bundles</strong></li>' +
       (isFinite(rolls) ? '<li><span>Underlayment rolls (' + S.fmt(roll, 0) + ' sq ft, +10% laps)</span><strong>' + rolls + '</strong></li>' : '') +
-      '<li><span>Drip edge (10 ft pieces)</span><strong>' + S.fmt(drip, 0) + ' ft · ' + Math.ceil(drip / 10 - 1e-9) + ' pieces</strong></li>';
+      (ice ? '<li><span>Ice barrier (' + ice + ' course' + (ice > 1 ? 's' : '') + ' at the eaves)</span><strong>' + iceRolls + ' rolls</strong></li>' : '') +
+      '<li><span>Drip edge (10 ft pieces)</span><strong>' + S.fmt(drip, 0) + ' ft · ' + Math.ceil(drip / 10 - 1e-9) + ' pieces</strong></li>' +
+      '<li><span>Roofing nails (4 per shingle)</span><strong>≈ ' + S.fmt(nails, 0) + ' · ' + Math.ceil(nails / 7200 - 1e-9) + ' box' + (nails > 7200 ? 'es' : '') + ' of 7,200</strong></li>' +
+      '<li><span>Decking, only if replacing it</span><strong>' + sheets + ' sheets 4×8</strong></li>';
     var price = S.val(form, 'price');
     if (price > 0) rows += '<li><span>Shingles cost</span><strong>' + S.money(price * bundles) + '</strong></li>';
+    if (quote > 0) rows += '<li><span>Quote per square · per sq ft</span><strong>' + S.money(quote / squares) + ' · ' + S.money(quote / area) + '</strong></li>';
 
     var note = pitch < 2
       ? '<p class="note warn">Asphalt shingles aren’t used on roofs flatter than 2/12; low slopes need a membrane roof. Check the manufacturer’s minimum slope.</p>'
@@ -61,7 +76,9 @@
       '<ul class="result-rows">' + rows + '</ul>' + note;
 
     return 'Roof: ' + S.fmt(area, 0) + ' sq ft (' + S.fmt(squares, 2) + ' squares)\n- Shingles: ' + bundles + ' bundles\n- Ridge cap: ' + ridgeBundles + ' bundles\n' +
-      (isFinite(rolls) ? '- Underlayment: ' + rolls + ' rolls\n' : '') + '- Drip edge: ' + Math.ceil(drip / 10 - 1e-9) + ' x 10 ft\n' + location.href;
+      '- Starter strip: ' + starterBundles + ' bundles\n' +
+      (isFinite(rolls) ? '- Underlayment: ' + rolls + ' rolls\n' : '') + (ice ? '- Ice barrier: ' + iceRolls + ' rolls\n' : '') +
+      '- Drip edge: ' + Math.ceil(drip / 10 - 1e-9) + ' x 10 ft\n- Roofing nails: about ' + nails + '\n' + location.href;
   }
 
   S.calculator(form, compute);
