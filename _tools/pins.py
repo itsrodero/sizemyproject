@@ -5,6 +5,10 @@ Pinterest pins for SizeMyProject.
     python _tools/pins.py          # writes _tools/pins.json and _tools/pinterest-pins.csv
     python _tools/pins.py --only deck-mud-calculator --start 2026-10-22
                                    # also writes _tools/pinterest-pins-new.csv with just those pins
+    python _tools/pins.py --round 2 --start 2026-10-23
+                                   # second round: new images (assets/img/pins/r2/, template img/pin2.html)
+                                   # and copy for every page -> pins-r2.json, pinterest-pins-r2.csv
+    node _tools/pins.mjs --round 2
     node _tools/pins.mjs           # renders the missing pin images into assets/img/pins/
 
 One vertical pin (1000x1500) per calculator and guide. pins.json drives the
@@ -84,6 +88,9 @@ def keywords(m, label):
     return ', '.join(dict.fromkeys(words))
 
 
+ROUND = 2 if '--round' in sys.argv and sys.argv[sys.argv.index('--round') + 1] == '2' else 1
+
+
 def main():
     pages = B.load_pages()
     calcs, guides = [], []
@@ -105,18 +112,27 @@ def main():
             rel = [k.strip() for k in m.get('related', '').split(',') if k.strip() in pages]
             calc = next((pages[k] for k in rel if pages[k]['meta'].get('type') == 'calculator'), None)
             cta, ic = 'Read the guide', calc['meta']['icon'] if calc else CAT_ICON[cat]
+        if ROUND == 2:
+            # Second round: a fresh image and copy for the same pages (Pinterest favours new images over repins).
+            parts = B.strip_tags(m['title']).split(' – ', 1)
+            head = parts[0].strip()
+            sub = parts[1].strip() if len(parts) > 1 else m['card_desc']
+            title = f"{head}: {sub}" if len(parts) > 1 else head
+            cta = 'Free calculator' if m['type'] == 'calculator' else 'Read the guide'
+        else:
+            sub = m['card_desc']
         job = {
             'name': name,
-            'out': f'assets/img/pins/{name}.jpg',
+            'out': f'assets/img/pins/r2/{name}.jpg' if ROUND == 2 else f'assets/img/pins/{name}.jpg',
             'headline': head,
-            'sub': m['card_desc'],
+            'sub': sub,
             'label': B.CATEGORIES[cat][0],
             'cta': cta,
             'icon': B.ICONS[ic],
             'link': B.SITE_URL + p['url'],
             'board': BOARDS[cat],
             'title': clip(title, 100),
-            'description': clip(m['description'] + ' Free and no sign-up — SizeMyProject.', 500),
+            'description': clip((m.get('lead') if ROUND == 2 and m.get('lead') else m['description']) + ' Free and no sign-up — SizeMyProject.', 500),
             'order': int(m.get('order', 99)),
             'keywords': keywords(m, B.CATEGORIES[cat][0]),
         }
@@ -134,11 +150,24 @@ def main():
                     out.append(by_cat[board].pop(0))
         return out
     jobs = interleave(calcs) + interleave(guides)
+    first = FIRST_DAY
+    if '--start' in sys.argv and '--only' not in sys.argv:
+        first = datetime.date.fromisoformat(sys.argv[sys.argv.index('--start') + 1])
     for i, j in enumerate(jobs):
-        day = FIRST_DAY + datetime.timedelta(days=i // PINS_PER_DAY)
+        day = first + datetime.timedelta(days=i // PINS_PER_DAY)
         j['publish'] = f'{day.isoformat()}T{TIMES[i % PINS_PER_DAY]}:00'
 
     here = os.path.dirname(os.path.abspath(__file__))
+    if ROUND == 2:
+        with open(os.path.join(here, 'pins-r2.json'), 'w', encoding='utf-8', newline='\n') as f:
+            json.dump(jobs, f, ensure_ascii=False, indent=1)
+        with open(os.path.join(here, 'pinterest-pins-r2.csv'), 'w', encoding='utf-8', newline='') as f:
+            w = csv.writer(f)
+            w.writerow(['Title', 'Media URL', 'Pinterest board', 'Thumbnail', 'Description', 'Link', 'Publish date', 'Keywords'])
+            for j in jobs:
+                w.writerow([j['title'], B.SITE_URL + '/' + j['out'], j['board'], '', j['description'], j['link'], j['publish'], j['keywords']])
+        print(f'round 2: {len(jobs)} pins, publishing {jobs[0]["publish"][:10]} to {jobs[-1]["publish"][:10]}')
+        return
     with open(os.path.join(here, 'pins.json'), 'w', encoding='utf-8', newline='\n') as f:
         json.dump(jobs, f, ensure_ascii=False, indent=1)
     with open(os.path.join(here, 'pinterest-pins.csv'), 'w', encoding='utf-8', newline='') as f:

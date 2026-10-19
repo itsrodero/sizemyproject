@@ -11,7 +11,8 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const root = resolve(here, '..');
-const jobs = JSON.parse(readFileSync(join(here, 'pins.json'), 'utf8'));
+const round2 = process.argv.includes('--round') && process.argv[process.argv.indexOf('--round') + 1] === '2';
+const jobs = JSON.parse(readFileSync(join(here, round2 ? 'pins-r2.json' : 'pins.json'), 'utf8'));
 const all = process.argv.includes('--all');
 const todo = jobs.filter((j) => all || !existsSync(join(root, j.out)));
 if (!todo.length) { console.log('All pin images exist.'); process.exit(0); }
@@ -44,7 +45,7 @@ const once = (m) => new Promise((r) => waiters.push({ m, r }));
 
 await send('Page.enable');
 await send('Emulation.setDeviceMetricsOverride', { width: 1000, height: 1500, deviceScaleFactor: 1, mobile: false });
-const tpl = pathToFileURL(join(here, 'img', 'pin.html')).href;
+const tpl = pathToFileURL(join(here, 'img', round2 ? 'pin2.html' : 'pin.html')).href;
 for (const j of todo) {
   const hash = new URLSearchParams({ h: j.headline, s: j.sub, l: j.label, c: j.cta, i: j.icon }).toString();
   const loaded = once('Page.loadEventFired');
