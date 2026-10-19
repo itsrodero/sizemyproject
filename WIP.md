@@ -126,6 +126,13 @@ hosted on GitHub Pages from this public repo.
 - Bing Webmaster Tools (2026-10-11): site imported from Search Console (Google account of authuser 2);
   sitemap https://sizemyproject.com/sitemap.xml submitted (Processing). Check indexing and queries there in a week.
 
+## Pinterest round 2 (2026-10-19)
+- 49 new pins: dark template `_tools/img/pin2.html`, new copy (title before/after the dash, lead as description),
+  images in `assets/img/pins/r2/`.
+- Generator: `python _tools/pins.py --round 2 --start 2026-10-23`, then `node _tools/pins.mjs --round 2`.
+- `_tools/pinterest-pins-r2.csv` uploaded 2026-10-19 ("Carga exitosa"): 4 pins a day, 2026-10-23 to 11-04.
+  Round 1 ended 10-22.
+
 ## Pinterest (prepared 2026-10-09)
 - 46 vertical pins (1000x1500 JPEG), one per calculator and guide: `assets/img/pins/<name>.jpg`, published on
   the site so Pinterest can fetch them by URL. Regenerate with `python _tools/pins.py` then
