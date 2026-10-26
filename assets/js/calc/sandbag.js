@@ -1,4 +1,4 @@
-/* Sandbag calculator: bags for a sandbag levee or single-row wall, sand and weight. */
+/* Sandbag calculator: bags for a sandbag levee or single-row wall, sand (bulk or 50 lb bags), weight and optional cost. */
 (function () {
   'use strict';
   var S = window.SMP;
@@ -22,10 +22,16 @@
     var bags = Math.ceil(L * perFt - 1e-9);
     var yd3 = bags / perYd;
     var tons = yd3 * TONS_PER_YD3;
+    var bags50 = Math.ceil(tons * 2000 / 50 - 1e-9);   // 50 lb bags of sand to buy
+    var bagPrice = S.val(form, 'bagPrice'), sandPrice = S.val(form, 'sandPrice'), bag50 = S.val(form, 'bag50');
+    var costBags = bagPrice > 0 ? bags * bagPrice : 0;
+    var costSand = bag50 > 0 ? bags50 * bag50 : (sandPrice > 0 ? yd3 * sandPrice : 0);
 
     var rows = '<li><span>Bags per foot of barrier</span><strong>' + S.fmt(perFt, 1) + '</strong></li>' +
       (type === 'pyramid' ? '<li><span>Base width (about 3 × height)</span><strong>≈ ' + S.fmt(3 * H, 1) + ' ft</strong></li>' : '') +
-      '<li><span>Sand (' + S.fmt(perYd, 0) + ' bags per yd³)</span><strong>' + S.fmt(yd3, 1) + ' yd³ · ≈ ' + S.fmt(tons, 1) + ' tons</strong></li>';
+      '<li><span>Sand (' + S.fmt(perYd, 0) + ' bags per yd³)</span><strong>' + S.fmt(yd3, 1) + ' yd³ · ≈ ' + S.fmt(tons, 1) + ' tons</strong></li>' +
+      '<li><span>Or in 50 lb bags of sand</span><strong>' + S.fmt(bags50, 0) + ' bags</strong></li>' +
+      (costBags || costSand ? '<li><span>Estimated cost' + (costBags && costSand ? ' (bags + sand)' : costBags ? ' (empty bags)' : ' (sand)') + '</span><strong>' + S.money(costBags + costSand) + '</strong></li>' : '');
     var note = type === 'single' && H > 1 + 1e-9
       ? '<p class="note warn">A single row is only suitable up to about 1 foot. For a taller barrier, choose the levee (pyramid) type.</p>'
       : '<p class="note">Fill bags half to two-thirds full, overlap each bag halfway over the one below and stagger the joints.</p>';
@@ -36,7 +42,7 @@
       '<ul class="result-rows">' + rows + '</ul>' + note;
 
     return 'Sandbags: ' + S.fmt(bags, 0) + ' bags for ' + S.fmt(L, 1) + ' ft × ' + S.fmt(H, 2) + ' ft (' + (type === 'single' ? 'single row' : 'levee') + ')\n' +
-      '- sand: ' + S.fmt(yd3, 1) + ' cu yd (~' + S.fmt(tons, 1) + ' tons)\n' + location.href;
+      '- sand: ' + S.fmt(yd3, 1) + ' cu yd (~' + S.fmt(tons, 1) + ' tons) or ' + S.fmt(bags50, 0) + ' x 50 lb bags\n' + location.href;
   }
 
   S.calculator(form, compute);

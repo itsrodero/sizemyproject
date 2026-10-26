@@ -103,6 +103,13 @@ hosted on GitHub Pages from this public repo.
   - New sections: materials coverage table and "checking a roofing quote"; 3 new FAQs.
   - Worked example 40×28 at 6/12 still gives 42 bundles.
 
+- 2026-10-26: Sandbag Calculator reinforced. GSC had "sandbag calculator" at position 28.8, then 19.5.
+  - New title: "How Many Sandbags & How Much Sand".
+  - Quick chart: bags for 10/16/25/50/100 ft at 1–3 ft and a single row.
+  - New "How much sand to buy" section: 50 lb bags (the calculator assumes ~90 per 100 sandbags), bulk sand, free sand stations.
+  - Optional cost: empty bags + bulk sand or 50 lb bags. 3 new FAQs (garage door, 50 lb bags, dirt instead of sand).
+  - Tested in the browser: 50 ft × 2 ft = 1,050 bags, 945 × 50 lb bags, $6,300 with test prices.
+
 ## Search Console queries (28 days to 2026-10-06) — what to build next
 - Impressions with no matching page yet: "deck mud calculator (square feet)" (19 imp, pos ~55) and
   "sandbag calculator" (4 imp, pos ~77) → candidates for new calculators.

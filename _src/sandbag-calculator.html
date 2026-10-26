@@ -3,14 +3,14 @@ type: calculator
 category: landscaping
 order: 7
 icon: sand
-title: Sandbag Calculator – Bags & Sand for a Flood Wall
-description: Estimate how many sandbags and how much sand you need for a flood barrier or doorway, using the U.S. Army Corps of Engineers sandbag levee guidelines.
+title: Sandbag Calculator – How Many Sandbags & How Much Sand
+description: How many sandbags do you need? Bags, sand and 50 lb bags of sand to buy for a flood wall, doorway or garage door, from Army Corps of Engineers figures.
 h1: Sandbag Calculator
-lead: Enter how long and how high your sandbag barrier needs to be to see how many bags to fill, how much sand to order and roughly how much it all weighs.
+lead: Enter how long and how high your sandbag barrier needs to be to see how many sandbags to fill, how much sand to order — in cubic yards or 50 lb bags from the store — what it weighs and, if you like, what it costs.
 card_title: Sandbag Calculator
 card_desc: Flood walls and doorways — bags, sand and weight.
 crumb: Sandbag Calculator
-updated: 2026-10-10
+updated: 2026-10-26
 script: sandbag
 related: sand-calculator, guides/cubic-yards-to-tons, gravel-calculator, square-footage-calculator
 ---
@@ -37,6 +37,9 @@ related: sand-calculator, guides/cubic-yards-to-tons, gravel-calculator, square-
           <option value="single">Single row (low walls and doorways, up to 1 ft)</option>
         </select></div>
       <div class="field"><label for="s-perYd">Bags per cubic yard of sand</label><div class="inp"><input id="s-perYd" data-k="perYd" type="text" inputmode="decimal" value="60"><span class="affix">bags</span></div><small>About 60 for half- to two-thirds-full bags</small></div>
+      <div class="field"><label for="s-bagPrice">Price per empty sandbag</label><div class="inp"><span class="affix pre">$</span><input id="s-bagPrice" data-k="bagPrice" type="text" inputmode="decimal" placeholder="optional"></div></div>
+      <div class="field"><label for="s-sandPrice">Sand price per cubic yard</label><div class="inp"><span class="affix pre">$</span><input id="s-sandPrice" data-k="sandPrice" type="text" inputmode="decimal" placeholder="optional"></div><small>Or per 50 lb bag below</small></div>
+      <div class="field full"><label for="s-bag50">Price per 50 lb bag of sand</label><div class="inp"><span class="affix pre">$</span><input id="s-bag50" data-k="bag50" type="text" inputmode="decimal" placeholder="optional, if buying bagged sand"></div></div>
     </div>
     <div class="calc-actions">
       <button type="button" class="btn btn-ghost btn-sm js-reset">Reset</button>
@@ -79,6 +82,27 @@ related: sand-calculator, guides/cubic-yards-to-tons, gravel-calculator, square-
   </ol>
 </div>
 
+<h2>How many sandbags do I need? Quick chart</h2>
+<p>Sandbags for common barrier lengths, from the same Army Corps of Engineers figures the calculator uses. 16 ft is a typical two-car garage door.</p>
+<div class="table-wrap"><table>
+  <thead><tr><th>Barrier</th><th>10 ft</th><th>16 ft</th><th>25 ft</th><th>50 ft</th><th>100 ft</th></tr></thead>
+  <tbody>
+    <tr><td>1 ft levee</td><td>60</td><td>96</td><td>150</td><td>300</td><td>600</td></tr>
+    <tr><td>2 ft levee</td><td>210</td><td>336</td><td>525</td><td>1,050</td><td>2,100</td></tr>
+    <tr><td>3 ft levee</td><td>450</td><td>720</td><td>1,125</td><td>2,250</td><td>4,500</td></tr>
+    <tr><td>1 ft single row</td><td>30</td><td>48</td><td>75</td><td>150</td><td>300</td></tr>
+  </tbody>
+</table></div>
+<p class="table-note">Bags filled half to two-thirds full. Add a few spare bags for gaps, corners and repairs.</p>
+
+<h2>How much sand to buy</h2>
+<p>A filled sandbag holds about 35 to 40 lb of sand, so roughly 60 bags use one cubic yard (about 1.35 tons of dry sand). For a few dozen sandbags, bagged sand from a home center is often easier than a bulk delivery:</p>
+<ul>
+  <li><strong>50 lb bags of sand:</strong> one bag fills one to one and a third sandbags, so plan on 75 to 90 bags of sand per 100 sandbags. The calculator uses the higher figure so you don't run short.</li>
+  <li><strong>Bulk sand:</strong> for more than a couple of hundred sandbags, a delivery of loose sand by the cubic yard or ton costs far less per sandbag. See the <a href="@sand-calculator">sand calculator</a> and <a href="@guides/cubic-yards-to-tons">cubic yards to tons</a>.</li>
+  <li><strong>Free sand:</strong> many cities and counties open self-fill sandbag stations before forecast floods. Check your local emergency management office.</li>
+</ul>
+
 <h2>Filling and placing sandbags</h2>
 <ul>
   <li><strong>Fill bags one-half to two-thirds full</strong> — about 35 to 40 lb. Overfilled bags don't bed against each other and leave gaps that let water through.</li>
@@ -94,6 +118,9 @@ related: sand-calculator, guides/cubic-yards-to-tons, gravel-calculator, square-
   <details><summary>How many sandbags do I need for a doorway?</summary><p>For a 3 ft doorway and a 1 ft high single-row wall, about 9 bags (3 bags per foot), with plastic sheeting under and in front of them.</p></details>
   <details><summary>How many sandbags are in a ton of sand?</summary><p>Roughly 45 bags filled half to two-thirds full, at about 1.35 tons per cubic yard of dry sand and 60 bags per cubic yard.</p></details>
   <details><summary>How much does a filled sandbag weigh?</summary><p>About 35 to 40 lb when filled half to two-thirds full with sand — heavier if the sand is wet.</p></details>
+  <details><summary>How many sandbags for a garage door?</summary><p>For a 16 ft garage door, a 1 ft single-row wall takes about 48 bags, and a 1 ft levee about 96. Lay plastic sheeting under and on the water side of the bags.</p></details>
+  <details><summary>How many 50 lb bags of sand do I need to fill sandbags?</summary><p>Plan on 75 to 90 bags of sand per 100 sandbags: one 50 lb bag fills one to one and a third sandbags, depending on how full you fill them. The calculator uses the higher figure so you don't run short.</p></details>
+  <details><summary>Can I use dirt instead of sand?</summary><p>Sand is easiest to fill and shape, but many emergency guides accept local soil when sand isn't available. Avoid very loose gravel or organic soil, which let water through.</p></details>
   <details><summary>How high can a sandbag wall be?</summary><p>Single rows are for low barriers. Taller barriers need a levee with a base about three times the height; for anything over a few feet, follow the guidance of your local emergency managers.</p></details>
 </div>
 
